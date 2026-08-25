@@ -23,7 +23,7 @@ Answer = 9
 ============================================================
 */
 
-public class _2_MaximumSumSubarrayOfSizeK {
+public class _1_MaximumSum_Of_Subarray_Of_Fixed_SizeK {
 
     public static void main(String[] args) {
 
