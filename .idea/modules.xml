@@ -4,10 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Alpha-SlidingWindow.iml" filepath="$PROJECT_DIR$/.idea/Alpha-SlidingWindow.iml" />
       <module fileurl="file://$PROJECT_DIR$/_1. Basics About 2 Pointers/_1. Basics About 2 Pointers.iml" filepath="$PROJECT_DIR$/_1. Basics About 2 Pointers/_1. Basics About 2 Pointers.iml" />
-      <module fileurl="file://$PROJECT_DIR$/_3. Variable Window/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K.iml" filepath="$PROJECT_DIR$/_3. Variable Window/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K.iml" />
-      <module fileurl="file://$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___Where_Subarray_size_should_be_Fixed_K/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___Where_Subarray_size_should_be_Fixed_K.iml" filepath="$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___Where_Subarray_size_should_be_Fixed_K/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___Where_Subarray_size_should_be_Fixed_K.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_3. Pattern -2 Variable Window/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K.iml" filepath="$PROJECT_DIR$/_3. Pattern -2 Variable Window/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Exist WIth Sum Below or Equal to K.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___With_Fixed_K_Size_Subarray/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___With_Fixed_K_Size_Subarray.iml" filepath="$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___With_Fixed_K_Size_Subarray/_1_Find_Maximum_Sum_Of_Any_Contiguous_Subarray___With_Fixed_K_Size_Subarray.iml" />
       <module fileurl="file://$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_2. Pattern - 1 Constant Window.iml" filepath="$PROJECT_DIR$/_2. Pattern - 1 Constant Window/_2. Pattern - 1 Constant Window.iml" />
-      <module fileurl="file://$PROJECT_DIR$/_3. Variable Window/_3. Variable Window.iml" filepath="$PROJECT_DIR$/_3. Variable Window/_3. Variable Window.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_3. Pattern -2 Variable Window/_3. Pattern -2 Variable Window.iml" filepath="$PROJECT_DIR$/_3. Pattern -2 Variable Window/_3. Pattern -2 Variable Window.iml" />
     </modules>
   </component>
 </project>

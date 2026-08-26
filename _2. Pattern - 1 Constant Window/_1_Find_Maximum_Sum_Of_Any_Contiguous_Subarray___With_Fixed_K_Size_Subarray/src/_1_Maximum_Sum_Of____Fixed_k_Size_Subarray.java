@@ -1,10 +1,25 @@
 public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
+    /* Given : SubArrays size is fixed K, we need to find which subarray sum is max among all.
+               Contiguous + Fixed Size + SubArray = Constant window
+       Idea :  a. subArray=window
+               b. In normal way what we can do we will move k size window 1 by 1 step
+                    [ [2, 1, 5, 1, 3], 2, 6, 4, 2]  → 12  ( sum found through loop k = l to r )
+                    [ 2, [1, 5, 1, 3, 2], 6, 4, 2]  → 12         "    "
+                    [ 2, 1, [5, 1, 3, 2, 6], 4, 2]  → 17         "    "
+                    [ 2, 1, 5, [1, 3, 2, 6, 4], 2]  → 16         "    "
+                    [ 2, 1, 5, 1, [3, 2, 6, 4, 2]]  → 17         "    "
+                   T = n(for each window move) * k(k loop in for each window) =o(nk).
+                  But there is no need to do looping to find sum of contiguous windows.
+                  Hack : just find a sum of first window.
+                         when you move the window just remove last element from sum and add right element.
+                         this will be sum of current window easy.
+                   T = k(First window sum) + n(for each window move)* 1(sum by add/remove) = o(n).
+     */
     public static void main(String[] args) {
         int[] arr = {2, 1, 5, 1, 3, 2};
         int k = 3;
 
-
-        /* Step 1 : Fixed K=3 size subArray means : Winidow size is fixed : In Each iteration it will not change.
+        /* Step 1 : Fixed K=3 size subArray means : Window size is fixed : In Each iteration it will not change.
                     So First create a window with size k from index 0.
                     and Find sum of the first window. */
         int left = 0;
