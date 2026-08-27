@@ -12,12 +12,23 @@ public class _3_Optimal_Sliding_Window {
                         if sum is bigger keep shrinking the window until valid sum is find then only move right.
                Optimal: if sum is bigger we need to shrink,
                         But no need to shrink heavily it will make window size so small and we will increase again.
-                        But Idea is to find max length of subarray so no need to go below found max Length.
-                        So, Shrink once to compensate for the new element, then continue moving R to find a larger valid window.
+                        But Idea is to find max length of subarray so no need to go below the maximum length already found..
+                        =>So, Shrink once to compensate for the new element, then continue moving R to find a larger valid window.
+
+                                                SUM > K
+                                                   ↓
+                                                Shrink once to compensate 1 R movement
+                                                   ↓
+                                                Move R
+                                                   ↓
+                                                Try to find a larger window
+
+                        Ex : You already found maxLength = 3
+                        Than if you shrink below 3 then you will again come to 3
+                        like  2-->  |3|  -----> 4 Unnecessary logic we need bigger length so why going back to 2.
                */
     public static void main(String[] args) {
         int k = 14;
-//        int[] arr = {2,5,10,7,10};
          int[] arr = {2,5,1,10,10};
 
         int longestSubarrayLength =0;
@@ -57,7 +68,7 @@ k = 14
 
 [ [2, 5, 1, 10], 10]       sum = 18   length = 4  ❌
 [ 2, [5, 1, 10, 10]]       sum = 26   length = 4  ❌
-[ 2, 5, [1, 10, 10]  -]    sum = 24   length = 2  ✓
+[ 2, 5, [1, 10, 10]  -]    r is invalid
 
 Maximum length = 3
 
