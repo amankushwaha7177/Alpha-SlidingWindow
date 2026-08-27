@@ -41,14 +41,14 @@ k = 14
 
 [ [2, 5, 1, 10], 10]       sum = 18     ❌ Shrink Now
 [ 2, [5, 1, 10], 10]       sum = 16     ❌ Shrink Now
-[ 2, 5, [1, 10], 10]       sum = 11   length = 2  ✓
+[ 2, 5, [1, 10], 10]       sum = 11   length = 2  ✓  now move r.
 [ 2, 5, [1, 10, 10]]       ------> r is mover so it will definitely move at end of this iteration
 
-[ 2, 5, [1, 10, 10]]       sum = 21     ❌
-[ 2, 5, 1, [10, 10]]       sum = 20     ❌
-[ 2, 5, 1, 10, [10]]       sum = 10   length = 1  ✓
+[ 2, 5, [1, 10, 10]]       sum = 21     ❌ Shrink Now
+[ 2, 5, 1, [10, 10]]       sum = 20     ❌ Shrink Now
+[ 2, 5, 1, 10, [10]]       sum = 10   length = 1  ✓  now move r.
 
-r - length => stop here.
+r = length => stop here.
 
 
 Maximum length = 3
