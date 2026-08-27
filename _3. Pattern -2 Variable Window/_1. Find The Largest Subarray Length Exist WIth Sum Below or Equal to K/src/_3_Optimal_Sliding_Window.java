@@ -66,9 +66,13 @@ k = 14
 [ [2, 5], 1, 10, 10]       sum = 7    length = 2 ✓
 [ [2, 5, 1], 10, 10]       sum = 8    length = 3 ✓
 
-[ [2, 5, 1, 10], 10]       sum = 18   length = 4  ❌
-[ 2, [5, 1, 10, 10]]       sum = 26   length = 4  ❌
-[ 2, 5, [1, 10, 10]  -]    r is invalid
+[ [2, 5, 1, 10], 10]       sum = 18 ❌  shrink First
+[ 2, [5, 1, 10], 10]       sum = 16 ❌  length = 3   Now move on
+
+[ 2, [5, 1, 10, 10]]       sum = 26 ❌  shrink First
+[ 2, 5, [1, 10, 10]]       sum = 21 ❌  length = 3   Now move on
+
+[ 2, 5, 1, [10, 10]] r    Invalid r :  r = arr.length → loop stops
 
 Maximum length = 3
 
