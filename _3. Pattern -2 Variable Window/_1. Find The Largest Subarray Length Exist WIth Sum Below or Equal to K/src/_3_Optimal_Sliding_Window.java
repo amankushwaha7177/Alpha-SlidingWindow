@@ -27,7 +27,7 @@ public class _3_Optimal_Sliding_Window {
 
                         Ex : You already found maxLength = 3
                         Than if you shrink below 3 then you will again come to 3
-                        like  2-->  |3|  -----> 4 Unnecessary logic we need bigger length so why going back to 2.
+                        like  3-->  |2|  -----> 3 Unnecessary logic we need bigger length so why going back to 2.
                */
     public static void main(String[] args) {
         int k = 14;
@@ -35,7 +35,7 @@ public class _3_Optimal_Sliding_Window {
 
         /* Step 1 : variables analogy for window :
                     a. 2 for windows -l,r to monitor end points of window.
-                    b. 'ws' will store sum of current window, to find next window sum we will remove+add elements
+                    b. 'ws' will store sum of current window, to find next window sum we will remove+add elements from it.
                     c. Then we need to monitor max length, so will use 'ans' which we will keep updating. */
         int l=0;
         int r =0;
