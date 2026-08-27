@@ -7,6 +7,8 @@ public class _3_Optimal_Sliding_Window {
                   If subarray sum is in range then only we will consider its length.
 
                BruteForce : Simple Create all possible contiguous subarrays and find their sum 1 by 1.
+                            If sum is in range => Update maxLengthAns
+                            If sum crossed range => break no need to check, adding more element will make sum larger.
                Better : start a window from first element and keep it increasing.
                         in each step validate its sum if sum is in range compare its length with answer.
                         if sum is bigger keep shrinking the window until valid sum is find then only move right.
@@ -29,14 +31,18 @@ public class _3_Optimal_Sliding_Window {
                */
     public static void main(String[] args) {
         int k = 14;
-         int[] arr = {2,5,1,10,10};
+        int[] arr = {2,5,1,10,10};
 
-        int longestSubarrayLength =0;
-
+        /* Step 1 : variables analogy for window :
+                    a. 2 for windows -l,r to monitor end points of window.
+                    b. 'ws' will store sum of current window, to find next window sum we will remove+add elements
+                    c. Then we need to monitor max length, so will use 'ans' which we will keep updating. */
         int l=0;
         int r =0;
 
         int windowSum= 0;
+        int longestSubarrayLength =0;
+
         while(r < arr.length){
             windowSum+= arr[r];
 
