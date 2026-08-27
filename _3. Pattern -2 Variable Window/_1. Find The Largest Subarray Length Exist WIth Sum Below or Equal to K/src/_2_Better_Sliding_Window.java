@@ -3,12 +3,16 @@ public class _2_Better_Sliding_Window {
         int k = 14;
         int[] arr = {2,5,1,10,10};
 
-        int longestSubarrayLength =0;
-
+        /* Step 1 : variables analogy for window */
         int l=0;
         int r =0;
 
+        /* Step 2 : variables analogy : we first need sum of each window one by one
+        *                               Then we need to monitor max length.*/
+
         int windowSum= 0;
+        int longestSubarrayLength =0;
+
         while(r < arr.length){
             windowSum+= arr[r];
 
