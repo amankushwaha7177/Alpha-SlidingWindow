@@ -1,4 +1,4 @@
-public class _1_BruteForce {
+public class _1_BruteForce_O_n2 {
     public static void main(String[] args) {
         int[] arr = {2,5,1,7,10};
         int k = 14;

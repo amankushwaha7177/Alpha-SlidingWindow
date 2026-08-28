@@ -1,4 +1,4 @@
-public class _2_Better_Sliding_Window {
+public class _2_Better_Sliding_Window_O_2n {
     public static void main(String[] args) {
         int k = 14;
         int[] arr = {2,5,1,10,10};
