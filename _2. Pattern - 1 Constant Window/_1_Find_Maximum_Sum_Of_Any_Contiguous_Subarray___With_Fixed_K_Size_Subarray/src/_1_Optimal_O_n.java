@@ -1,4 +1,4 @@
-public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
+public class _1_Optimal_O_n {
     /* Interview : Given an array and fixed k, find the maximum sum of any contiguous subarray of size k.
        Given : SubArrays size is fixed K, we need to find which subarray sum is max among all.
                Contiguous + Fixed Size + SubArray = Constant window
