@@ -43,7 +43,7 @@ public class _3_Optimal_Sliding_Window_O_n {
         int r =0;
 
         int windowSum= 0;
-        int longestSubarrayLength =0;
+        int ans =0;
 
         while(r < arr.length){
             windowSum+= arr[r];
@@ -54,13 +54,13 @@ public class _3_Optimal_Sliding_Window_O_n {
             }
 
             if(windowSum <= k){
-                longestSubarrayLength = Math.max(longestSubarrayLength, r-l+1);
+                ans = Math.max(ans, r-l+1);
             }
 
             r++;
         }
 
-        System.out.println(longestSubarrayLength);
+        System.out.println(ans);
     }
 
 }
@@ -75,10 +75,10 @@ k = 14
 [ [2, 5, 1], 10, 10]       sum = 8    length = 3 ✓
 
 [ [2, 5, 1, 10], 10]       sum = 18 ❌  shrink First
-[ 2, [5, 1, 10], 10]       sum = 16 ❌  length = 3   Now move on
+[ 2, [5, 1, 10], 10]       sum = 16 ❌  Now move on
 
 [ 2, [5, 1, 10, 10]]       sum = 26 ❌  shrink First
-[ 2, 5, [1, 10, 10]]       sum = 21 ❌  length = 3   Now move on
+[ 2, 5, [1, 10, 10]]       sum = 21 ❌  Now move on
 
 [ 2, 5, 1, [10, 10]] r    Invalid r :  r = arr.length → loop stops
 
