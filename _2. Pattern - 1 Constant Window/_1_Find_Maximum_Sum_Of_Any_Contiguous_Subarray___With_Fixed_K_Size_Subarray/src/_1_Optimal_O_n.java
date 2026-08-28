@@ -20,6 +20,10 @@ public class _1_Optimal_O_n {
     public static void main(String[] args) {
         int[] arr = {2, 1, 5, 1, 3, 2};
         int k = 3;
+        /* Step 0 : variables analogy for window :
+                    a. 2 for windows -l,r to monitor end points of window.
+                    b. 'ws' will store sum of current window, to find next window sum we will remove+add elements from it.
+                    c. Then we need to monitor maximum sum among all, so will use 'ans' which we will keep updating. */
 
         /* Step 1 : Fixed K=3 size subArray means : Window size is fixed : In Each iteration it will not change.
                     So First create a window with size k from index 0.
@@ -38,13 +42,12 @@ public class _1_Optimal_O_n {
         System.out.println(windowSum);  // [2,  1,  5] => 8
 
 
-        /*Step 2: We will move using r. so condition will be checked with r only.
+        /*Step 2: We will move using r. also will pause movement using r.
                   Now Without Changing size of window, slide window 1 by 1 and find windowSum for all windows.
                   biggest sum among all windowSum will be our ANSWER.
                   But How -> a. simple Remove 1 element from left side from sum and move on and
                              b. add 1 element from right side
-                             Update answer only when you get bigger sum
-                  Note : TO Pause sliding we will use right Pointer and specific condition*/
+                             Update answer only when you get bigger sum*/
         int finalAns = windowSum;
         while( right < arr.length -1 /* At last write this : We are already reaching last element in 2nd last itr.*/){
             // Core formula: newSum = oldSum - leavingElement + enteringElement
