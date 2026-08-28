@@ -1,18 +1,20 @@
 public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
-    /* Given : SubArrays size is fixed K, we need to find which subarray sum is max among all.
+    /* Interview : Given an array and fixed k, find the maximum sum of any contiguous subarray of size k.
+       Given : SubArrays size is fixed K, we need to find which subarray sum is max among all.
                Contiguous + Fixed Size + SubArray = Constant window
-       Idea :  a. subArray=window
-               b. In normal way what we can do we will move k size window 1 by 1 step
+               subArray=window
+       Idea :  A. Normal :In normal way what we can do we will move k size window 1 by 1 step.
                     [ [2, 1, 5, 1, 3], 2, 6, 4, 2]  → 12  ( sum found through loop k = l to r )
                     [ 2, [1, 5, 1, 3, 2], 6, 4, 2]  → 12         "    "
                     [ 2, 1, [5, 1, 3, 2, 6], 4, 2]  → 17         "    "
                     [ 2, 1, 5, [1, 3, 2, 6, 4], 2]  → 16         "    "
                     [ 2, 1, 5, 1, [3, 2, 6, 4, 2]]  → 17         "    "
-                   T = n(for each window move) * k(k loop in for each window) =o(nk).
-                  But there is no need to do looping to find sum of contiguous windows.
+                   T = n(number of window move) * k(k loop for each window) =o(nk).
+
+               B. Optimal : But there is no need to do looping to find sum of contiguous windows again and again.
                   Hack : just find a sum of first window.
                          when you move the window just remove last element from sum and add right element.
-                         this will be sum of current window easy.
+                         this will be sum of new window easy.
                    T = k(First window sum) + n(for each window move)* 1(sum by add/remove) = o(n).
      */
     public static void main(String[] args) {
@@ -36,7 +38,8 @@ public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
         System.out.println(windowSum);  // [2,  1,  5] => 8
 
 
-        /*Step 2: Now Without Changing size of window, slide window 1 by 1 and find windowSum for all windows.
+        /*Step 2: We will move using r. so condition will be checked with r only.
+                  Now Without Changing size of window, slide window 1 by 1 and find windowSum for all windows.
                   biggest sum among all windowSum will be our ANSWER.
                   But How -> a. simple Remove 1 element from left side from sum and move on and
                              b. add 1 element from right side
@@ -44,9 +47,8 @@ public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
                   Note : TO Pause sliding we will use right Pointer and specific condition*/
         int finalAns = windowSum;
         while( right < arr.length -1 /* At last write this : We are already reaching last element in 2nd last itr.*/){
-            // Core formula:
-            // newSum = oldSum - leavingElement + enteringElement
-            // Here not only we are finding new sum but also moving to next window in same iteration
+            // Core formula: newSum = oldSum - leavingElement + enteringElement
+            // Here we are moving to next window and finding its sum in same iteration
             // Thats why in 2nd last iteration we covered last element too.
             windowSum-= arr[left]; // remove element from 1st then move on
             left++;
@@ -65,38 +67,20 @@ public class _1_Maximum_Sum_Of____Fixed_k_Size_Subarray {
 Step 1 : Create First window and finding its sum
 -------  k = 3
 
-         First window contains exactly 3 elements.
-         index:    0   1   2   3   4   5
-         arr:     [2   1   5]  1   3   2    windowSum = 2 + 1 + 5
-                   ↑       ↑
-                 left    right
-                   0       2
+         [2   1   5]  1   3   2    windowSum = 2 + 1 + 5 = 8
+          ↑       ↑
+         left    right
+          0       2                finalAns = 8
 
-        finalAns = 8
 
 Step 2 : Slide Window 1 by 1 and find all sum and biggest will be finalAns amonng all.
 --------
-        Current pointers:
-        index:   0   1   2   3   4   5
-        arr:    [2   1   5]  1   3   2
-                 ↑       ↑
-               left    right
-                 0       2
-
-        r < l-1 ✓
-
-        Remove arr[left]: windowSum = 8 - 2 = 6
-        Move left:  left = 1
-        Move right: right = 3
-        Add arr[right]: windowSum = 6 + 1 = 7           windowSum = 7
-                                                        finalAns = max(8, 7) = 8
-
+        Current window:
+        [2   1   5]  1   3   2
+        2  [1   5   1]   3   2       a. windowSum = 8 - 2(l) + 1(r) = 7
+                                     b. -----> finalAns = max(8, 7) = 8
         New window:
-        index:   0   1   2   3    4   5
-        arr:     2  [1   5   1]   3   2
-                     ↑       ↑
-                   left     right
-                     1       3
+        2  [1   5   1]   3   2
 
 STEP 3: SLIDE WINDOW
 ============================================================
@@ -105,14 +89,17 @@ STEP 3: SLIDE WINDOW
         [ 2,  1, [5, 1,  3], 2]    a. windowSum = 7 - 1 + 3 = 9
                                    b. -----> finalAns = max(8, 9) = 9
 
-
 STEP 4: SLIDE WINDOW
 ============================================================
-
         Current window:
         [ 2, 1, [5, 1, 3], 2]
         [ 2, 1, 5, [1, 3, 2]]    a. windowSum = 9 - 5 + 2 = 6
                                  b. ------> finalAns = max(9, 6) =9
+
+STEP 5: SLIDE WINDOW
+============================================================
+        r is reached last element, so we can not move further also there is no need
+        so when r cheched last elemnt we need to stop.
 */
 
 /*
