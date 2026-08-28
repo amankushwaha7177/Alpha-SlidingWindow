@@ -1,18 +1,20 @@
 public class _3_Optimal_Sliding_Window_O_n {
-    /* Given : We need to find largest subarray's length possible where its sum <= k.
+    /* Interview : Given an array of positive integers and an integer k,
+                   find the length of the longest contiguous subarray whose sum is less than or equal to k.
+       Given : We need to find largest subarray's length possible where its sum <= k.
                Contiguous + Size is not Fixed Size For window + SubArray = variable window
-       Idea :  a. subArray=window
-               b. Before calculating subarray length we need to first validate its sum range.
-                  So first calculate sum of every subarray.
-                  If subarray sum is in range then only we will consider its length.
+               subArray=window
+       Idea :  Before considering subarray length we need to first validate its sum range.
+               So first calculate sum of every subarray.
+               If subarray sum is in range then only we will consider its length.
 
-               BruteForce : Simple Create all possible contiguous subarrays and find their sum 1 by 1.
+               A. BruteForce : Simple Create all possible contiguous subarrays and find their sum 1 by 1.
                             If sum is in range => Update maxLengthAns
                             If sum crossed range => break no need to check, adding more element will make sum larger.
-               Better : start a window from first element and keep it increasing.
+               B. Better : start a window from first element and keep it increasing.
                         in each step validate its sum if sum is in range compare its length with answer.
                         if sum is bigger keep shrinking the window until valid sum is find then only move right.
-               Optimal: if sum is bigger we need to shrink,
+               C. Optimal: if sum is bigger we need to shrink,
                         But no need to shrink heavily it will make window size so small and we will increase again.
                         But Idea is to find max length of subarray so no need to go below the maximum length already found..
                         =>So, Shrink once to compensate for the new element, then continue moving R to find a larger valid window.
