@@ -1,4 +1,4 @@
-public class _2_Optimal_O_2k {
+public class Optimal_O_2k {
     /* Interview : Given an array of cards and fixed k, find the maximum points by picking exactly k cards from either left or right.
        Given : We can pick cards only from the two ends, so selected cards can be a combination of left cards + right cards.
                Fixed K cards + Pick from ends = Card Selection Window
