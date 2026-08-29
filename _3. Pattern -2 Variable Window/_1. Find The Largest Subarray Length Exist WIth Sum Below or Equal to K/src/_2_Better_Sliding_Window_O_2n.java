@@ -7,27 +7,39 @@ public class _2_Better_Sliding_Window_O_2n {
         int l=0;
         int r =0;
 
-        int windowSum= 0;
-        int longestSubarrayLength =0;
+        int ws= 0;
+        int ans =0;
+
+        /* If Interviewer asks Subarray coordinates
+        int x=0;
+        int y=0;  */
 
         while(r < arr.length){
-            windowSum+= arr[r];
+            ws+= arr[r];
 
-            if(windowSum > k){     // --->always write terminatory code above main logic simple.
-                while(windowSum > k){
-                    windowSum-= arr[l];
+            if(ws > k){     // --->always write terminatory code above main logic simple.
+                while(ws > k){
+                    ws-= arr[l];
                     l++;
                 }
             }
 
-            if(windowSum <= k){
-                longestSubarrayLength = Math.max(longestSubarrayLength, r-l+1);
+            if(ws <= k){
+                ans = Math.max(ans, r-l+1);
+
+                /* if(r-l+1 > ans)
+                {
+                    x= l;
+                    y=r;
+                    ans = r-l+1;
+                } */
             }
 
             r++;
         }
 
-        System.out.println(longestSubarrayLength);
+        System.out.println(ans);
+        // System.out.println(x + " " + y);
     }
 
 }
