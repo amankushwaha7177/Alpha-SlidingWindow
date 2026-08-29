@@ -49,7 +49,7 @@ public class _1_Optimal_O_n {
                its previous occurrence instead of moving one by one. */
 
             if(map.containsKey(current)) {
-                l = map.get(current) + 1;
+                l = Math.max(l, map.get(current) + 1);
             }
 
             /* Store/update the latest index of current character. */
@@ -120,4 +120,41 @@ e. ans → maximum valid window length.
 ============================================================
 */
 
+/*
+Important : L should never move backward.
+            HashMap remembers old character positions.
 
+            Example: str = "abba"
+
+            index:   0   1   2   3
+                     a   b   b   a
+
+            At r = 2:
+            a  b  [b]
+                   ↑
+                   L = 2
+
+            Now r = 3:
+            a  b  [b    a]
+            ↑      ↑    ↑
+          old a    L    r current a
+
+            HashMap says: HashMap{a → 0}
+
+            If:
+            L = map.get(current) + 1
+              = 0 + 1
+            L = 1  ❌  (L moved backward)
+
+            So:
+            L = Math.max(L, map.get(current) + 1)
+            L = Math.max(2, 1)
+            L = 2  ✓
+
+Mental Rule:
+HashMap → OLD position
+L       → CURRENT window boundary
+
+Therefore:
+L = max(L, oldPosition + 1)
+*/
