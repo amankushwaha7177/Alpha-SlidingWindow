@@ -79,6 +79,8 @@ Step 1 : Initially take K cards from left
 [ [1], 2, 3, 4, 5, [6, 1] ]    → LEFT = 1,  RIGHT = 7,  Total = 8 , update ans
 [ 1, 2, 3, 4, [5, 6, 1] ]      → LEFT = 0,  RIGHT = 12, Total = 12, update ans
 
+ans = 12
+ */
 /*
 Remember:
 a. First take K cards from LEFT.
