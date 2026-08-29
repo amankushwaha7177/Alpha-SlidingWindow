@@ -14,7 +14,15 @@ public class Optimal_O_2k {
                   Then remove 1 card from left and add 1 card from right.
                   Again remove 1 card from left and add 1 card from right.
                   This way we check every possible left + right combination without extra loops.
-                  T = o(k).
+                  T = o(2k).
+
+                   [ [1, 2, 3], 4, 5, 6, 1]       → LEFT = 6,  RIGHT = 0,  Total = 6
+                   [ [1, 2], 3, 4, 5, 6, [1] ]    → LEFT = 3,  RIGHT = 1,  Total = 4
+                   [ [1], 2, 3, 4, 5, [6, 1] ]    → LEFT = 1,  RIGHT = 7,  Total = 8
+                   [ 1, 2, 3, 4, [5, 6, 1] ]      → LEFT = 0,  RIGHT = 12, Total = 12
+
+                   Time = First K cards sum → O(k)  +  Replace all K (from left) with right one by one → O(k)
+                   Time =  O(2k)
      */
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 1};
@@ -66,50 +74,10 @@ Step 1 : Initially take K cards from left
               K = 3                         ans = 6
 
 
-Step 2 : Remove 1 card from left and add 1 card from right
---------
-         Current selection:
-         [ [1,  2,  3],  4,  5,  6,  1]
-                ↑                    ↑
-              remove                add
-
-         [ [1,  2],  3,  4,  5,  6, [1] ]   lws = 3, rws = 1
-           ←────→                         ←
-         2 from left                  1 from right
-         total = 3 + 1 = 4
-         ans = max(6, 4) = 6
-
-
-STEP 3 : Remove 1 more card from left and add 1 more from right
-============================================================
-         [ [1],  2,  3,  4,  5, [6,  1] ]   lws = 1, rws = 7
-            ←                           ←
-         1 from left                2 from right
-         total = 1 + 7 = 8
-         ans = max(6, 8) = 8
-
-
-STEP 4 : Remove last card from left and add last card from right
-============================================================
-         [ 1,  2,  3,  4, [5,  6,  1] ]   lws = 0, rws = 12
-                        ←───────→
-                         3 from right
-         total = 0 + 12 = 12
-         ans = max(8, 12) = 12
-
-
-STEP 5 : No more combinations
-============================================================
-         left has moved before index 0.
-         We have checked:
-
-         3 left + 0 right → 6
-         2 left + 1 right → 4
-         1 left + 2 right → 8
-         0 left + 3 right → 12
-
-         Maximum points = 12
-*/
+[ [1, 2, 3], 4, 5, 6, 1]       → LEFT = 6,  RIGHT = 0,  Total = 6
+[ [1, 2], 3, 4, 5, 6, [1] ]    → LEFT = 3,  RIGHT = 1,  Total = 4
+[ [1], 2, 3, 4, 5, [6, 1] ]    → LEFT = 1,  RIGHT = 7,  Total = 8 , update ans
+[ 1, 2, 3, 4, [5, 6, 1] ]      → LEFT = 0,  RIGHT = 12, Total = 12, update ans
 
 /*
 Remember:
