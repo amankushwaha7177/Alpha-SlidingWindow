@@ -70,3 +70,116 @@
          System.out.println(ans);
      }
  }
+
+
+ /*
+fruits = [1, 1, 2, 1, 2, 3]
+
+[ [1], 1, 2, 1, 2, 3]       → map = {1→1}           → length = 1 ✓
+[ [1, 1], 2, 1, 2, 3]       → map = {1→2}           → length = 2 ✓
+[ [1, 1, 2], 1, 2, 3]       → map = {1→2, 2→1}      → length = 3 ✓
+[ [1, 1, 2, 1], 2, 3]       → map = {1→3, 2→1}      → length = 4 ✓
+[ [1, 1, 2, 1, 2], 3]       → map = {1→3, 2→2}      → length = 5 ✓
+
+
+R = 5 adds 3:
+[ [1, 1, 2, 1, 2, 3] ]
+
+map = {1→3, 2→2, 3→1}
+size = 3 ❌
+
+Since we are using ONE-BY-ONE shrink, we move L only once in this iteration.
+update map = {1→2, 2→2, 3→1}
+[ 1, [1, 2, 1, 2, 3] ]
+      ↑
+      L
+
+
+size = 3 ❌
+Window is STILL invalid.
+IMPORTANT:
+We do NOT update ans because map.size() > 2.
+
+============================================================
+
+Next iteration:
+
+R = 6 → but R is now equal to arr.length.
+
+So the loop ends.
+
+Therefore, with THIS exact one-by-one approach:
+
+Maximum length = 5
+============================================================
+*/
+
+
+
+
+
+ /*
+ fruits = [1, 1, 1, 2, 3, 4]
+
+         [ [1], 1, 1, 2, 3, 4]
+         → map = {1→1}
+         → length = 1 ✓
+
+         [ [1, 1], 1, 2, 3, 4]
+         → map = {1→2}
+         → length = 2 ✓
+
+         [ [1, 1, 1], 2, 3, 4]
+         → map = {1→3}
+         → length = 3 ✓
+
+         [ [1, 1, 1, 2], 3, 4]
+         → map = {1→3, 2→1}
+         → length = 4 ✓
+
+
+         R adds 3:
+
+         [ [1, 1, 1, 2, 3], 4]
+         → map = {1→3, 2→1, 3→1}
+         → size = 3 ❌
+
+         Move L ONE step:
+
+         [ 1, [1, 1, 2, 3], 4]
+         → map = {1→2, 2→1, 3→1}
+         → size = 3 ❌
+
+         Still invalid.
+         Do NOT update ans.
+
+
+         ============================================================
+
+         Next R iteration:
+
+         R adds 4:
+
+         [ 1, [1, 1, 2, 3, 4] ]
+         → map = {1→2, 2→1, 3→1, 4→1}
+         → size = 4 ❌
+
+         Move L ONE step:
+
+         [ 1, 1, [1, 2, 3, 4] ]
+         → map = {1→1, 2→1, 3→1, 4→1}
+         → size = 4 ❌
+
+         Still invalid.
+         Do NOT update ans.
+
+
+         ============================================================
+
+         R has now reached arr.length.
+
+         Loop ends.
+
+         Maximum length = 4
+
+ */
