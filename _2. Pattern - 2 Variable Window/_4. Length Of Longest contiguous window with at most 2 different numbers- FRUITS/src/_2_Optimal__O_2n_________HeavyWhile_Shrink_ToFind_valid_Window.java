@@ -66,7 +66,7 @@ public class _2_Optimal__O_2n_________HeavyWhile_Shrink_ToFind_valid_Window {
             /* Solid Interview Understanding :
             =================================
             Q. Why we dont write if(map.size() <= 2) first
-            A. if(map.size() <= 2) If its possible then we can calculate its length.
+            A. if(map.size() <= 2) : If its possible then we can calculate its length.
                => what if its not possible( means - (map.size() > 2) ) :
                   Than first make it possible though logic inside (map.size() > 2)
                => Than comes to if(map.size() <= 2)

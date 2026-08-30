@@ -66,7 +66,9 @@ class _2_More_Optimal_O_n____NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
                 l++;
             }
 
-            ans = Math.max(ans, r-l+1);
+            if (zeroCount <= k) {
+                ans = Math.max(ans, r-l+1);
+            }
 
             r++;
         }
