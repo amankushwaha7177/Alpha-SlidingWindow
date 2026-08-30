@@ -1,9 +1,14 @@
 public class _6_Max_Consecutive_Ones_III {
     /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
                    possible by flipping at most K zeros.
-       Given : We can flip at most K zeros into 1s, so our window can contain maximum K zeros.
-               Contiguous + Variable Size + At Most K Zeros = Variable Window
-               subArray=window
+
+       Given : We can flip at most K zeros into 1s.
+               So we need to find the largest subarray's length possible
+               where the number of zeros <= K.
+
+               Contiguous + Size is not Fixed + At Most K Zeros + SubArray = Variable Window
+               subArray = window
+
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeros <= K, compare its length with answer.
                     T = o(n²).

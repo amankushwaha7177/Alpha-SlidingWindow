@@ -5,14 +5,18 @@ public class BruteForce_O_n2 {
                 1 basket can hold only 1 type of fruit.
                 Also we can pickup fruits type contiguous only we can not skip. Once start pickinng up keep pickup.
 
-    Given : Each basket can hold only one type of fruit.
-            So a window can contain at most 2 different fruit types.
+    Given : Each basket can hold only 1 type of fruit.
+            We have 2 baskets, so we can have at most 2 different fruit types.
+            We need to find the largest subarray's length possible with at most 2 different fruit types.
+
+            Contiguous + Size is not Fixed + At Most 2 Different Types + SubArray = Variable Window
+            subArray = window
 
     Brain : The simplest mental translation :
             Question says: Pick fruits using 2 baskets.
 
-                Sliding-window language:
-                Find the longest contiguous window with at most 2 different elements.
+            Sliding-window language:
+            Find the longest contiguous window with at most 2 different elements.
             Ex: [ [1, 2, 1], 2, 3, 1]   Fine
                 [ [1, 2, 1, 2, 3], 1]   ❌ Incorrect.
 
