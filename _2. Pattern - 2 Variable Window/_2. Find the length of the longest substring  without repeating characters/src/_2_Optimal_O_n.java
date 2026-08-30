@@ -1,4 +1,4 @@
-public class _1_Optimal_O_n {
+public class _2_Optimal_O_n {
     /*
     Interview : Given a string, find the length of the longest substring
                 without repeating characters.
