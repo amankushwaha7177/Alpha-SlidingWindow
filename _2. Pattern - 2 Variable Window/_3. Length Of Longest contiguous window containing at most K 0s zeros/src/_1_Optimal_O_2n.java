@@ -1,33 +1,24 @@
-public class _5_Max_Consecutive_Ones_III {
+public class _1_Optimal_O_2n {
     /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
                    possible by flipping at most K zeros.
-       Given : We can flip at most K zeros into 1s, so our window can contain maximum K zeros.
-               Contiguous + Variable Size + At Most K Zeros = Variable Window
-               subArray=window
 
+       Given : We can flip at most K zeros into 1s.
+               So we need to find the largest subarray's length possible
+               where the number of zeros <= K.
+
+               Contiguous + Size is not Fixed + At Most K Zeros + SubArray = Variable Window
+               subArray = window
 
         Brain : The simplest mental translation :
-
                 Question says: We can flip at most K zeros into 1s.
 
                 Sliding-window language:
                 Find the longest contiguous window containing at most K zeros.
 
                 Ex: k = 2
-
                 [ [1, 1, 0, 1, 0], 1, 1]    → 2 zeros → Fine ✓
                 [ [1, 1, 0, 1, 0, 0], 1]    → 3 zeros → ❌ Invalid
 
-                So:
-
-                "At most K zeros"
-                      ↓
-                zeroCount <= K
-                      ↓
-                Valid window
-
-                If zeroCount > K:
-                Shrink from LEFT until zeroCount <= K again.
 
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeros <= K, compare its length with answer.
@@ -37,7 +28,8 @@ public class _5_Max_Consecutive_Ones_III {
                   Count zeros inside the current window.
                   If zeroCount > K, shrink from LEFT until the window becomes valid.
                   Then compare current valid window length with answer.
-                  T = o(n).
+
+                  T = o(2n) = (n for r moves + n for l moves to remove more invalid 0s).
      */
     public static void main(String[] args) {
         int k = 2;
@@ -145,4 +137,67 @@ d. left moves → element LEAVES.
 e. 0 leaves → zeroCount decreases.
 f. zeroCount <= K → window is valid.
 g. ans → maximum valid window length.
+*/
+
+
+
+/*
+============================================================
+Complexity:
+
+Time = O(2n) = O(n)
+
+        a. R traversal:
+           R moves from 0 → n-1 exactly once.
+           So R movement = O(n).
+
+        b. L traversal:
+           Whenever zeroCount > K, L moves forward.
+           L also moves from 0 → n-1 at most once in total.
+           So L movement = O(n).
+
+        Example:
+        arr = [1,1,1,0,0,0,1,1,1,1,0]
+        k = 2
+
+        When R reaches the 3rd zero:
+        [ [1,1,1,0,0,0] ]  → zeroCount = 3 > 2 ❌
+           l         r
+
+        Now L starts moving forward:
+        [ 1,[1,1,0,0,0] ]  → remove 1
+          l            r
+
+        [ 1,1,[1,0,0,0] ] → remove 1
+        [ 1,1,1,[0,0,0] ] → remove 1
+        [ 1,1,1,0,[0,0] ] → remove 0
+                   l  r   -> zeroCount = 2 ✓
+
+        Here L moved 4 positions during this single R iteration.
+
+        This looks expensive because L is inside the while loop,
+        but L never comes back to an earlier index.
+
+        Worst case:
+        R can move n times.
+        L can also move n times in total.
+
+        Therefore:
+
+        R movement = O(n)
+        L movement = O(n)
+
+        Total:
+        O(n) + O(n)
+        = O(2n)
+        = O(n)
+
+
+Space = O(1)
+
+        Only a few variables are used:
+        l, r, zeroCount, ans.
+
+        No extra data structure grows with n.
+============================================================
 */

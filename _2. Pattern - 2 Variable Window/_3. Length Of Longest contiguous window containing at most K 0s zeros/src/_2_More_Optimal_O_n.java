@@ -1,4 +1,4 @@
-public class _6_Max_Consecutive_Ones_III {
+public class _2_More_Optimal_O_n {
     /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
                    possible by flipping at most K zeros.
 
@@ -9,17 +9,26 @@ public class _6_Max_Consecutive_Ones_III {
                Contiguous + Size is not Fixed + At Most K Zeros + SubArray = Variable Window
                subArray = window
 
-       Idea :  A. Normal : Try every possible subarray and count zeros in each window.
-                    If zeros <= K, compare its length with answer.
-                    T = o(n²).
+        Brain : The simplest mental translation :
+                Question says: We can flip at most K zeros into 1s.
 
-               B. Optimal : Start a window from first element and keep increasing R.
+                Sliding-window language:
+                Find the longest contiguous window containing at most K zeros.
+
+                Ex: k = 2
+                [ [1, 1, 0, 1, 0], 1, 1]    → 2 zeros → Fine ✓
+                [ [1, 1, 0, 1, 0, 0], 1]    → 3 zeros → ❌ Invalid
+
+       Idea :  Previous optimal :
+               T = o(2n) = (n for r moves + n for l moves to remove more invalid 0s).
+
+               Optimal : Start a window from first element and keep increasing R.
                   Count zeros inside the current window.
                   If zeroCount > K, shrink from LEFT only once.
                   This compensates for the new element and keeps the window size
                   from growing beyond the maximum length found so far.
                   Then compare current window length with answer.
-                  T = o(n).
+               T = o(n).
      */
     public static void main(String[] args) {
         int k = 2;
