@@ -22,7 +22,7 @@ public class _2_Optimal_O_n {
                       If current character is already inside the window,
                       directly move L after its previous occurrence.
                T = O(n)
-               S = o(n) Map.
+               S = o(n) =Map{In worst case all chars are unique so will exist in map}.
     */
 
     public static void main(String[] args) {
@@ -174,4 +174,63 @@ L       → CURRENT window boundary
 
 Therefore:
 L = max(L, oldPosition + 1)
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+============================================================
+Complexity:
+
+Time = O(n)
+
+        R moves from 0 → n-1, so R traversal = O(n).
+
+        When a character repeats:
+        L jumps directly using HashMap.
+
+        Example:
+        str = "abcabcbb"
+
+        At r = 3, 'a' repeats.
+        HashMap says: a → 0
+
+        L = Math.max(L, 0 + 1)
+          = 1
+
+        We DO NOT move L one by one.
+        So there is no extra O(n) traversal for L.
+
+        Therefore:
+        R traversal = O(n)
+        L jumps     = O(1) per iteration
+        HashMap     = O(1) average operation
+
+        Total = O(n)
+
+
+Space = O(n)
+
+        HashMap stores characters and their latest indexes.
+
+        In the worst case, all characters are unique:
+
+        str = "abcdef..."
+
+        HashMap = {a→0, b→1, c→2, d→3, ...}
+
+        So HashMap can store up to n characters.
+
+        Therefore:
+        Space = O(n)
+============================================================
 */
