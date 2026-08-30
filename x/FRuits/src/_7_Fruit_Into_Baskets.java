@@ -128,7 +128,24 @@ g. ans → maximum valid window length.
 ============================================================
 Complexity:
 
-Time = O(n)
+Time = O(2n) = (n for r traversal + n for internal l traversal in worst case)
+                Ex : [ 3, 3, 3, 3, 3, 2, 1 ]   → map = {3→5, 2→1, 1→1} → size = 3 ❌
+                       l                 r
+                When r reached last element
+                It will trim down l from 0th index to 2nd last index, just to remove all 3 from Hashmap.
+                and to make map with only 2 unique elements.
+
+                Shrink:
+                [ 3, [3, 3, 3, 3, 2, 1] ]  → remove 3
+                [ 3, 3, [3, 3, 2, 1] ]     → remove 3
+                [ 3, 3, 3, [3, 2, 1] ]     → remove 3
+                [ 3, 3, 3, 3, [2, 1] ]     → remove 3
+                [ 3, 3, 3, 3, 3, [2, 1] ]  → remove last 3
+                                           => map = {2→1, 1→1}
+
+                So for l moves = o(n)
+
+
 Space = O(1)   // At most 3 fruit types temporarily exist.
 ============================================================
 */
