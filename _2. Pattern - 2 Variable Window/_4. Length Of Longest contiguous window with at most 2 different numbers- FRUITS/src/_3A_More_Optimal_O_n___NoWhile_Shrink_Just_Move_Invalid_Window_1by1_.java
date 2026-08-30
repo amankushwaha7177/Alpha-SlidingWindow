@@ -1,8 +1,5 @@
  class _3A_More_Optimal_O_n___NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
     /*
-    Interview : Given an array of fruits type, find the maximum number of fruits
-                that can be collected using two baskets.
-
     Given : Each basket can hold only 1 fruit type.
             So the window can contain at most 2 different fruit types.
             We need the longest contiguous window with at most 2 types.

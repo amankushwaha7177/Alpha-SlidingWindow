@@ -1,9 +1,6 @@
  class _3B_More_Optimal_O_n______Direct_Jump_Of_L_Using_Index_ByMap {
 
     /*
-    Interview : Given an array of fruits type, find the maximum number of fruits
-                that can be collected using two baskets.
-
     Given : Each basket can hold only 1 fruit type.
             So the window can contain at most 2 different fruit types.
 
