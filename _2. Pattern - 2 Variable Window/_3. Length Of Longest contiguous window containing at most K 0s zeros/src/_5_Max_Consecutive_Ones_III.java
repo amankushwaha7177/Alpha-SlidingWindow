@@ -4,6 +4,31 @@ public class _5_Max_Consecutive_Ones_III {
        Given : We can flip at most K zeros into 1s, so our window can contain maximum K zeros.
                Contiguous + Variable Size + At Most K Zeros = Variable Window
                subArray=window
+
+
+        Brain : The simplest mental translation :
+
+                Question says: We can flip at most K zeros into 1s.
+
+                Sliding-window language:
+                Find the longest contiguous window containing at most K zeros.
+
+                Ex: k = 2
+
+                [ [1, 1, 0, 1, 0], 1, 1]    → 2 zeros → Fine ✓
+                [ [1, 1, 0, 1, 0, 0], 1]    → 3 zeros → ❌ Invalid
+
+                So:
+
+                "At most K zeros"
+                      ↓
+                zeroCount <= K
+                      ↓
+                Valid window
+
+                If zeroCount > K:
+                Shrink from LEFT until zeroCount <= K again.
+
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeros <= K, compare its length with answer.
                     T = o(n²).
