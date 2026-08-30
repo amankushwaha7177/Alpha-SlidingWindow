@@ -30,7 +30,7 @@ public class _7_Fruit_Into_Baskets {
                       If different fruit types become > 2,
                       shrink from LEFT until only 2 types remain.
 
-               T = O(n)
+               T = O(2n)
                s = O(3) = O(Can Hold only 3 elements at worst case)
     */
 
