@@ -1,13 +1,6 @@
  class _3B_More_Optimal_O_n______Direct_Jump_Of_L_Using_Index_ByMap {
 
     /*
-    Given : Each basket can hold only 1 fruit type.
-            So the window can contain at most 2 different fruit types.
-
-            Contiguous + Variable Size + At Most 2 Different Types
-            + SubArray = Variable Window
-            subArray = window
-
     Brain : The simplest mental translation :
 
             Question says:

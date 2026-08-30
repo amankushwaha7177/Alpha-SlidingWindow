@@ -1,14 +1,6 @@
  class _3A_More_Optimal_O_n___NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
     /*
-    Given : Each basket can hold only 1 fruit type.
-            So the window can contain at most 2 different fruit types.
-            We need the longest contiguous window with at most 2 types.
-
-            Contiguous + Variable Size + At Most 2 Different Types
-            + SubArray = Variable Window
-            subArray = window
-
-    Brain : The simplest mental translation :
+     Brain : The simplest mental translation :
 
             Question says:
             Pick fruits using 2 baskets.
