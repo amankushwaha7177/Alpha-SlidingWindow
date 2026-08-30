@@ -1,9 +1,11 @@
 class _1_BruteForce__O_n2 {
     /*
-    Idea :  A. BruteForce : Generate every possible contiguous subarray.
+    Idea :  A. BruteForce : Generate every possible contiguous subarray from index i.
                     For each starting index, keep adding fruits to the window.
                     If window contains more than 2 fruit types, stop.
                     Otherwise compare its length with the maximum answer.
+
+            Note : We use set to store all different types as unity.
 
                     [ [1], 2, 1, 2, 3]              → length = 1
                     [ [1, 2], 1, 2, 3]              → length = 2
@@ -16,25 +18,20 @@ class _1_BruteForce__O_n2 {
     */
 
     public static void main(String[] args) {
-
         int[] fruits = {1, 2, 1, 2, 3};
-
         int ans = 0;
 
-        /*
-        Step 1 : Start from every index and create every possible
-                 contiguous window from that starting point.
-        */
+        java.util.HashSet<Integer> set = new java.util.HashSet<>();
+        /* here we uses set -To keep track of how many different fruit types are present in the current subarray.
+        *  Also it gives operations in o(1) time.
+        *  {1,2,1,1,1,1,1} will become set{1,2}*/
+
+        /* Step 1 : Start from every index and create every possible contiguous window from that starting point.*/
         for(int i = 0; i < fruits.length; i++){
+            set.clear();
 
-            java.util.HashSet<Integer> set = new java.util.HashSet<>();
-
-            /*
-            Add fruits one by one.
-            Set stores different fruit types inside current window.
-            */
+            /* Add fruits one by one. Set stores different fruit types inside current window. */
             for(int j = i; j < fruits.length; j++){
-
                 set.add(fruits[j]);
 
                 /* More than 2 fruit types means two baskets are not enough. */
