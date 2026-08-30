@@ -1,17 +1,5 @@
 public class BruteForce_O_n2 {
     /*
-    Interview : Given an array of fruits type, find the maximum number of fruits type
-                that can be collected from two baskets.
-                1 basket can hold only 1 type of fruit.
-                Also we can pickup fruits type contiguous only we can not skip. Once start pickinng up keep pickup.
-
-    Given : Each basket can hold only 1 type of fruit.
-            We have 2 baskets, so we can have at most 2 different fruit types.
-            We need to find the largest subarray's length possible with at most 2 different fruit types.
-
-            Contiguous + Size is not Fixed + At Most 2 Different Types + SubArray = Variable Window
-            subArray = window
-
     Brain : The simplest mental translation :
             Question says: Pick fruits using 2 baskets.
 
