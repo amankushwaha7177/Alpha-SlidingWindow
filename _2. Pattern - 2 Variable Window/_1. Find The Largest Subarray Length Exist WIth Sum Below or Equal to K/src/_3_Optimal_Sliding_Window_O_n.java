@@ -4,6 +4,18 @@ public class _3_Optimal_Sliding_Window_O_n {
        Given : We need to find largest subarray's length possible where its sum <= k.
                Contiguous + Size is not Fixed Size For window + SubArray = variable window
                subArray=window
+
+       Brain : The simplest mental translation :
+               Question says:
+               Find the longest contiguous subarray whose sum is <= K.
+               Sliding-window language:
+               Find the longest variable-size window whose sum stays <= K
+                Ex: arr = [2, 5, 1, 10, 10], K = 14
+                    [ [2, 5, 1], 10, 10]     → sum = 8   ✓
+                    [ [2, 5, 1, 10], 10]      → sum = 18  ❌
+                    [ 2, [5, 1, 10], 10]      → sum = 16  ❌
+                    [ 2, 5, [1, 10], 10]      → sum = 11  ✓
+
        Idea :  Before considering subarray length we need to first validate its sum range.
                So first calculate sum of every subarray.
                If subarray sum is in range then only we will consider its length.

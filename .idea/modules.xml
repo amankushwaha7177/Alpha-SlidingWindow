@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Alpha-SlidingWindow.iml" filepath="$PROJECT_DIR$/.idea/Alpha-SlidingWindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/x/FRuits/FRuits.iml" filepath="$PROJECT_DIR$/x/FRuits/FRuits.iml" />
       <module fileurl="file://$PROJECT_DIR$/_0. Basics About 2 Pointers/_0. Basics About 2 Pointers.iml" filepath="$PROJECT_DIR$/_0. Basics About 2 Pointers/_0. Basics About 2 Pointers.iml" />
       <module fileurl="file://$PROJECT_DIR$/_2. Pattern - 2 Variable Window/_1. Find The Largest Subarray Length Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Length Exist WIth Sum Below or Equal to K.iml" filepath="$PROJECT_DIR$/_2. Pattern - 2 Variable Window/_1. Find The Largest Subarray Length Exist WIth Sum Below or Equal to K/_1. Find The Largest Subarray Length Exist WIth Sum Below or Equal to K.iml" />
       <module fileurl="file://$PROJECT_DIR$/_1. Pattern - 1 Constant Window/_1. Pattern - 1 Constant Window.iml" filepath="$PROJECT_DIR$/_1. Pattern - 1 Constant Window/_1. Pattern - 1 Constant Window.iml" />

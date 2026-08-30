@@ -2,6 +2,16 @@ public class Optimal_O_2k {
     /* Interview : Given an array of cards and fixed k, find the maximum points by picking exactly k cards from either left or right.
        Given : We can pick cards only from the two ends, so selected cards can be a combination of left cards + right cards.
                Fixed K cards + Pick from ends = Card Selection Window
+
+       Brain : The simplest mental translation :
+               Question says: Pick exactly K cards from either LEFT or RIGHT.
+               Sliding-window language:
+               Find the maximum sum by taking K elements from the two ends.
+               Ex: [ [1, 2, 3], 4, 5, 6, 1]       → 3 LEFT + 0 RIGHT → Fine
+                   [ [1, 2], 3, 4, 5, 6, [1] ]    → 2 LEFT + 1 RIGHT → Fine
+                   [ [1], 2, 3, 4, 5, [6, 1] ]    → 1 LEFT + 2 RIGHT → Fine
+                   [ 1, 2, 3, 4, [5, 6, 1] ]      → 0 LEFT + 3 RIGHT → Fine
+
        Idea :  A. Normal : Try every possible combination of cards from left and right.
                     [ [1, 2, 3], 4, 5, 6, 1]  → 6   ( 3 from left + 0 from right )
                     [ [1, 2], 3, 4, 5, 6, [1] ]  → 4   ( 2 from left + 1 from right )

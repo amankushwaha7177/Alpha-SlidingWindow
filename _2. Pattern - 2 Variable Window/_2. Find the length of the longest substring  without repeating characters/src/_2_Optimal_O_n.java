@@ -2,22 +2,25 @@ public class _2_Optimal_O_n {
     /*
     Interview : Given a string, find the length of the longest substring
                 without repeating characters.
-
     Given : Substring = contiguous characters.
             We need the longest window where every character is unique.
-
             Contiguous + Variable Size + Unique Characters = Sliding Window
+
+    Brain : The simplest mental translation :
+            Question says: Find longest substring without repeating characters.
+            Sliding-window language:
+            Find the longest contiguous window with all unique characters.
+            Ex: [ [a, b, c], a, b, c]       → 3 unique characters → Fine
+                [ [a, b, c, a], b, c]       → 'a' repeats → ❌ Invalid
 
     Idea :  A. Normal : Generate all possible substrings and check each
                     substring whether it contains duplicate characters.
-
                T = O(n²)
 
            B. Optimal : Keep a window using L and R.
                       Store each character's latest index in HashMap.
                       If current character is already inside the window,
                       directly move L after its previous occurrence.
-
                T = O(n)
     */
 
