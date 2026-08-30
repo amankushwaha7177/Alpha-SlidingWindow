@@ -69,6 +69,7 @@ public class _7_Fruit_Into_Baskets {
                => what if its not possible( means - (map.size() > 2) ) :
                   Than first make it possible though logic inside (map.size() > 2)
                => Than comes to if(map.size() <= 2)
+               This is the thing that is all about DSA.
              */
             if(map.size() > 2){
                 while(map.size() > 2){
