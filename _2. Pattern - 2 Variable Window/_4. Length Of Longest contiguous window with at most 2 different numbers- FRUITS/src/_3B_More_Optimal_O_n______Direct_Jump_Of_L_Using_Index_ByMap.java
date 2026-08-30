@@ -1,18 +1,6 @@
  class _3B_More_Optimal_O_n______Direct_Jump_Of_L_Using_Index_ByMap {
 
     /*
-    Brain : The simplest mental translation :
-
-            Question says:
-            Pick fruits using 2 baskets.
-
-            Sliding-window language:
-            Find the longest contiguous window with at most 2 different fruit types.
-
-            Ex:
-            [ [1, 2, 1], 2, 3 ]       -> 2 types -> Fine
-            [ [1, 2, 1, 2, 3] ]       -> 3 types -> Invalid
-
     Idea : A. Better :
                Store fruit type -> FREQUENCY in HashMap.
                If map.size() > 2, move L one by one.

@@ -1,14 +1,5 @@
  class _3A_More_Optimal_O_n___NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
     /*
-     Brain : The simplest mental translation :
-
-            Question says:
-            Pick fruits using 2 baskets.
-
-            Sliding-window language:
-            Find the longest contiguous window with at most 2 different
-            fruit types.
-
     Idea : A. Normal :
                Generate every possible subarray and check its fruit types.
                T = O(n²).

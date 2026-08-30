@@ -1,13 +1,5 @@
 class _1_BruteForce__O_n2 {
     /*
-    Brain : The simplest mental translation :
-            Question says: Pick fruits using 2 baskets.
-
-            Sliding-window language:
-            Find the longest contiguous window with at most 2 different numbers.
-            Ex: [ [1, 2, 1], 2, 3, 1]   Fine
-                [ [1, 2, 1, 2, 3], 1]   ❌ Incorrect.
-
     Idea :  A. BruteForce : Generate every possible contiguous subarray.
                     For each starting index, keep adding fruits to the window.
                     If window contains more than 2 fruit types, stop.
