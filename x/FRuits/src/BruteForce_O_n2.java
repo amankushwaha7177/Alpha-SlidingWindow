@@ -16,7 +16,7 @@ public class BruteForce_O_n2 {
             Question says: Pick fruits using 2 baskets.
 
             Sliding-window language:
-            Find the longest contiguous window with at most 2 different elements.
+            Find the longest contiguous window with at most 2 different numbers.
             Ex: [ [1, 2, 1], 2, 3, 1]   Fine
                 [ [1, 2, 1, 2, 3], 1]   ❌ Incorrect.
 
