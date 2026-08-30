@@ -31,7 +31,7 @@ public class _7_Fruit_Into_Baskets {
                       shrink from LEFT until only 2 types remain.
 
                T = O(n)
-               s = o(n)
+               s = O(3) = O(Can Hold only 3 elements at worst case)
     */
 
     public static void main(String[] args) {
