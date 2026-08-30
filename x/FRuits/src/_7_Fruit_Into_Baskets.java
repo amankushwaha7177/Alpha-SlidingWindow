@@ -80,6 +80,8 @@ public class _7_Fruit_Into_Baskets {
                         map.remove(fruits[l]);
                     }
 
+                    /* Above we reduced -1 count from map for lth fruit.
+                    *  Than only we forwarded l. */
                     l++;
                 }
             }
