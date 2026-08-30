@@ -62,6 +62,14 @@ public class _7_Fruit_Into_Baskets {
             /* More than 2 different fruit types means two baskets
                are not enough, so shrink from LEFT. */
 
+            /* Solid Interview Understanding :
+            =================================
+            Q. Why we dont write if(map.size() <= 2) first
+            A. if(map.size() <= 2) If its possible then we can calculate its length.
+               => what if its not possible( means - (map.size() > 2) ) :
+                  Than first make it possible though logic inside (map.size() > 2)
+               => Than comes to if(map.size() <= 2)
+             */
             if(map.size() > 2){
                 while(map.size() > 2){
 
