@@ -1,4 +1,4 @@
-public class BruteForce_O_n2 {
+class _1_BruteForce__O_n2 {
     /*
     Brain : The simplest mental translation :
             Question says: Pick fruits using 2 baskets.

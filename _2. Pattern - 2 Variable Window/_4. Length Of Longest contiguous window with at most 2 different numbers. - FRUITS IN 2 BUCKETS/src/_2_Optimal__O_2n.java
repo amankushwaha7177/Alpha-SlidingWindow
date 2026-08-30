@@ -1,4 +1,4 @@
-public class _7_Fruit_Into_Baskets {
+public class _2_Optimal__O_2n {
     /*
     Interview : Given an array of fruits type, find the maximum number of fruits type
                 that can be collected from two baskets.
