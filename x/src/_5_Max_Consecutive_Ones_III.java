@@ -93,15 +93,16 @@ Step 3 : Continue moving R after window becomes valid
          [ 1, 1, 1, 0, [0, 0, 1, 1, 1], 1, 0]    zeroCount = 2    length = 5
          [ 1, 1, 1, 0, [0, 0, 1, 1, 1, 1], 0]    zeroCount = 2    length = 6
 
-         R adds final 0, so zeroCount becomes 3 > K.
-         Shrink from LEFT until zeroCount becomes 2.
 
 Step 4 : After shrinking, window becomes valid again
 ============================================================
+         R adds final 0, so zeroCount becomes 3 > K.
+         Shrink from LEFT until zeroCount becomes 2.
 
-         [ 1, 1, 1, 0, [0, 0, 1, 1, 1, 1, 0] ]
-                    ↑
-                    L
+         [ 1, 1, 1, 0, [0, 0, 1, 1, 1, 1, 0] ]   zeroCount = 3    ❌
+                        ↑
+                        L
+         [ 1, 1, 1, 0, 0, [ 0, 1, 1, 1, 1, 0]]   zeroCount = 2
 
          zeroCount = 2 ✓
          length = 7 - 3 + 1 = 4
