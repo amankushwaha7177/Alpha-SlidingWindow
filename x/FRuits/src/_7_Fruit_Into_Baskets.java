@@ -57,6 +57,7 @@ public class _7_Fruit_Into_Baskets {
         while(r < fruits.length){
 
             map.put(fruits[r], map.getOrDefault(fruits[r], 0) + 1);
+            // getOrDefault -> "Give me the value for this key; if the key doesn't exist, give me this default value."
 
             /* More than 2 different fruit types means two baskets
                are not enough, so shrink from LEFT. */
