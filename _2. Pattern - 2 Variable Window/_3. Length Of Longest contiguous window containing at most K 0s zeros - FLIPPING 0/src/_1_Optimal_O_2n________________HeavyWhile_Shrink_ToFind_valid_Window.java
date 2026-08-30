@@ -1,4 +1,4 @@
-public class _1_Optimal_O_2n {
+public class _1_Optimal_O_2n________________HeavyWhile_Shrink_ToFind_valid_Window {
     /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
                    possible by flipping at most K zeros.
 
