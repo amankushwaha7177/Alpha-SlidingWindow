@@ -31,6 +31,7 @@ public class _7_Fruit_Into_Baskets {
                       shrink from LEFT until only 2 types remain.
 
                T = O(n)
+               s = o(n)
     */
 
     public static void main(String[] args) {

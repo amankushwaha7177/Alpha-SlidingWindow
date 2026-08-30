@@ -22,6 +22,7 @@ public class _2_Optimal_O_n {
                       If current character is already inside the window,
                       directly move L after its previous occurrence.
                T = O(n)
+               S = o(n) Map.
     */
 
     public static void main(String[] args) {
