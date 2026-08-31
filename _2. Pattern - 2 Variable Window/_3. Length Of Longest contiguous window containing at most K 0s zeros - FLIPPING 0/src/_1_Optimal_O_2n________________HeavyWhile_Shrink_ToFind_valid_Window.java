@@ -1,25 +1,5 @@
 public class _1_Optimal_O_2n________________HeavyWhile_Shrink_ToFind_valid_Window {
-    /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
-                   possible by flipping at most K zeros.
-
-       Given : We can flip at most K zeros into 1s.
-               So we need to find the largest subarray's length possible
-               where the number of zeros <= K.
-
-               Contiguous + Size is not Fixed + At Most K Zeros + SubArray = Variable Window
-               subArray = window
-
-        Brain : The simplest mental translation :
-                Question says: We can flip at most K zeros into 1s.
-
-                Sliding-window language:
-                Find the longest contiguous window containing at most K zeros.
-
-                Ex: k = 2
-                [ [1, 1, 0, 1, 0], 1, 1]    → 2 zeros → Fine ✓
-                [ [1, 1, 0, 1, 0, 0], 1]    → 3 zeros → ❌ Invalid
-
-
+    /*
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeros <= K, compare its length with answer.
                     T = o(n²).
@@ -68,9 +48,7 @@ public class _1_Optimal_O_2n________________HeavyWhile_Shrink_ToFind_valid_Windo
                 }
             }
 
-            if(zeroCount <= k){
-                ans = Math.max(ans, r-l+1);
-            }
+            ans = Math.max(ans, r-l+1);
 
             r++;
         }
