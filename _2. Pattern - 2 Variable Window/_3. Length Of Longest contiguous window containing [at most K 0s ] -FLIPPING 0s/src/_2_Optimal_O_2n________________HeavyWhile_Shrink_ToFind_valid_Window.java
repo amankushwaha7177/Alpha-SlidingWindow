@@ -1,4 +1,4 @@
-public class _1_Optimal_O_2n________________HeavyWhile_Shrink_ToFind_valid_Window {
+public class _2_Optimal_O_2n________________HeavyWhile_Shrink_ToFind_valid_Window {
     /*
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeros <= K, compare its length with answer.

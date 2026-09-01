@@ -1,4 +1,4 @@
-class _2_More_Optimal_O_n____NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
+class _3A_More_Optimal_O_n_____NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
     /* Interview : Given a binary array and K, find the maximum number of consecutive 1s
                    possible by flipping at most K zeros.
 
