@@ -1,4 +1,4 @@
-public class _3_Optimal_Sliding_Window_O_n {
+public class _3_Optimal_Sliding_Window_O_n_____NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
     /* Interview : Given an array of positive integers and an integer k,
                    find the length of the longest contiguous subarray whose sum is less than or equal to k.
        Given : We need to find largest subarray's length possible where its sum <= k.
