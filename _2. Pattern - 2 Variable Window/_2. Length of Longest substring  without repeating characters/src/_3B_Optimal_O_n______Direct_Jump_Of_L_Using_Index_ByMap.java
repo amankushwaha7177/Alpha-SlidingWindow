@@ -1,4 +1,4 @@
-public class _2_Optimal_O_n {
+public class _3B_Optimal_O_n______Direct_Jump_Of_L_Using_Index_ByMap {
     /*
     Interview : Given a string, find the length of the longest substring
                 without repeating characters.
