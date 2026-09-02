@@ -1,4 +1,4 @@
-public class _3B_More_Optimal_O_n___DirectJump_L_Using_Index_ByMap {
+public class _3B_More_Optimal_O_n___DirectJump_L_Using_Index_ByMap____OnlyIfIndexJumpPossible {
     /*
        Idea :  A. Normal : Try every possible subarray and count zeros in each window.
                     If zeroCount <= K, compare its length with the maximum answer.
