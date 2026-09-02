@@ -1,4 +1,4 @@
- class _3A_More_Optimal_O_n___NoWhile_Shrink_Just_Move_Invalid_Window_1by1_ {
+ class _3A_More_Optimal_O_n___NoWhile_Shrink_Just_Move_Invalid_Window_1by1 {
     /*
     Idea : A. Normal :
                Generate every possible subarray and check its fruit types.

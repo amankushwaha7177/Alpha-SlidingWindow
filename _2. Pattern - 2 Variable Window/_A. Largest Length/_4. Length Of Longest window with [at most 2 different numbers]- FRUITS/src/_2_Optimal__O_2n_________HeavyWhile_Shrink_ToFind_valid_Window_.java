@@ -1,4 +1,4 @@
-public class _2_Optimal__O_2n_________HeavyWhile_Shrink_ToFind_valid_Window {
+public class _2_Optimal__O_2n_________HeavyWhile_Shrink_ToFind_valid_Window_ {
     /*
     Interview : Given an array of fruits type, find the maximum number of fruits type
                 that can be collected from two baskets.
