@@ -108,75 +108,7 @@ public class _1B_Bruteforce_O_n2 {
     }
 }
 
-
 /*
-Example : str = "abcabc"
-
-i = 0
-
-j = 0
-[a] → a ✓, b ✗, c ✗
-       → Invalid
-
-j = 1
-[ab] → a ✓, b ✓, c ✗
-       → Invalid
-
-j = 2
-[abc] → a ✓, b ✓, c ✓
-        → Valid
-
-Now:
-
-n - j
-= 6 - 2
-= 4
-
-We directly count:
-
-[abc]     ✓
-[abca]    ✓
-[abcab]   ✓
-[abcabc]  ✓
-
-ans = 4
-
-Then break because every longer substring with the same starting position
-has already been counted using n - j.
-
-
-i = 1
-
-j = 1
-[b] → Invalid
-
-j = 2
-[bc] → Invalid
-
-j = 3
-[bca] → Valid
-
-n - j
-= 6 - 3
-= 3
-
-Count:
-
-[bca]    ✓
-[bcab]   ✓
-[bcabc]  ✓
-
-ans = 7
-
-
-Continue the same process for every starting position.
-
-Final Answer = 10
-
-
-============================================================
-
-
 ============================================================
 
 Important Counting Logic :
@@ -208,4 +140,53 @@ Space = O(1)
          Only three boolean variables are maintained.
 
 ============================================================
+*/
+
+
+/*
+/*
+Dry Run : str = "abcabc"
+
+i = 0 → "a" ❌ → "ab" ❌ → "abc" ✓
+        n - j = 6 - 2 = 4
+        ans = 4
+
+i = 1 → "b" ❌ → "bc" ❌ → "bca" ✓
+        n - j = 6 - 3 = 3
+        ans = 7
+
+i = 2 → "c" ❌ → "ca" ❌ → "cab" ✓
+        n - j = 6 - 4 = 2
+        ans = 9
+
+i = 3 → "a" ❌ → "ab" ❌ → "abc" ✓
+        n - j = 6 - 5 = 1
+        ans = 10
+
+i = 4 → "b" ❌ → "bc" ❌
+i = 5 → "c" ❌
+
+Final Answer = 10
+
+
+============================================================
+
+Main Logic :
+
+Generate every substring using i and j, and once all three characters appear,
+count all remaining endings using n - j and stop checking that starting position.
+
+============================================================
+
+Remember :
+
+a. i → starting position.
+b. j → ending position.
+c. map → stores characters present in current substring.
+d. map.size() == 3 → a, b, and c are present.
+e. n - j → counts all valid endings from j through n-1.
+f. break → remaining endings are already counted.
+
+============================================================
+
 */
