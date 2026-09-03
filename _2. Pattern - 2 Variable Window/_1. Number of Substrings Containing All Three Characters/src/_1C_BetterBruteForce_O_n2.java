@@ -150,9 +150,8 @@ j = 2
         → Valid
 
 Now:
-
 n - j
-= 6 - 2
+= 6- 2
 = 4
 
 We directly count:
