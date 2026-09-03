@@ -2,6 +2,37 @@ import java.util.HashMap;
 
 class _1A_BruteForce_O_n2 {
     /*
+    Interview : Given a string containing only a, b, and c, find the number of
+                substrings that contain at least one a, one b, and one c.
+
+    Given : We need to count every substring that contains all three characters.
+            The substring must be contiguous, so we cannot skip any characters.
+
+            Contiguous + Size is Not Fixed + Contains a,b,c + SubString = Variable Window
+            subString = window
+
+
+    Brain : The simplest mental translation :
+
+            Question says:
+            Count the number of substrings containing at least one a, one b, and one c.
+
+            Sliding-window language:
+            Find every variable-size window that contains all three required characters.
+
+            Ex : str = "abcabc"
+
+                 [ [a, b, c], a, b, c ]     → contains a,b,c ✓
+                 [ [a, b, c, a], b, c ]     → contains a,b,c ✓
+                 [ [a, b, c, a, b], c ]     → contains a,b,c ✓
+                 [ [a, b, c, a, b, c] ]     → contains a,b,c ✓
+
+            Once a window contains all three characters, extending the window
+            toward the right will never remove any of those three characters.
+
+            Therefore, we can count multiple valid substrings together instead
+            of checking every possible ending position separately.
+
     Idea :
         Generate every possible substring using two loops and check whether
         the current substring contains at least one a, one b, and one c.
@@ -14,7 +45,6 @@ class _1A_BruteForce_O_n2 {
         int ans = 0;
 
 
-
         for(int i = 0; i < str.length(); i++) {
 
             HashMap<Character, Integer> map = new HashMap<>();
@@ -23,7 +53,7 @@ class _1A_BruteForce_O_n2 {
 
                 char current = str.charAt(j);
 
-                map.put(current, map.getOrDefault(current, 0) + 1);
+                map.put(current, 888);
 
                 /*
                 Once the substring contains all three characters, every longer
@@ -51,3 +81,48 @@ class _1A_BruteForce_O_n2 {
         System.out.println("Time = O(n²), Space = O(1)");
     }
 }
+
+/*
+Dry Run : str = "abcabc"
+
+i = 0 "abcabc"
+-----
+j = 0 → "a"     → ❌
+j = 1 → "ab"    → ❌
+j = 2 → "abc"   → ✓ ans = 1
+j = 3 → "abca"  → ✓ ans = 2
+j = 4 → "abcab" → ✓ ans = 3
+j = 5 → "abcabc"→ ✓ ans = 4
+
+i = 1 "bcabc"
+-----
+"b" → ❌
+"bc" → ❌
+"bca" → ✓ ans = 5
+"bcab" → ✓ ans = 6
+"bcabc" → ✓ ans = 7
+
+i = 2 "cabc"
+------
+"c" → ❌
+"ca" → ❌
+"cab" → ✓ ans = 8
+"cabc" → ✓ ans = 9
+
+i = 3 "abc"
+-----
+"a" → ❌
+"ab" → ❌
+"abc" → ✓ ans = 10
+
+i = 4  "bc"
+-----
+"b" → ❌
+"bc" → ❌
+
+i = 5  "c"
+------
+"c" → ❌
+
+Final Answer = 10
+*/

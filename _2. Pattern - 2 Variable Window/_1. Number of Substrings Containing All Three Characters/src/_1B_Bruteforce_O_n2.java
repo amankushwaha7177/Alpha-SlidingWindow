@@ -176,16 +176,6 @@ Final Answer = 10
 
 ============================================================
 
-Remember :
-
-a. i → fixes the starting position.
-b. j → moves toward the ending position.
-c. hasA → checks whether a exists.
-d. hasB → checks whether b exists.
-e. hasC → checks whether c exists.
-f. All three true → current substring is valid.
-g. n - j → counts all remaining valid endings.
-h. break → no need to individually check those remaining endings.
 
 ============================================================
 
