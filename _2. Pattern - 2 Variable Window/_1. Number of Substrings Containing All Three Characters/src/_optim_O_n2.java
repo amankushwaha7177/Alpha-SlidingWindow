@@ -1,4 +1,4 @@
-public class _1B_BruteForce_O_n2 {
+public class _optim_O_n2 {
 
     /*
     Interview : Given a string containing only a, b, and c, find the number of

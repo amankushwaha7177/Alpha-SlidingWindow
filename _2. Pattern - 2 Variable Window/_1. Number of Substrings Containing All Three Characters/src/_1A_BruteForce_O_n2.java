@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-class _1_BruteForce_O_n2 {
+class _1A_BruteForce_O_n2 {
     /*
     Idea :
         Generate every possible substring using two loops and check whether
