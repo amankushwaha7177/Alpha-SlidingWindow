@@ -1,0 +1,203 @@
+public class _1B_BruteForce_O_n2 {
+
+    /*
+    Interview : Given a string containing only a, b, and c, find the number of
+                substrings that contain at least one a, one b, and one c.
+
+    Given : We need to count every contiguous substring that contains all
+            three characters at least once.
+
+            Contiguous + Size is Not Fixed + Contains a,b,c + SubString = Variable Window
+            subString = window
+
+    Brain : Generate every possible substring using two loops.
+
+            i → starting position of the substring.
+            j → ending position of the substring.
+
+            We do not need frequency because the solution only depends on
+            whether a, b, and c are present inside the current substring.
+
+            Since the string contains only a, b, and c, three boolean variables
+            are enough to track whether all three required characters exist.
+
+    Idea : A. Normal :
+
+               Generate every possible substring and check whether it contains
+               all three characters using three boolean variables.
+
+               We do not care how many times each character occurs because
+               the requirement only asks whether each character exists.
+
+               T = O(n²)
+
+           B. Optimal :
+
+               Store the latest index of a, b, and c while moving R forward.
+
+               The minimum latest index tells us how many starting positions
+               can create valid substrings ending at the current R.
+
+               T = O(n)
+               S = O(1)
+    */
+
+    public static void main(String[] args) {
+
+        String str = "abcabc";
+
+        /* Step 0 : Variables analogy for brute force :
+
+                    a. 'i' selects the starting position of the substring.
+                    b. 'j' selects the ending position of the substring.
+                    c. 'hasA' tracks whether character a exists in the substring.
+                    d. 'hasB' tracks whether character b exists in the substring.
+                    e. 'hasC' tracks whether character c exists in the substring.
+                    f. 'ans' stores the total number of valid substrings. */
+
+        int ans = 0;
+
+
+        /* Step 1 : Select every possible starting position using the outer loop. */
+
+        for(int i = 0; i < str.length(); i++) {
+
+            boolean hasA = false;
+            boolean hasB = false;
+            boolean hasC = false;
+
+
+            /* Step 2 : Extend the substring one character at a time using J. */
+
+            for(int j = i; j < str.length(); j++) {
+
+                char current = str.charAt(j);
+
+
+                /* Step 3 : Mark the character as present because we only need
+                            to know whether each required character exists. */
+
+                if(current == 'a') {
+                    hasA = true;
+                }
+                else if(current == 'b') {
+                    hasB = true;
+                }
+                else {
+                    hasC = true;
+                }
+
+
+                /* Step 4 : If all three characters are present, the current
+                            substring satisfies the problem requirement. */
+
+                if(hasA && hasB && hasC) {
+                    ans++;
+                }
+            }
+        }
+
+
+        System.out.println(ans);
+
+        /*
+        Complexity :
+
+        Time = O(n²)
+        Reason : The outer loop selects every starting position, while the inner
+                 loop checks every possible ending position for each starting position.
+
+        Space = O(1)
+        Reason : Only three boolean variables are used to track character presence,
+                 so the extra memory remains constant regardless of the input length.
+        */
+
+        System.out.println("Time = O(n²), Space = O(1)");
+    }
+}
+
+
+/*
+Example : str = "abcabc"
+
+i = 0
+
+j = 0
+[a] → hasA = true
+      hasB = false
+      hasC = false
+      → Invalid
+
+j = 1
+[ab] → hasA = true
+       hasB = true
+       hasC = false
+       → Invalid
+
+j = 2
+[abc] → hasA = true
+        hasB = true
+        hasC = true
+        → Valid → ans++
+
+j = 3
+[abca] → all three exist
+         → Valid → ans++
+
+j = 4
+[abcab] → all three exist
+          → Valid → ans++
+
+j = 5
+[abcabc] → all three exist
+           → Valid → ans++
+
+
+i = 1
+
+j = 1
+[b] → Invalid
+
+j = 2
+[bc] → Invalid
+
+j = 3
+[bca] → Valid → ans++
+
+j = 4
+[bcab] → Valid → ans++
+
+j = 5
+[bcabc] → Valid → ans++
+
+
+Continue generating every possible substring.
+
+Final Answer = 10
+
+
+============================================================
+
+Remember :
+
+a. i → starting position.
+b. j → ending position.
+c. hasA → whether a exists.
+d. hasB → whether b exists.
+e. hasC → whether c exists.
+f. hasA && hasB && hasC → valid substring.
+g. ans++ → count the valid substring.
+h. Frequency is NOT required because only character presence matters.
+
+============================================================
+
+Complexity :
+
+Time = O(n²)
+        Two nested loops generate every possible substring.
+
+Space = O(1)
+         Only three boolean variables are maintained.
+
+============================================================
+*/
