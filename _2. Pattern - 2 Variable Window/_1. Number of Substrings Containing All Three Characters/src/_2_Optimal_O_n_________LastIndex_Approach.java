@@ -65,6 +65,57 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
     */
 
     /*
+            Core Understanding:
+
+            R keeps moving forward and checks each new character in the string.
+
+            Whenever R makes the current substring contain all three characters a, b, and c,
+            we do not move L through every possible position to count each valid substring.
+
+            Instead, we find minIndex, which represents the last valid starting position L.
+
+            Therefore, every starting position from 0 through minIndex creates a valid substring.
+
+            So we count all valid starting positions directly using:
+
+            ans = ans + minIndex + 1
+
+            Then R moves forward again and discovers the next possible ending position.
+
+            Example:
+
+            String = "abcabc"
+
+            R = 2 → "abc"
+            minIndex = 0
+            Valid L = 0
+            Count = 0 + 1 = 1
+
+            R = 3 → "abca"
+            minIndex = 1
+            Valid L = 0, 1
+            Count = 1 + 1 = 2
+
+            R = 4 → "abcab"
+            minIndex = 2
+            Valid L = 0, 1, 2
+            Count = 2 + 1 = 3
+
+            R = 5 → "abcabc"
+            minIndex = 3
+            Valid L = 0, 1, 2, 3
+            Count = 3 + 1 = 4
+
+            Therefore:
+
+            R keeps moving → finds new ending positions.
+            minIndex finds → the last valid starting position.
+            minIndex + 1 → counts all valid starting positions for current R.
+
+            We are effectively counting all valid substrings without explicitly generating each one.
+            */
+
+    /*
      Que.   Why +1?
      Ans.   Example 1 : minIndex = 0
             String = "abc"
