@@ -2,8 +2,10 @@ import java.util.HashMap;
 
 class _1A_BruteForce_O_n2 {
     /*
-    Interview : Given a string containing only a, b, and c, find the number of
-                substrings that contain at least one a, one b, and one c.
+    Interview : There is a string which contains only a,b and c.
+                Find all total number of substring which contain at least one a,
+                                                                 at least one b,
+                                                                 at least one c.
 
     Given : We need to count every substring that contains all three characters.
             The substring must be contiguous, so we cannot skip any characters.
@@ -33,7 +35,7 @@ class _1A_BruteForce_O_n2 {
             Therefore, we can count multiple valid substrings together instead
             of checking every possible ending position separately.
 
-    Idea :
+    Bruteforce Idea :
         Generate every possible substring using two loops and check whether
         the current substring contains at least one a, one b, and one c.
         T = O(n²)
@@ -87,8 +89,8 @@ Dry Run : str = "abcabc"
 
 i = 0 "abcabc"
 -----
-j = 0 → "a"     → ❌
-j = 1 → "ab"    → ❌
+j = 0 → "a"     → map size is not 3❌
+j = 1 → "ab"    → map size is not 3❌
 j = 2 → "abc"   → ✓ ans = 1
 j = 3 → "abca"  → ✓ ans = 2
 j = 4 → "abcab" → ✓ ans = 3
@@ -96,8 +98,8 @@ j = 5 → "abcabc"→ ✓ ans = 4
 
 i = 1 "bcabc"
 -----
-"b" → ❌
-"bc" → ❌
+"b" →  map size is not 3❌
+"bc" → map size is not 3❌
 "bca" → ✓ ans = 5
 "bcab" → ✓ ans = 6
 "bcabc" → ✓ ans = 7
