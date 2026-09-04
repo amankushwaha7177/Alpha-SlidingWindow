@@ -64,6 +64,106 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
                S = O(1)
     */
 
+    /*
+     Que.   Why +1?
+     Ans.   Example 1 : minIndex = 0
+            String = "abc"
+            lastA = 0
+            lastB = 1
+            lastC = 2
+
+            minIndex = min(0, 1, 2) = 0
+
+            Valid starting positions:  0 → "abc"
+
+            Only 1 valid starting position exists.
+
+            Count = minIndex + 1   ( 1 because index starts with 0 not 1 so to count )
+                  = 0 + 1
+                  = 1
+
+
+            Example 2 : minIndex = 1
+            String = "abca"
+            lastA = 3
+            lastB = 1
+            lastC = 2
+
+            minIndex = min(3, 1, 2) = 1
+
+            Valid starting positions:
+            L = 0 → "abca"
+            L = 1 → "bca"
+
+            There are 2 valid starting positions.
+
+            Count = minIndex + 1
+                  = 1 + 1
+                  = 2
+
+
+            Example 3 : minIndex = 2
+
+            String = "abcab"
+
+            lastA = 3
+            lastB = 4
+            lastC = 2
+
+            minIndex = min(3, 4, 2) = 2          [ in simple 2 means string starts with 0,1,2 so i+1]
+
+            Valid starting positions:
+            L = 0 → "abcab"
+            L = 1 → "bcab"
+            L = 2 → "cab"
+
+            There are 3 valid starting positions.
+
+            Count = minIndex + 1
+                  = 2 + 1
+                  = 3
+
+
+            Example 4 : minIndex = 3
+                         3
+            String = "abcabc"
+
+            Suppose the latest positions are:
+
+            lastA = 5
+            lastB = 4
+            lastC = 3
+
+            minIndex = min(5, 4, 3) = 3
+
+            Valid starting positions:
+            L = 0
+            L = 1
+            L = 2
+            L = 3
+
+            There are 4 valid starting positions.
+
+            Count = minIndex + 1
+                  = 3 + 1
+                  = 4
+
+
+            Main Rule:
+
+            minIndex tells us the LAST valid starting position L.
+
+            Therefore, every starting position from 0 through minIndex is also valid.
+
+            Positions = 0, 1, 2, ..., minIndex
+
+            So the total number of positions is always:
+
+            Count = minIndex + 1
+
+            The +1 is required because position 0 is also included.
+            */
+
     public static void main(String[] args) {
 
         String str = "abcabc";
@@ -105,14 +205,14 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
                         starting position from 0 through this index contains
                         at least one occurrence of all three characters. */
 
-            int minIndex = Math.min(lastA, Math.min(lastB, lastC));
+            int l = Math.min(lastA, Math.min(lastB, lastC));
 
 
             /* Step 3 : If all three characters have appeared, count every
                         valid substring ending at the current R. */
 
-            if(minIndex != -1) {
-                ans += minIndex + 1;
+            if(l != -1) {
+                ans += l + 1;
             }
         }
 
