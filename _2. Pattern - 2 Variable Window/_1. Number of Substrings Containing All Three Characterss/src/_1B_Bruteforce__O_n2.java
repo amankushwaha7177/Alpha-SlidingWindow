@@ -52,16 +52,6 @@ public class _1B_Bruteforce__O_n2 {
     public static void main(String[] args) {
 
         String str = "abcabc";
-
-        /* Step 0 : Variables analogy for better brute force :
-
-                    a. 'i' selects the starting position of the substring.
-                    b. 'j' extends the substring toward the right.
-                    c. 'hasA' tracks whether character a exists in the substring.
-                    d. 'hasB' tracks whether character b exists in the substring.
-                    e. 'hasC' tracks whether character c exists in the substring.
-                    f. 'ans' stores the total number of valid substrings. */
-
         int ans = 0;
 
         int n = str.length();
@@ -76,7 +66,7 @@ public class _1B_Bruteforce__O_n2 {
 
                 char current = str.charAt(j);
 
-                map.put(current, map.getOrDefault(current, 0) + 1);
+                map.put(current, 888);
 
                 /*
                 Once the substring contains all three characters, every longer
