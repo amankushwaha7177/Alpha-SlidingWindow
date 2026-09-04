@@ -2,8 +2,8 @@ import java.util.HashMap;
 
 public class _1B_Bruteforce__O_n2 {
      /*
-    Brain : Generate every possible starting position using i and extend the
-            substring using j until all three required characters are present.
+    Brain : Generate every possible substring using two loops and check whether
+            the current substring contains at least one a, one b, and one c.
 
             Once a substring contains a, b, and c, every longer substring
             having the same starting position will also contain all three.
@@ -12,7 +12,6 @@ public class _1B_Bruteforce__O_n2 {
             directly count all remaining valid substrings using n - j.
 
     Idea : A. Normal :
-
                Generate every possible substring and check whether it contains
                all three characters using three boolean variables.
 
@@ -20,16 +19,12 @@ public class _1B_Bruteforce__O_n2 {
                S = O(1)
 
            B. Better Brute Force :
-
                Generate substrings using i and j.
-
-               Once a, b, and c are found, all substrings from the current
-               j position until the final index are automatically valid.
 
                Therefore:
                ans += n - j
 
-               Ex : str = "abcabc"
+               Ex : str = "abcab"
                 j = 0 → "a"       ❌
                 j = 1 → "ab"      ❌
                 j = 2 → "abc"     ✓
@@ -40,12 +35,16 @@ public class _1B_Bruteforce__O_n2 {
                 abc abc
                 We know all of them are valid because adding characters can never remove a, b, or c.
 
-                So n - j
-                = 6 - 2
-                = 4
+                 a b c  a b
+                [0 1 2] 3 4    =>  5-2 =3 (abc, abca, abcab)
+                     j
+                Always make formulae from calculation
+
+                So make formulae n - j
+                = 5 - 2
+                = 3
 
                Then break because we do not need to check those substrings individually.
-
                T = O(n²)
                S = O(1)
     */
