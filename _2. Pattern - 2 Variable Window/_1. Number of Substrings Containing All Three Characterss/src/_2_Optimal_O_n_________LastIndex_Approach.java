@@ -1,15 +1,6 @@
 public class _2_Optimal_O_n_________LastIndex_Approach {
 
     /*
-    Interview : Given a string containing only a, b, and c, find the number of
-                substrings that contain at least one a, one b, and one c.
-
-    Given : We need to count every substring that contains all three characters.
-            The substring must be contiguous, so we cannot skip any characters.
-
-            Contiguous + Size is Not Fixed + Contains a,b,c + SubString = Variable Window
-            subString = window
-
     Brain : The simplest mental translation :
 
             Question says:
@@ -36,6 +27,42 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
 
             Therefore starting positions 0 through 0 are valid.
             Number of valid substrings = 0 + 1 = 1.
+
+
+            Ex : "aabbca"
+
+                              R
+              0  1  2   3  4  5
+            [ a, a, b, |b, c, a| ]
+
+            latest a = 5
+            latest b = 3
+            latest c = 4
+
+            Minimum latest index = 3
+
+            Therefore starting positions 3 to 0 are valid.
+            Number of valid substrings = 3 + 1 = 4.
+
+
+            Ex: "aabbccca"
+                                    R
+              0  1  2   3  4  5  6  7
+            [ a, a, b, |b, c, c, c, a| ]    --> yes |b c c c a| is valid window currently.
+
+            latest a = 7
+            latest b = 3
+            latest c = 6
+
+            Minimum latest index = 3
+
+            Therefore starting positions 3 to 0 are valid.
+            Number of valid substrings = 3 + 1 = 4. (    |b, c, c, c, a|
+                                                        b|b, c, c, c, a|
+                                                       ab|b, c, c, c, a|
+                                                      aab|b, c, c, c, a|  )
+
+
 
     Idea : A. Normal :
 
@@ -81,38 +108,6 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
             ans = ans + minIndex + 1
 
             Then R moves forward again and discovers the next possible ending position.
-
-            Example:
-
-            String = "abcabc"
-
-            R = 2 → "abc"
-            minIndex = 0
-            Valid L = 0
-            Count = 0 + 1 = 1
-
-            R = 3 → "abca"
-            minIndex = 1
-            Valid L = 0, 1
-            Count = 1 + 1 = 2
-
-            R = 4 → "abcab"
-            minIndex = 2
-            Valid L = 0, 1, 2
-            Count = 2 + 1 = 3
-
-            R = 5 → "abcabc"
-            minIndex = 3
-            Valid L = 0, 1, 2, 3
-            Count = 3 + 1 = 4
-
-            Therefore:
-
-            R keeps moving → finds new ending positions.
-            minIndex finds → the last valid starting position.
-            minIndex + 1 → counts all valid starting positions for current R.
-
-            We are effectively counting all valid substrings without explicitly generating each one.
             */
 
     /*
@@ -381,18 +376,6 @@ Starting positions :
 ans += 3 + 1
 ans = 10
 
-
-============================================================
-
-Remember :
-
-a. R moves → current ending position enters.
-b. lastA → latest position of character a.
-c. lastB → latest position of character b.
-d. lastC → latest position of character c.
-e. Minimum latest index → boundary for valid starting positions.
-f. minIndex + 1 → number of valid substrings ending at R.
-g. ans → total number of valid substrings.
 
 ============================================================
 
