@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
-public class _1B_Bruteforce_O_n2 {
-    /*
+public class _1B_Bruteforce__O_n2 {
+     /*
     Brain : Generate every possible starting position using i and extend the
             substring using j until all three required characters are present.
 
@@ -107,6 +107,8 @@ public class _1B_Bruteforce_O_n2 {
         System.out.println("Time = O(n²), Space = O(1)");
     }
 }
+
+
 
 /*
 ============================================================
