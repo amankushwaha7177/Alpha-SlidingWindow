@@ -3,52 +3,11 @@ import java.util.HashMap;
 public class _1C_BetterBruteForce_O_n2 {
 
     /*
-    Brain : Generate every possible starting position using i and extend the
-            substring using j until all three required characters are present.
+    Brain : Same just if Interviewer ask dont use hashmap
+            Than use only 3 boolean variable to track all 3 characters presence.
+            and the the same validation job that we done using Hashmap to check
 
-            Once a substring contains a, b, and c, every longer substring
-            having the same starting position will also contain all three.
-
-            Therefore, instead of checking every remaining ending position,
-            directly count all remaining valid substrings using n - j.
-
-    Idea : A. Normal :
-
-               Generate every possible substring and check whether it contains
-               all three characters using three boolean variables.
-
-               T = O(n²)
-               S = O(1)
-
-           B. Better Brute Force :
-
-               Generate substrings using i and j.
-
-               Once a, b, and c are found, all substrings from the current
-               j position until the final index are automatically valid.
-
-               Therefore:
-               ans += n - j
-
-               Ex : str = "abcabc"
-                j = 0 → "a"       ❌
-                j = 1 → "ab"      ❌
-                j = 2 → "abc"     ✓
-
-                Now don't check:
-                abc a
-                abc ab
-                abc abc
-                We know all of them are valid because adding characters can never remove a, b, or c.
-
-                So n - j
-                = 6 - 2
-                = 4
-
-               Then break because we do not need to check those substrings individually.
-
-               T = O(n²)
-               S = O(1)
+            Ie. Instead of checking size of map check all truthy vars.
     */
 
     public static void main(String[] args) {
@@ -195,49 +154,6 @@ Continue the same process for every starting position.
 
 Final Answer = 10
 
-
-============================================================
-
-Remember :
-
-a. i → fixes the starting position.
-b. j → moves toward the ending position.
-c. hasA → checks whether a exists.
-d. hasB → checks whether b exists.
-e. hasC → checks whether c exists.
-f. All three true → current substring is valid.
-g. n - j → counts all remaining valid endings.
-h. break → no need to individually check those remaining endings.
-
-============================================================
-
-Important Counting Logic :
-
-Current substring = [ i ........ j ........ n-1 ]
-
-If [ i ........ j ] already contains a, b, and c,
-
-then these are all valid:
-
-[ i ........ j ]
-[ i ........ j+1 ]
-[ i ........ j+2 ]
-...
-[ i ........ n-1 ]
-
-Number of valid substrings:
-
-n - j
-
-============================================================
-
-Complexity :
-
-Time = O(n²)
-        There are still two nested loops in the worst case.
-
-Space = O(1)
-         Only three boolean variables are maintained.
 
 ============================================================
 */
