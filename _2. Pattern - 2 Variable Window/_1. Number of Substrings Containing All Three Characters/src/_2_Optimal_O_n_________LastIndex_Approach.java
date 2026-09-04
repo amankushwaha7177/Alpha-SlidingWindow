@@ -24,8 +24,8 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
 
             Ex : "abcabc"
 
-                 R
-                 ↓
+                    R
+                    ↓
             [ a, b, c ]
 
             latest a = 0
