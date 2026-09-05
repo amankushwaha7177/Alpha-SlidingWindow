@@ -60,7 +60,7 @@ public class _1A_BruteForce_O_n2 {
             Therefore:
             3 > 2 → Invalid Window
 
-         B. If the window was: "AABBA"   Map: {A → 2, B → 3
+         B. If the window was: "AABBA"   Map: {A → 2, B → 3}
 
             Window length = 5
             Maximum frequency = 3
@@ -69,11 +69,11 @@ public class _1A_BruteForce_O_n2 {
 
             2 <= k → Valid Window
 
-            We can replace both A characters with B:
+            We can replace both B characters with A:
 
             A A B B A
             ↓ ↓     ↓
-            B B B B B
+            A A A A A
 
             Therefore, the longest valid window is based on:
 
