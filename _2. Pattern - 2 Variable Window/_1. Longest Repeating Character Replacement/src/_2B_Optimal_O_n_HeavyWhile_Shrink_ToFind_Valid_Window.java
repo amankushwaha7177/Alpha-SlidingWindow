@@ -33,7 +33,7 @@ public class _2B_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
             int windowLength = r - l + 1; // Calculate current window length.
             int replacements = windowLength - maxFrequency; // Calculate required replacements.
 
-            while(replacements > k) {
+            if(replacements > k) {
                 char left = str.charAt(l); // Get the character leaving the window.
 
                 map.put(left, map.get(left) - 1); // Decrease its frequency.
@@ -44,7 +44,9 @@ public class _2B_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
                 replacements = windowLength - maxFrequency; // Recalculate required replacements.
             }
 
-            ans = Math.max(ans, r - l + 1); // Update answer using the valid window.
+            if(replacements <= k) {
+                ans = Math.max(ans, r - l + 1); // Update answer using the valid window.
+            }
         }
 
         System.out.println("Answer = " + ans);
