@@ -95,21 +95,21 @@ public class _1A_BruteForce_O_n2 {
         int n = str.length();
 
         for(int i = 0; i < n; i++) {
-            HashMap<Character, Integer> map = new HashMap<>();
-            int maxFrequency = 0;
+            HashMap<Character, Integer> map = new HashMap<>(); // Stores frequency of each character in window.
+            int maxFrequency = 0; // Stores the highest character frequency inside the current window.
 
             for(int j = i; j < n; j++) {
-                char current = str.charAt(j);
+                char current = str.charAt(j); // Get the current character added by j.
 
-                map.put(current, map.getOrDefault(current, 0) + 1);
+                map.put(current, map.getOrDefault(current, 0) + 1); // Increase frequency of the current character.
 
-                maxFrequency = Math.max(maxFrequency, map.get(current));
+                maxFrequency = Math.max(maxFrequency, map.get(current)); // Update highest frequency after adding current.
 
-                int windowLength = j - i + 1;
-                int replacements = windowLength - maxFrequency;
+                int windowLength = j - i + 1; // Calculate current window length from i through j.
+                int replacements = windowLength - maxFrequency; // All characters except the most frequent need replacement.
 
                 if(replacements <= k) {
-                    ans = Math.max(ans, windowLength);
+                    ans = Math.max(ans, windowLength); // Update answer only when current window needs at most k replacements only.
                 }
             }
         }
