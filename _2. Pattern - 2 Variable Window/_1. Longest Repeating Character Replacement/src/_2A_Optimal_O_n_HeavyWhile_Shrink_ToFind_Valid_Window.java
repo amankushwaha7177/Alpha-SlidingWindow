@@ -1,11 +1,55 @@
 import java.util.HashMap;
 
-public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
+public class _2A_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
     /*
     Idea :
     Expand the window using j and maintain frequency of every character inside it.
     Track the maximum frequency and calculate how many characters need replacement.
     If replacements exceed k, keep moving i until the window becomes valid again.
+
+
+    R → keeps expanding the window
+    L → keeps shrinking inside while until valid
+    maxFrequency → highest frequency seen so far
+    replacements → windowLength - maxFrequency
+    */
+
+    /*
+    High Twist :
+    ============
+    Why do we keep outdated maxFrequency instead of calculating the exact
+    maximum frequency of the current window every time L moves?
+
+    Suppose an earlier window had:
+    "AABA"
+
+    Map: { A → 3, B → 1 }
+    maxFrequency = 3
+
+    Later, after moving L, the current window becomes:
+    "ABAB"
+
+    Map: { A → 2, B → 2 }
+    Actual maxFrequency = 2
+
+    But we continue keeping maxFrequency = 3.
+
+    The reason is that we only need to find the maximum possible window length,
+    not perfectly validate every intermediate window after every movement of L.
+
+    The maxFrequency = 3 was already achieved by an earlier valid window,
+    so keeping this historical maximum does not create a better answer incorrectly.
+
+    If we calculate the exact maximum after every L movement, we must traverse
+    the Map repeatedly to find the current maximum frequency, which adds extra work.
+
+    Therefore, we keep the highest frequency seen so far and avoid recalculating it.
+
+    Current window → defined exactly by L and R.
+    Map frequencies → always represent the current window.
+    maxFrequency → highest frequency seen so far, intentionally not decreased.
+
+    This historical maxFrequency is the key optimization that keeps the solution O(n).
     */
 
     public static void main(String[] args) {
@@ -13,36 +57,36 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
         int k = 1;
 
         int ans = 0;
-        int i = 0;
+        int l = 0;
         int maxFrequency = 0;
 
         HashMap<Character, Integer> map = new HashMap<>();
 
-        for(int j = 0; j < str.length(); j++) {
-            char current = str.charAt(j); // Get the character entering the window.
+        for(int r = 0; r < str.length(); r++) {
+            char current = str.charAt(r); // Get the character entering the window.
 
             map.put(current, map.getOrDefault(current, 0) + 1); // Increase its frequency.
 
             maxFrequency = Math.max(maxFrequency, map.get(current)); // Update highest frequency.
 
-            int windowLength = j - i + 1; // Calculate current window length.
+            int windowLength = r - l + 1; // Calculate current window length.
             int replacements = windowLength - maxFrequency; // Calculate required replacements.
 
             if(replacements > k) {
                 while(replacements > k) {
-                    char left = str.charAt(i); // Get the character leaving the window.
+                    char left = str.charAt(l); // Get the character leaving the window.
 
                     map.put(left, map.get(left) - 1); // Decrease its frequency.
 
-                    i++; // Move left boundary one position forward.
+                    l++; // Move left boundary one position forward.
 
 
-                    windowLength = j - i + 1; // Recalculate window length.
+                    windowLength = r - l + 1; // Recalculate window length.
                     replacements = windowLength - maxFrequency; // Recalculate replacements.
                 }
             }
 
-            ans = Math.max(ans, j - i + 1); // Update answer using the valid window.
+            ans = Math.max(ans, r - l + 1); // Update answer using the valid window.
         }
 
         System.out.println("Answer = " + ans);
