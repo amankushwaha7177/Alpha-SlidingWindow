@@ -2,28 +2,32 @@ import java.util.HashMap;
 
 public class _1A_BruteForce_O_n2 {
     /*
-    Interview :
-    Given a string and an integer k, find the longest substring where
-    we can replace at most k characters to make the entire substring
-    contain only one repeating character.
+    Interview : Given a string and an integer k, find the longest substring where
+                we can replace at most k characters to make the entire substring
+                contain only one repeating character.
 
-    Brain :
-    The simplest mental translation is to generate every possible substring
-    and check how many characters must be replaced to make that substring uniform.
+    Given : We need to find the longest substring's length possible where we can
+            replace at most k characters to make all characters in the substring same.
 
-    Example :
-    str = "AABABBA"
-    k = 1
+            Contiguous + Size is not Fixed Size For Window + SubString = Variable Window
+            subString = window
 
-    Substring = "AABA"
-    Maximum frequency = 3 because A appears three times.
-    Window length = 4.
-    Characters to replace = 4 - 3 = 1.
-    Since replacements <= k, this substring is valid.
+    Brain : The simplest mental translation is to generate every possible substring
+            and check how many characters must be replaced to make that substring uniform.
 
-    Main Logic :
-    Generate every substring using i and j, track character frequencies,
-    calculate replacements using windowLength - maximumFrequency, and update answer.
+            Example :
+            str = "AABABBA"
+            k = 1
+
+            Substring = "AABA"
+            Maximum frequency = 3 because A appears three times.
+            Window length = 4.
+
+            Remaining Characters in String = 4 - 3 = 1.
+            Since replacements <= k,
+            Mean we can replace thet remaining character
+            So this substring is valid.
+
 
     Idea :
     A. Normal :
@@ -33,7 +37,48 @@ public class _1A_BruteForce_O_n2 {
        For every new character, update its frequency and maximum frequency.
        Then calculate how many characters need replacement using:
 
+       ---------------------------------------------------------------------------------
+       Remaining characters in string apart from Maximum Frequency characters
+       That can all can be replace with maximum frequecy character to make window valid.
        replacements = windowLength - maximumFrequency
+
+       replacements <= k → Valid Window
+       replacements > k  → Invalid Window
+       ---------------------------------------------------------------------------------
+
+       /* Ex: str = "AABABBA"  k = 2
+
+         A. Consider the window: "AABABB"   Map: { A → 3, B → 3 }
+            Window length = 6
+            Maximum frequency = 3
+
+            Remaining characters = 6 - 3 = 3
+
+            So we need 3 replacements to make all characters the same.
+            But k = 2, meaning we can replace at most 2 characters.
+
+            Therefore:
+            3 > 2 → Invalid Window
+
+         B. If the window was: "AABBA"   Map: {A → 2, B → 3
+
+            Window length = 5
+            Maximum frequency = 3
+
+            Remaining characters = 5 - 3 = 2
+
+            2 <= k → Valid Window
+
+            We can replace both A characters with B:
+
+            A A B B A
+            ↓ ↓     ↓
+            B B B B B
+
+            Therefore, the longest valid window is based on:
+
+            replacements = windowLength - maximumFrequency
+
 
        If replacements <= k, the current substring is valid and we update ans.
 
