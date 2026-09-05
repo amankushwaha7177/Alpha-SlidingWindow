@@ -143,8 +143,8 @@ maxFrequency = 0
 
 a. j = 0 → "A"  =>      Map: { A → 1 }
 
-    maxFrequency = {0,1} = 1
-    windowLength = 1
+    maxFrequency = {0,1} = 1           --> maxFrequency for monitoring which is the max Frequency in Whole map among all Character.
+    windowLength = 1                       it helps to get  in o(1) time. Else in each time we have to find it with traversing map o(n)
     replacements = 1 - 1 = 0
     Valid → ans = 1
 
