@@ -1,12 +1,11 @@
 import java.util.HashMap;
 
-public class _2A_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
+public class _2B_Optimal_O_2n_HeavyWhile_Shrink_ToFind_Valid_Window {
     /*
     Idea :
     Expand the window using j and maintain frequency of every character inside it.
     Track the maximum frequency and calculate how many characters need replacement.
     If replacements exceed k, keep moving i until the window becomes valid again.
-
 
     R → keeps expanding the window
     L → keeps shrinking inside while until valid
@@ -80,6 +79,11 @@ public class _2A_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
 
                     l++; // Move left boundary one position forward.
 
+                    /*
+                    maxFrequency = 0;                        // Reset maxFrequency before finding current maximum.
+                    for(int frequency : map.values()) {       // ---> eliminated it.
+                        maxFrequency = Math.max(maxFrequency, frequency); // Find exact current maximum frequency.
+                    } */
 
                     windowLength = r - l + 1; // Recalculate window length.
                     replacements = windowLength - maxFrequency; // Recalculate replacements.

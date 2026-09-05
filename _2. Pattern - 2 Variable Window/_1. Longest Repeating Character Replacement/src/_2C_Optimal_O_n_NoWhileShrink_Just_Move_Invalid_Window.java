@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class _2B_Optimal_O_n_HeavyWhile_Shrink_ToFind_Valid_Window {
+public class _2C_Optimal_O_n_NoWhileShrink_Just_Move_Invalid_Window {
     /*
     Idea :
     Expand the window using j and maintain frequency of every character inside it.
