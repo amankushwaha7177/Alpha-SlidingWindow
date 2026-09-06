@@ -49,8 +49,9 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 formedCount++; // Required frequency is completely satisfied for this character.
             }
 
-            /* Step 2: and before moving to next r.
-                       lets try to shrink and minimize this window as much as possible for better result.
+            /* Step 2: if result is found update ans.
+                       and before moving to next r.
+                       lets try to shrink and minimize this window as much as possible for better result at r.
                        Else capture current window. */
 
             /* Way to enter this loop if formedCount == requiredCount
@@ -58,8 +59,8 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                Means make window invalid and Go on mission to find better window.
             */
             while(formedCount == requiredCount) {
-                int windowLength = r - l + 1; // Calculate current valid window length.
 
+                int windowLength = r - l + 1; // Calculate current valid window length.
                 if(windowLength < ans) {
                     ans = windowLength; // Store the smallest valid window length.
                     ansL = l; // Store starting index of the best window.
