@@ -90,7 +90,8 @@ Idea :  Exact sum is difficult to count directly using an at-most sliding window
         int[] nums = {1,0,1,0,1};
         int goal = 2;
 
-        int ans = atMost(nums, goal) - atMost(nums, goal - 1);
+//        int ans = atMost(nums, goal) - atMost(nums, goal - 1);
+        int ans = atMost(nums, goal);
 
         System.out.println("Answer = " + ans);
 
@@ -123,7 +124,9 @@ Idea :  Exact sum is difficult to count directly using an at-most sliding window
                 l++;
             }
 
-            count += r - l + 1;
+            if(sum == goal) {
+                count += r - l + 1;
+            }
         }
 
         return count;
