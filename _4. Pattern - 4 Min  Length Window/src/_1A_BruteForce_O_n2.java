@@ -69,28 +69,29 @@ public class _1A_BruteForce_O_n2 {
         int ans = Integer.MAX_VALUE;
         int n = s.length();
 
+        // Put target string in map with frequencies.
         HashMap<Character, Integer> required = new HashMap<>();
-
         for(int i = 0; i < t.length(); i++) {
             char current = t.charAt(i); // Get each required character from t.
 
             required.put(current, required.getOrDefault(current, 0) + 1); // Store required frequency.
         }
+        // required = { A → 1, B → 1, C → 1 }
 
         for(int i = 0; i < n; i++) {
-            HashMap<Character, Integer> map = new HashMap<>(); // Stores current substring frequencies.
+            HashMap<Character, Integer> ourMap = new HashMap<>(); // Stores current substring frequencies.
 
             for(int j = i; j < n; j++) {
                 char current = s.charAt(j); // Get the character added to the substring.
 
-                map.put(current, map.getOrDefault(current, 0) + 1); // Increase current character frequency.
+                ourMap.put(current, ourMap.getOrDefault(current, 0) + 1); // Increase current character frequency.
 
                 boolean valid = true; // Assume current substring is valid initially.
 
                 for(char ch : required.keySet()) {
-                    if(map.getOrDefault(ch, 0) < required.get(ch)) {
+                    if(ourMap.getOrDefault(ch, 0) < required.get(ch)) {
                         valid = false; // Required frequency is missing, so substring is invalid.
-                        break;
+                        // break; // This break is specific to this for loop only.
                     }
                 }
 
