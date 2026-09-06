@@ -52,6 +52,11 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
             /* Step 2: and before moving to next r.
                        lets try to shrink and minimize this window as much as possible for better result.
                        Else capture current window. */
+
+            /* Way to enter this loop if formedCount == requiredCount
+               Way to get from Loop -> reduce formedCount |
+               Means make window invalid and Go on mission to find better window.
+            */
             while(formedCount == requiredCount) {
                 int windowLength = r - l + 1; // Calculate current valid window length.
 
