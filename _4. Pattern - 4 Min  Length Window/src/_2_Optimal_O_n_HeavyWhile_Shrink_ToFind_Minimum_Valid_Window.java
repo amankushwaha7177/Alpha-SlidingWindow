@@ -19,13 +19,14 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
         String t = "ABC";
 
         HashMap<Character, Integer> required = new HashMap<>();
-        HashMap<Character, Integer> map = new HashMap<>();
+        HashMap<Character, Integer> ourMap = new HashMap<>();
 
         for(int i = 0; i < t.length(); i++) {
             char current = t.charAt(i); // Get each required character from t.
 
             required.put(current, required.getOrDefault(current, 0) + 1); // Store required frequency.
         }
+        // required = { A → 1, B → 1, C → 1 }
 
         int requiredCount = required.size(); // Store number of distinct characters required.
         int formedCount = 0; // Track how many required characters currently satisfy their frequency.
@@ -38,10 +39,10 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
         for(int r = 0; r < s.length(); r++) {
             char current = s.charAt(r); // Get the character entering the window.
 
-            map.put(current, map.getOrDefault(current, 0) + 1); // Increase current character frequency.
+            ourMap.put(current, ourMap.getOrDefault(current, 0) + 1); // Increase current character frequency.
 
             if(required.containsKey(current) &&
-                    map.get(current).intValue() == required.get(current).intValue()) {
+                    ourMap.get(current).intValue() == required.get(current).intValue()) {
                 formedCount++; // Required frequency is completely satisfied for this character.
             }
 
@@ -56,10 +57,10 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
 
                 char left = s.charAt(l); // Get the character leaving the window.
 
-                map.put(left, map.get(left) - 1); // Decrease frequency of the left character.
+                ourMap.put(left, ourMap.get(left) - 1); // Decrease frequency of the left character.
 
                 if(required.containsKey(left) &&
-                        map.get(left) < required.get(left)) {
+                        ourMap.get(left) < required.get(left)) {
                     formedCount--; // Window became invalid because required frequency is missing.
                 }
 
@@ -81,3 +82,165 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
         System.out.println("Time = O(n), Space = O(n)");
     }
 }
+
+
+/*
+Dry Run Example :
+
+s = "ADOBECODEBANC"
+t = "ABC"
+===================
+
+Required Map:
+{ A → 1, B → 1, C → 1 }
+
+requiredCount = 3
+formedCount = 0
+l = 0
+
+a. r = 0 → "A"       => Map: { A → 1 }
+
+    A requirement satisfied
+    formedCount = 1
+    formedCount != requiredCount
+    Invalid → Continue R
+
+
+b. r = 1 → "AD"      => Map: { A → 1, D → 1 }
+
+    formedCount = 1
+    Invalid → Continue R
+
+
+c. r = 2 → "ADO"     => Map: { A → 1, D → 1, O → 1 }
+
+    formedCount = 1
+    Invalid → Continue R
+
+
+d. r = 3 → "ADOB"    => Map: { A → 1, D → 1, O → 1, B → 1 }
+
+    B requirement satisfied
+    formedCount = 2
+    Invalid → Continue R
+
+
+e. r = 4 → "ADOBE"   => Map: { A → 1, D → 1, O → 1, B → 1, E → 1 }
+
+    formedCount = 2
+    Invalid → Continue R
+
+
+f. r = 5 → "ADOBEC"   => Map: { A → 1, D → 1, O → 1, B → 1, E → 1, C → 1 }
+
+    C requirement satisfied
+    formedCount = 3
+    formedCount == requiredCount
+    Valid → Enter while
+
+
+    while : Window = "ADOBEC"
+             windowLength = 6
+             ans = "ADOBEC"
+
+             Remove s[l] = A
+             Map: { A → 0, D → 1, O → 1, B → 1, E → 1, C → 1 }
+             formedCount = 2
+             l = 1
+
+             Window became invalid → Exit while
+
+
+g. r = 6 → "DOBECO"    => Map: { D → 1, O → 2, B → 1, E → 1, C → 1 }
+
+    formedCount = 2
+    Invalid → Continue R
+
+
+h. r = 7 → "DOBECOD"   => Map: { D → 2, O → 2, B → 1, E → 1, C → 1 }
+
+    formedCount = 2
+    Invalid → Continue R
+
+
+i. r = 8 → "DOBECODE"  => Map: { D → 2, O → 2, B → 1, E → 2, C → 1 }
+
+    formedCount = 2
+    Invalid → Continue R
+
+
+j. r = 9 → "DOBECODEB" => Map: { D → 2, O → 2, B → 2, E → 2, C → 1 }
+
+    formedCount = 2
+    Invalid → Continue R
+
+
+k. r = 10 → "DOBECODEBA" => Map: { D → 2, O → 2, B → 2, E → 2, C → 1, A → 1 }
+
+    A requirement satisfied
+    formedCount = 3
+    Valid → Enter while
+
+
+    while : Remove s[l] = D
+             Map: { D → 1, O → 2, B → 2, E → 2, C → 1, A → 1 }
+             l = 2
+             Window remains valid
+
+
+    while : Remove s[l] = O
+             Map: { D → 1, O → 1, B → 2, E → 2, C → 1, A → 1 }
+             l = 3
+             Window remains valid
+
+
+    while : Remove s[l] = B
+             Map: { D → 1, O → 1, B → 1, E → 2, C → 1, A → 1 }
+             l = 4
+             Window remains valid
+
+
+    while : Remove s[l] = E
+             Map: { D → 1, O → 1, B → 1, E → 1, C → 1, A → 1 }
+             l = 5
+             Window remains valid
+
+
+    while : Remove s[l] = C
+             Map: { D → 1, O → 1, B → 1, E → 1, C → 0, A → 1 }
+             formedCount = 2
+             l = 6
+             Window became invalid → Exit while
+
+
+l. r = 11 → "ODEBANC" => Map contains A, B, C with required frequencies
+
+    A requirement satisfied
+    formedCount = 3
+    Valid → Enter while
+
+    Shrink L until minimum valid window becomes:
+
+    "BANC"
+
+    Map for "BANC":
+    B → 1
+    A → 1
+    N → 1
+    C → 1
+
+    windowLength = 4
+    ans = "BANC"
+
+
+Final Answer = "BANC"
+Final Length = 4
+
+Important Pattern :
+
+R expands → until all required characters are satisfied.
+formedCount == requiredCount → Valid Window.
+Valid → update minimum answer → move L inside while.
+L keeps moving → until removing a character makes the window invalid.
+Then R continues expanding again.
+*/
