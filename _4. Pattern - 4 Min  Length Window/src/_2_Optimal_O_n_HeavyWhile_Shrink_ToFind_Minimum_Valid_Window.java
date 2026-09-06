@@ -76,17 +76,18 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 A → 2  ✓ required frequency reached
                 B → 2  ✓ required frequency reached  ( B can go beyond its target frequency. That is completely allowed.
                                                        The important thing is that formedCount does not count the number of occurrences. It counts how many requirements are satisfied.
+                                                       It only increases when first time Requirement matches for any char.
+                                                       This condition helps -
                                                        Using - if( ourMap.get(current).intValue() == required.get(current).intValue()) {
                                                                         formedCount++; -> If
                                                                   }
                 C → 1  ✓ required frequency reached
 
                 Therefore:
-                formedCount = 3
-                requiredCount = 3
-                The window is VALID.
+                formedCount = 3   | requiredCount = 3 |  The window is VALID.
+                                                         Update ansL, ansR.
 
-                Now suppose L is pointing to the first A, and we remove that A.
+                Now suppose L is pointing to the first A on "AABBC", and we remove that A.
 
                 Before removal:
                 ourMap A = 2
@@ -105,7 +106,8 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 So we decrease:
                 formedCount--
 
-                formedCount changes from 3 to 2.
+                formedCount changes from 3 to 2.    || we already stored ansL, andR so no need to care formedCount after finding ans.
+                                                    ||
 
                 Now:
                 formedCount = 2
