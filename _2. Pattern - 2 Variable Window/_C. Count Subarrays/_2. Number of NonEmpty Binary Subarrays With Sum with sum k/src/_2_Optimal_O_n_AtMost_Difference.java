@@ -132,3 +132,52 @@ Idea :  Exact sum is difficult to count directly using an at-most sliding window
         return count;
     }
 }
+
+/*
+Question.if anyone is unable to understand why fun(nums,goal) - fun(nums,goal-1) works here?
+          What's the math here? I am unable to understand this basic maths behind it,
+          please can anyone explain me the maths behind this?
+Answer: (if you read below example definetly u can understand)
+
+        Example: Counting people by weight categories
+        Imagine you have a group of people, and each person has a specific weight. You want to know how many people weigh exactly 70 kg.
+
+        Step 1:
+        ------
+        Count all people weighing less than or equal to 70 kg ,
+        This will include people who weigh: Less than 70 kg (like 60 kg, 50 kg, etc.)
+                                            + Exactly 70 kg
+
+        There are 25 people who weigh 70 kg or less.
+        We can represent this as fun(weights, goal<=70) = 25.
+
+        Step 2:
+        -------
+        Count all people weighing less than or equal to 69 kg
+        This will include people who weigh: Less than 69 kg (like 68 kg, 50 kg, etc.)
+                                            + Exactly 69 kg
+
+        There are 18 people who weigh 69 kg or less.
+        We can represent this as fun(weights, goal<=69) = 18.
+
+
+        Step 3:
+        -------
+        Subtract the two results
+        To find out how many people weigh exactly 70 kg, we subtract:
+
+        fun(weights, goal<=70) (people weighing 70 kg or less) = 25
+        fun(weights, goal<=69) (people weighing 69 kg or less) = 18
+        The number of people who weigh exactly 70 kg is:
+
+        25 - 18 = 7 people.
+
+
+        General Formula:
+        ----------------
+        fun(weights, goal) counts how many people have a weight less than or equal to the goal (here, 70 kg).
+        fun(weights, goal-1) counts how many people have a weight less than or equal to goal - 1 (here, 69 kg).
+        By subtracting the two, you get the number of people who weigh exactly the goal weight.
+        Why it works:
+        This technique isolates the exact count of people (or items) at the goal value by subtracting the number of items below the goal from the number of items less than or equal to the goal. It's easier than directly counting "exact" matches in some problems, which is why this approach is useful.
+ */
