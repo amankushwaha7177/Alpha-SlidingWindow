@@ -1,46 +1,90 @@
 public class _2_Optimal_O_n_AtMost_Difference {
 /*
-Idea : Exact sum is difficult to count directly using an at-most sliding window,
-       but we can represent exact sum using the difference between two at-most counts.
+Idea :  Exact sum is difficult to count directly using an at-most sliding window,
+        so first understand how all possible subarrays are divided according to their sum.
 
-       Number of subarrays with sum exactly goal = Number of subarrays with sum at most (<=) goal -
-                                                   Number of subarrays with sum at most (<=) goal - 1
+        Example :
+        nums = [1,0,1,0,1]
+        goal = 2
 
-       Therefore: ans = atMost(goal) - atMost(goal - 1)
+        Think of every possible subarray in three groups:    Sum < 2    |  Sum = 2   | Sum > 2
+        We want only the middle group: Sum = 2
 
-       Example :
-       nums = [1,0,1,0,1]
-       goal = 2
+        1. atMost(goal) means sum <= 2
+           mean, atMost(2) contains both groups: [Sum < 2] + [Sum = 2]
+           So:
+                 atMost(2) = [Sum < 2] + [Sum = 2]
 
-       atMost(2) = 12
-       atMost(1) = 8
+        2. atMost(goal - 1) means sum <= 1
+           mean, atMost(2) contains both groups: [Sum < 1] + [Sum = 1]
 
-       Therefore:
+           so:
+              Sum <= 1 is exactly the same as: Sum < 2
 
-       ans = 12 - 8
-           = 4
+           So:
+               atMost(1) = [Sum < 2]
 
-       These 4 subarrays have sum exactly equal to 2.
 
-       For atMost(goal), maintain a window whose sum is <= goal.
+        3. Now subtract both counts:
+                atMost(2) - atMost(1)
+                = ([Sum < 2] + [Sum = 2]) - [Sum < 2]
+                = [Sum = 2]
 
-       R expands the window and adds nums[R] into the current sum.
+           The subarrays having sum less than 2 are present in both counts,
+           so they cancel each other during subtraction.
 
-       Whenever sum becomes greater than goal, move L forward until the window
-       becomes valid again because every element is non-negative in a binary array.
+           The only subarrays remaining are those whose sum is exactly 2.
 
-       Once the window [L...R] is valid, every subarray ending at R and starting
-       anywhere from L through R also has a sum <= goal.
+        Therefore:
+        Number of subarrays with sum exactly goal  = Number of subarrays with sum <= goal  - Number of subarrays with sum <= goal - 1
 
-       Therefore, the number of valid subarrays ending at R is:
+        Therefore:  ans = atMost(goal) - atMost(goal - 1)
 
-       R - L + 1
 
-       Add this value to the count.
+                                                      atMost(2)
+                                                ┌───────────────────┐
+                                                │ Sum < 2 │ Sum = 2 │
+                                                └───────────────────┘
+                                                ┌──────────┐
+                                                │  Sum < 2 │  atMost(1)
+                                                └──────────┘
+                                                ─────────────────────
+                                                          │
+                                                          ▼
+                                                       Sum = 2
 
-       Time = O(2n - l,r movement) * 2 atMost calls = O(4n) = O(n)
-       Space = O(1)
-*/
+        -------------------------------------------------------------------------------------------------------
+        Now understand how atMost(goal) itself works:
+
+        For atMost(goal), maintain a window whose sum is <= goal.
+
+        R keeps expanding the window and adds nums[R] into the current sum.
+
+        Whenever sum becomes greater than goal, move L forward until the
+        window becomes valid again because every element is non-negative.
+
+        Once [L...R] is valid, every subarray ending at R and starting anywhere
+        from L through R will also have a sum <= goal.
+
+        For example: nums = [1,0,1,0,1] , K=2
+        [1,0,1] → sum = 2 → Valid
+        [1,0,1,0] → sum = 2 → Valid
+        [0,1,0,1] → sum = 2 → Valid
+
+        Add this count to the total number of subarrays.
+
+        This atMost function is called twice:
+
+                atMost(goal)
+                atMost(goal - 1)
+
+        Finally:
+
+                ans = atMost(goal) - atMost(goal - 1)
+
+        Time = O(2n - L,R movement) * 2 atMost calls = O(4n) = O(n)
+        Space = O(1)
+        */
 
     public static void main(String[] args) {
         int[] nums = {1,0,1,0,1};
