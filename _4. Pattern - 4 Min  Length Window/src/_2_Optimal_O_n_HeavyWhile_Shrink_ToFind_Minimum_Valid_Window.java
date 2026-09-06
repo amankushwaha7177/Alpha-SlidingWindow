@@ -41,11 +41,16 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
 
             ourMap.put(current, ourMap.getOrDefault(current, 0) + 1); // Increase current character frequency.
 
+            /* Step 1 : If this char at r exits in target
+                        Then matches frequency then we found match so form it. */
             if(required.containsKey(current) &&
                     ourMap.get(current).intValue() == required.get(current).intValue()) {
                 formedCount++; // Required frequency is completely satisfied for this character.
             }
 
+            /* Step 2: and before moving to next r.
+                       lets try to shrink and minimize this window as much as possible for better result.
+                       Else capture current window. */
             while(formedCount == requiredCount) {
                 int windowLength = r - l + 1; // Calculate current valid window length.
 
