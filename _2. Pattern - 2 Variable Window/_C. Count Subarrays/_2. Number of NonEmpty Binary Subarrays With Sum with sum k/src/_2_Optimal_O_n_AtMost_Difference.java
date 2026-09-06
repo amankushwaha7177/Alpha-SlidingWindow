@@ -1,37 +1,46 @@
 public class _2_Optimal_O_n_AtMost_Difference {
-    /*
-    Idea :  Exact sum is difficult to count directly using an at-most sliding window,
-            but we can represent exact sum using the difference between two at-most counts.
+/*
+Idea : Exact sum is difficult to count directly using an at-most sliding window,
+       but we can represent exact sum using the difference between two at-most counts.
 
-            Number of subarrays with sum exactly goal
-            =
-            Number of subarrays with sum at most goal
-            -
-            Number of subarrays with sum at most goal - 1
+       Number of subarrays with sum exactly goal = Number of subarrays with sum at most (<=) goal -
+                                                   Number of subarrays with sum at most (<=) goal - 1
 
-            Therefore:
+       Therefore: ans = atMost(goal) - atMost(goal - 1)
 
-            ans = atMost(goal) - atMost(goal - 1)
+       Example :
+       nums = [1,0,1,0,1]
+       goal = 2
 
-            For atMost(goal), maintain a window whose sum is <= goal.
+       atMost(2) = 12
+       atMost(1) = 8
 
-            R expands the window and adds nums[R] into the current sum.
+       Therefore:
 
-            Whenever sum becomes greater than goal, move L forward until the window
-            becomes valid again because every element is non-negative in a binary array.
+       ans = 12 - 8
+           = 4
 
-            Once the window [L...R] is valid, every subarray ending at R and starting
-            anywhere from L through R also has a sum <= goal.
+       These 4 subarrays have sum exactly equal to 2.
 
-            Therefore, the number of valid subarrays ending at R is:
+       For atMost(goal), maintain a window whose sum is <= goal.
 
-            R - L + 1
+       R expands the window and adds nums[R] into the current sum.
 
-    Add this value to the count.
+       Whenever sum becomes greater than goal, move L forward until the window
+       becomes valid again because every element is non-negative in a binary array.
 
-    Time = O(2n -l,r)*2 = o(4n)
-    Space = O(1)
-    */
+       Once the window [L...R] is valid, every subarray ending at R and starting
+       anywhere from L through R also has a sum <= goal.
+
+       Therefore, the number of valid subarrays ending at R is:
+
+       R - L + 1
+
+       Add this value to the count.
+
+       Time = O(2n - l,r movement) * 2 atMost calls = O(4n) = O(n)
+       Space = O(1)
+*/
 
     public static void main(String[] args) {
         int[] nums = {1,0,1,0,1};
