@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/_1_Maximum_Points_You_Can_Obtain_From_Cards_Obviously_either_Left_or_Right/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/_2. Pattern - 2 Variable Window" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
