@@ -1,7 +1,6 @@
 public class _2_Optimal_O_n_AtMost_Difference {
     /*
-    Interview : Given an integer array and K, find the number of subarrays
-                containing exactly K odd numbers.
+    Interview : Given an integer array and K, find the number of subarrays containing exactly K odd numbers.
 
     Given : We need to count every contiguous subarray containing exactly K odd numbers.
 
@@ -12,8 +11,13 @@ public class _2_Optimal_O_n_AtMost_Difference {
             Example: nums = [1,1,2,5,1]
                   becomes:  [1,1,0,1,1]
 
-            Now the problem becomes finding the number of subarrays
-            containing exactly K ones.
+            Now the problem becomes finding the number of subarrays containing exactly K ones.
+                                          orr
+            find the number of non-empty binary subarrays whose sum is exactly equal to goal.
+            Ex :[1, 1, 0, 1]
+
+            Number of 1s = 3
+            Sum of elements = 1 + 1 + 0 + 1 = 3
 
             Contiguous + Count + Exactly K Odd Numbers + SubArray = Variable Window
             subArray = window
@@ -135,3 +139,54 @@ public class _2_Optimal_O_n_AtMost_Difference {
         return count;
     }
 }
+
+
+/*
+Dry Run :
+
+nums = [1,1,2,1,1]
+k = 3
+
+ans = atMost(3) - atMost(2)
+
+atMost(3):
+
+R=0 → sum=1 → valid → count += 1 → count=1
+R=1 → sum=2 → valid → count += 2 → count=3
+R=2 → sum=2 → valid → count += 3 → count=6
+R=3 → sum=3 → valid → count += 4 → count=10
+R=4 → sum=4 → invalid →
+              move L once → sum=3, L=1
+              valid → count += 4 → count=14
+
+atMost(3) = 14
+
+
+atMost(2):
+
+R=0 → sum=1 → valid → count += 1 → count=1
+R=1 → sum=2 → valid → count += 2 → count=3
+R=2 → sum=2 → valid → count += 3 → count=6
+R=3 → sum=3 → invalid →
+              move L → sum=2, L=1
+              valid → count += 3 → count=9
+R=4 → sum=3 → invalid →
+              move L → sum=2, L=2
+              valid → count += 3 → count=12
+
+atMost(2) = 12
+
+
+Therefore:
+
+ans = atMost(3) - atMost(2)
+    = 14 - 12
+    = 2
+
+Final Answer = 2
+
+Valid subarrays containing exactly 3 odd numbers:
+
+[1,1,2,5]
+[1,2,5,1]
+*/

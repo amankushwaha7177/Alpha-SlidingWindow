@@ -181,3 +181,65 @@ Answer: (if you read below example definetly u can understand)
         Why it works:
         This technique isolates the exact count of people (or items) at the goal value by subtracting the number of items below the goal from the number of items less than or equal to the goal. It's easier than directly counting "exact" matches in some problems, which is why this approach is useful.
  */
+
+
+
+/*
+Dry Run :
+
+nums = [1,0,1,0,1]
+goal = 2
+
+Answer = atMost(2) - atMost(1)
+
+
+1. atMost(2)
+
+R=0 → sum=1 → valid → count += 1 → count=1
+R=1 → sum=1 → valid → count += 2 → count=3
+R=2 → sum=2 → valid → count += 3 → count=6
+R=3 → sum=2 → valid → count += 4 → count=10
+R=4 → sum=3 → invalid → move L:
+      sum=2, L=1
+      valid → count += 4 → count=14
+
+Therefore:
+
+atMost(2) = 14
+
+
+2. atMost(1)
+
+R=0 → sum=1 → valid → count += 1 → count=1
+R=1 → sum=1 → valid → count += 2 → count=3
+R=2 → sum=2 → invalid → move L:
+      sum=1, L=1
+      valid → count += 2 → count=5
+R=3 → sum=1 → valid → count += 3 → count=8
+R=4 → sum=2 → invalid → move L:
+      sum=1, L=3
+      valid → count += 2 → count=10
+
+Therefore:
+
+atMost(1) = 10
+
+
+3. Subtract:
+
+ans = atMost(2) - atMost(1)
+
+    = 14 - 10
+
+    = 4
+
+
+Final Answer = 4
+
+The 4 subarrays having sum exactly 2 are:
+
+[1,0,1]
+[1,0,1,0]
+[0,1,0,1]
+[1,0,1]
+*/
