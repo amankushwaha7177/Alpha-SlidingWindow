@@ -49,3 +49,16 @@ Op:
         4 5
         5 4
  */
+
+
+/*
+Q. Problem with Hashmap | Interview
+A. Always try to avoid use of space.
+   Ex. { 1=4}         For 1 size Map  = 2 Integer Required
+       { 1=4, 3=7...} For 50 size Map = 100 Integer Required
+
+                     1 Integer = 4 Bytes
+                     = So 50 size Map = 100 * 4 Bytes
+
+       Its too much space wastage for CPU Memory.
+ */

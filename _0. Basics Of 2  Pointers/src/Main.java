@@ -11,5 +11,9 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        /*
+        1. Finding Pair without using extra space(Hashmap etc)
+           --> its 2 pointer.
+         */
     }
 }
