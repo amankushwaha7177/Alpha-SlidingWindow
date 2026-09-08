@@ -13,6 +13,7 @@ public class Main {
         3. a. Dont move l, move it only when you get unique neighbour for it.
            b. Keep moving r, when you get duplicate keep skipping them
               when you get another unique one just put it infront of l. and move l to it.
+              than move r++ for next search.
          */
 
         int l =0;
@@ -24,9 +25,10 @@ public class Main {
                 r++;
                 continue;
             }
-            if(arr[l] != arr[r]){
-                arr[l+1] = arr[r];
+            if(arr[l] != arr[r]) {
+                arr[l + 1] = arr[r];
                 l++;
+                r++;
             }
         }
 

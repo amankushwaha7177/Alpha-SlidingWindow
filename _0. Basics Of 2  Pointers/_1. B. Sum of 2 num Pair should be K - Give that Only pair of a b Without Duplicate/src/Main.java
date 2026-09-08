@@ -32,7 +32,9 @@ public class Main {
                 l++;
                 r--;
 
-
+                // These 2 lines will extra added just to skip duplicate numbers.
+                while( arr[l] == arr[l-1]) l++;
+                while( arr[r] == arr[r+1]) r--;
             }
             else if(sum > k){
                 r--;
