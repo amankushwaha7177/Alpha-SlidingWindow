@@ -45,7 +45,7 @@ public class Main {
                 }
             }
         /*
-        T=  o(n3)
+        T=  o(n2)
         S = o(1)
         */
         }
