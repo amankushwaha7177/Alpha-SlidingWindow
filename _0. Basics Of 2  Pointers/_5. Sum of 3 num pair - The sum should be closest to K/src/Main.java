@@ -17,7 +17,7 @@ public class Main {
                 ↓
             sum < k → L++
             sum > k → R--
-            sum == k → exact answer → break
+            sum == k → exact answer → cool ! break
          */
 
         /*
@@ -35,7 +35,7 @@ public class Main {
 
         Arrays.sort(arr);
 
-        int closestSum = Integer.MAX_VALUE;
+        int closestSum = 0;
         for( int i = 0; i< arr.length-2 ; i++) {
             // Elemenate duplacates in i also.
             if(i >0 && arr[i] == arr[i-1]){
@@ -83,11 +83,10 @@ public class Main {
         System.out.println(closestSum);
     }
 }
-/*
-Op:
-        2 7
-        4 5
- */
+        /*
+        T=  o(n3)
+        S = o(1)
+        */
 
 /*
 Normal 3Sum vs Closest 3Sum:

@@ -45,14 +45,10 @@ public class Main {
                 }
             }
         /*
-        T=  o(n/2)
+        T=  o(n3)
         S = o(1)
         */
         }
     }
 }
-/*
-Op:
-        2 7
-        4 5
- */
+
