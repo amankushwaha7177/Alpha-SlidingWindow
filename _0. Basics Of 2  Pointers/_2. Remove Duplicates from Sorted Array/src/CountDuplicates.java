@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Main {
+public class CountDuplicates {
     public static void main(String[] args) {
         int[] arr= {1,1,1,1,2,2,3};
 
@@ -18,10 +18,13 @@ public class Main {
         int l =0;
         int r=1;
 
+        int cnt =0 ;
+
         while( r < arr.length){
 
             if(arr[l] == arr[r]){
                 r++;
+                cnt++;
                 continue;
             }
             if(arr[l] != arr[r]){
@@ -30,7 +33,7 @@ public class Main {
             }
         }
 
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr) + " " + cnt);
     }
 }
 
@@ -65,7 +68,5 @@ Using else guarantees that only one condition executes in each iteration.
                 r++;
                 continue;
     }
-
-
 
  */
