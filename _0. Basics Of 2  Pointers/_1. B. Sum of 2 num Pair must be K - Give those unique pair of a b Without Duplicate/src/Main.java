@@ -11,6 +11,7 @@ public class Main {
         2. if currentTarget < target ===> Increase | Move l++
            if currentTarget > target ===> Decrease | Move r--
            if currentTarget ==target ===> Move both l++ r--
+                                          Than also skip all duplicates from both sides.
 
         3. There are 2 ways to pause the loop
            a. when pointers crosses each other ( l>r | r<l)
