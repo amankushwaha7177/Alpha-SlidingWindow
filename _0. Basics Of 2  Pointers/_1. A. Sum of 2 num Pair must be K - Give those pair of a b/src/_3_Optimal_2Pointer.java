@@ -1,10 +1,16 @@
 import java.util.Arrays;
 
-public class _2_Optimal_2Pointer {
+public class _3_Optimal_2Pointer {
 
     public static void main(String[] args) {
         int[] arr = {7, 2, 4, 5, 1};
         int k = 9;
+
+        // Do Sorting for applying 2 pointers
+        // As we need sum so will move l++, r--
+        // if we needed duplicate we move l++, r++
+        // becuase its easy to apply these conditons on sorted arrays.
+        Arrays.sort(arr);
 
         /*
         1. Use 2 pointer l,r to move
@@ -20,8 +26,6 @@ public class _2_Optimal_2Pointer {
         // 1.
         int l =0;
         int r=arr.length-1;
-
-        Arrays.sort(arr);
 
         while( l < r ){
             int a = arr[l];

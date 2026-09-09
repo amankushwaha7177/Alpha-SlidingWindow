@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class _2B_More_Better_Using_HashMap__Good_If_Index_Is_required {
+public class _2B_More_Better_Using_HashMap____ONLY_If_Index_Is_required {
 
     public static void main(String[] args) {
         int[] arr = {7, 2, 4, 5, 1};
