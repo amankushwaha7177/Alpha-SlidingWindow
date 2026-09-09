@@ -1,4 +1,4 @@
-public class _1B_Bruteforce {
+public class _1B_Bruteforce_MoreBetter {
 
     public static void main(String[] args) {
         int[] arr = {7, 2, 4, 5, 1};

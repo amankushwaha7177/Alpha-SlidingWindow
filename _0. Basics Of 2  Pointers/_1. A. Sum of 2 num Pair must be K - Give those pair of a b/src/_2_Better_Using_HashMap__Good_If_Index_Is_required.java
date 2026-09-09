@@ -23,7 +23,6 @@ public class _2_Better_Using_HashMap__Good_If_Index_Is_required {
         System.out.println((m.toString()));
         // {7-> 0, 2->1, 4-> 2, 5-> 3, 1-> 4 }
 
-        // 2.
         for(int i = 0; i<arr.length; i++){
             int a = arr[i];      // if a = 7
             int b = k - arr[i];  //    b = 9-7 = 2 | Now search for 2 as b
@@ -41,7 +40,7 @@ public class _2_Better_Using_HashMap__Good_If_Index_Is_required {
             }
         }
         /*
-        T= o(n * 1) = o(n)
+        T= o(2n * 1) = o(2n) = 2 pass
         S = o(n)
         */
     }
