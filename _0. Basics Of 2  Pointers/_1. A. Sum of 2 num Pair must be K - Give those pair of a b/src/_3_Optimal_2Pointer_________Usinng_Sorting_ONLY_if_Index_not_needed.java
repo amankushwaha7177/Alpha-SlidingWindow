@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class _3_Optimal_2Pointer {
+public class _3_Optimal_2Pointer_________Usinng_Sorting_ONLY_if_Index_not_needed {
 
     public static void main(String[] args) {
         int[] arr = {7, 2, 4, 5, 1};
@@ -10,7 +10,8 @@ public class _3_Optimal_2Pointer {
         // As we need sum so will move l++, r--
         // if we needed duplicate we move l++, r++
         // becuase its easy to apply these conditons on sorted arrays.
-        Arrays.sort(arr);
+        // so i understood how important sorting is for 2 pointers.
+        Arrays.sort(arr); // ---> o(nlogn)
 
         /*
         1. Use 2 pointer l,r to move
@@ -44,7 +45,7 @@ public class _3_Optimal_2Pointer {
             }
         }
         /*
-        T=  o(n/2)
+        T=  o(nlogn + n)
         S = o(1)
         */
     }
