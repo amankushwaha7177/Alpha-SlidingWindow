@@ -36,6 +36,7 @@ public class _2B_More_Better_Using_HashMap__Good_If_Index_Is_required {
 
         /*
         T= o(n * 1) = o(n) = 1 pass
+           Assuming map taking o(1), it may also take logn but will not consider. That is diff kind of map.
         S = o(n)
         */
     }
