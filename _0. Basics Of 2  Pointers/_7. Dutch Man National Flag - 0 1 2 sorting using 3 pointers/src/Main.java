@@ -29,3 +29,13 @@ public class Main {
         System.out.println(Arrays.toString(arr));
     }
 }
+
+/*
+Time = O(n)
+Reason : Each pointer moves only in one direction, so the total number of
+         pointer movements remains proportional to the array length.
+
+Space = O(1)
+Reason : Only three pointers and a temporary variable are used, requiring
+         constant extra space.
+*/
