@@ -5,19 +5,18 @@ public class _1_Bruteforce {
         int k = 9;
 
         /* Bruteforce : 2 loops i,j
-           i for marking a
-           j for searching b
-           To make Target.
+           Pick one element, pair it with all remaining elements.
+           if both makes sum == k ie. ans
         */
         for(int i = 0; i<arr.length; i++){
-            for(int j=0 ; j<arr.length; j++){ // can't start j form i because we need to check all pair even before i.
-                                              // simply pick element and check with all remaining element
+            for(int j=0 ; j<arr.length; j++){
 
                 if( i == j) continue; // element can't be same ( it will be given in Que.)
 
                 if(arr[i] + arr[j] == k){
                     System.out.println("Numbers ->" + arr[i] + " " + arr[j]);
                     System.out.println("Indexes ->" +   i + " " + j);
+                    System.out.println("--------");
                 }
             }
         }
@@ -31,4 +30,14 @@ public class _1_Bruteforce {
 Op:
 Numbers ->7 2
 Indexes ->0 1
+--------
+Numbers ->2 7
+Indexes ->1 0
+--------
+Numbers ->4 5
+Indexes ->2 3
+--------
+Numbers ->5 4
+Indexes ->3 2
+--------
  */
