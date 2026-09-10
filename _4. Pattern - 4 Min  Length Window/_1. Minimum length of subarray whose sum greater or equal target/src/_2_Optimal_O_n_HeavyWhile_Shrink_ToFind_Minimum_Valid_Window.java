@@ -125,3 +125,69 @@ Remove 4 → sum=0 <4 → Stop shrinking
 
 Final answer = 1
 */
+
+
+
+/*
+Que. Previously we were using inner while loop to make invalid window valid again here doing opposite
+     when its becoming valid we are finding result and then making invalid
+Ans. Exactly. You understood the key difference correctly.
+
+The while loop is doing the opposite job depending on the problem's goal:
+
+1. Previous problems — while makes INVALID → VALID
+            Example: Maximum length with at most K zeros
+
+            if(zeroCount > k){
+                while(zeroCount > k){
+                    // Remove from left
+                    l++;
+                }
+            }
+
+            Here:
+            Invalid window → shrink → make it valid → find maximum length
+
+            R grows → window becomes INVALID
+                          ↓
+                     while shrink
+                          ↓
+                     VALID window
+                          ↓
+                    calculate maximum
+
+
+
+2. Current problem — while makes VALID → INVALID
+        Example: Minimum length with sum >= target
+
+        while(windowSum >= target){
+            ans = Math.min(ans, r - l + 1);
+
+            windowSum -= arr[l];
+            l++;
+        }
+
+        Here:
+        Valid window → find result → shrink → eventually make it invalid
+
+        R grows → window becomes VALID
+                      ↓
+               calculate minimum
+                      ↓
+                 while shrink
+                      ↓
+               still VALID → smaller
+                      ↓
+               still VALID → smaller
+                      ↓
+               becomes INVALID → STOP
+
+
+🧠 The main difference :
+------------------------
+The while loop does the opposite job depending on whether we need maximum or minimum length.
+Maximum length → INVALID → shrink → VALID → calculate maximum.
+Minimum length → VALID → calculate minimum → shrink → INVALID.
+Maximum means we fix the invalid window, while minimum means we destroy the valid window.
+*/
