@@ -49,7 +49,7 @@ public class _2_Optimal_O_n__________same_just_dff_loop_condition {
                              b. add 1 element from right side
                              Update answer only when you get bigger sum*/
         int finalAns = windowSum;
-        while( right < arr.length -1 /* At last write this : We are already reaching last element in 2nd last itr.*/){
+        while( right <= arr.length -2 ){
 
 
 
