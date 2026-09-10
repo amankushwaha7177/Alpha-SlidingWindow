@@ -25,10 +25,10 @@ public class _2B_More_Better_Using_HashMap____ONLY_If_Index_Is_required {
 
         HashMap<Integer, Integer> m = new HashMap<>();
         for(int i = 0; i<arr.length; i++){
-            int b = k- arr[i];
-            if(m.containsKey(b)){
-                System.out.println(arr[i] + " " + b);
-                System.out.println( i  + " " + m.get(b));
+            int margin = k- arr[i];
+            if(m.containsKey(margin)){
+                System.out.println(arr[i] + " " + margin);
+                System.out.println( i  + " " + m.get(margin));
                 System.out.println("---------");
             }
             m.put(arr[i], i);
