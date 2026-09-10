@@ -45,7 +45,7 @@ public class _3_Optimal_2Pointer_________Usinng_Sorting_ONLY_if_Index_not_needed
             }
         }
         /*
-        T=  o(nlogn + n)
+        T=  o(nlogn + n) =o(nlogn)
         S = o(1)
         */
     }
