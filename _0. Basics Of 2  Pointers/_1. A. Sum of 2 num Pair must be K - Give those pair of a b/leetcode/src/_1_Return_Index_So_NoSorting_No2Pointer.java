@@ -1,11 +1,8 @@
 import java.util.*;
-class _1_Return_Index_So_Sorting_Please {
+class _1_Return_Index_So_NoSorting_No2Pointer {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> m = new HashMap<>();
 
-        for( int i =0; i< nums.length; i++){
-            m.put(nums[i], i);
-        }
 
         for(int i =0; i< nums.length ; i++){
             int k = target - nums[i];
@@ -13,6 +10,7 @@ class _1_Return_Index_So_Sorting_Please {
             if(m.containsKey(k) && i != m.get(k)){
                 return new int[]{i, m.get(k)};
             }
+            m.put(nums[i], i);
         }
         return  new int[]{};
     }
