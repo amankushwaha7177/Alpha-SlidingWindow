@@ -1,7 +1,7 @@
  class _2_Better_Sliding_Window_O_2n____HeavyWhile_Shrink_ToFind_Valid_Window {
     public static void main(String[] args) {
         int k = 14;
-        int[] arr = {2,5,1,10,10};
+        int[] arr = {2,5,1,10,10};  // -> 0
         // int[] arr = {2,5,4,10,10}; --> 2
 
         /* Step 1 : variables analogy for window */
@@ -28,12 +28,6 @@
             if(ws == k){
                 ans = Math.max(ans, r-l+1);
 
-                /* if(r-l+1 > ans)
-                {
-                    x= l;
-                    y=r;
-                    ans = r-l+1;
-                } */
             }
 
             r++;
