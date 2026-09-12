@@ -59,6 +59,7 @@ public class _2_Optimal_O_2n____HeavyWhile_Shrink_ToFind_Valid_Window {
             }
 
             /* Window is now valid, so update maximum length. */
+            if(map.get(current) == 1)
             ans = Math.max(ans, r - l + 1);
 
             r++;
