@@ -63,16 +63,8 @@ public class Main {
                     closestSum = sum;   /* Store the actual triplet sum, not its difference from k. */
                 }
                 if (sum == k) {
-                    break;
-                    /*
-                    System.out.println(arr[i] + " " + a + " " + b);
-                    l++;
-                    r--;
+                    break; // the difference is zero, which is the closest possible
 
-                    ----> Elemenate duplacates in l,r also.
-                    while (arr[l] == arr[l - 1]) l++;
-                    while (arr[r] == arr[r + 1]) r--;
-                    */
                 } else if (sum > k) {
                     r--;
                 } else {
