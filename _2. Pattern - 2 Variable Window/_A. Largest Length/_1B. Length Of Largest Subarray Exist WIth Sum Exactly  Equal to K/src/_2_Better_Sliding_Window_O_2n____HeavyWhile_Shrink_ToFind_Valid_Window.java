@@ -2,6 +2,7 @@
     public static void main(String[] args) {
         int k = 14;
         int[] arr = {2,5,1,10,10};
+        // int[] arr = {2,5,4,10,10}; --> 2
 
         /* Step 1 : variables analogy for window */
         int l=0;
