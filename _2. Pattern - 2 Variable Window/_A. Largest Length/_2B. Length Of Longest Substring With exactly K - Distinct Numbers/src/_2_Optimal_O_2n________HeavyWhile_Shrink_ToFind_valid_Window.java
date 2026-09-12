@@ -1,24 +1,6 @@
 public class _2_Optimal_O_2n________HeavyWhile_Shrink_ToFind_valid_Window {
-    /*
-    Idea :  A. Normal : Generate every possible subarray and check
-                    how many different numbers it contains.
-                T = O(n²)
-
-            B. Optimal : Keep a variable-size window using L and R.
-                       Store number → frequency inside HashMap.
-                       If different numbers become more than K,
-                       shrink from LEFT until exactly K numbers remain.
-                T = O(2n) = O(n)
-                S = O(n) = HashMap can store different numbers.
-    */
-
     public static void main(String[] args) {
         int[] arr = {1, 1, 2, 1, 2, 3};
-
-        /* Step 0 : variables analogy for window :
-                    a. 'l' and 'r' monitor the start and end of the window.
-                    b. 'map' stores number → frequency inside the window.
-                    c. 'ans' stores the maximum valid subarray length. */
 
         int k = 2;
 
@@ -29,54 +11,24 @@ public class _2_Optimal_O_2n________HeavyWhile_Shrink_ToFind_valid_Window {
 
         java.util.HashMap<Integer, Integer> map = new java.util.HashMap<>();
 
-        /*
-         * Step 1 : Move R one by one and add each number into the window.
-         * If different numbers become more than K, the window becomes invalid.
-         */
         while(r < arr.length) {
 
             map.put(arr[r], map.getOrDefault(arr[r], 0) + 1);
 
-            /*
-             * getOrDefault means: Give me the value for this key;
-             * if the key does not exist, give me the provided default value.
-             */
-
-            /*
-             * More than K different numbers means the window is invalid,
-             * so we must shrink from LEFT until exactly K types remain.
-             */
             if(map.size() > k) {
-
-                /*
-                 * If the window is invalid, keep moving L until exactly K
-                 * different numbers remain inside the current window.
-                 */
                 while(map.size() > k) {
 
-                    /*
-                     * The number at L leaves the window, so reduce its frequency
-                     * because one occurrence of that number is leaving the window.
-                     */
                     map.put(arr[l], map.get(arr[l]) - 1);
 
-                    /*
-                     * If frequency becomes zero, this number no longer exists
-                     * anywhere inside the current window, so remove it completely.
-                     */
                     if(map.get(arr[l]) == 0) {
                         map.remove(arr[l]);
                     }
 
-                    /*
-                     * Above we removed the number at L from the active window,
-                     * so only after that operation we move L forward one position.
-                     */
                     l++;
                 }
             }
 
-            /*
+            /* Excluded ws < k condition from atmost case.
              * The window is valid only when it contains exactly K distinct numbers,
              * so compare its current length with the maximum answer found so far.
              */
