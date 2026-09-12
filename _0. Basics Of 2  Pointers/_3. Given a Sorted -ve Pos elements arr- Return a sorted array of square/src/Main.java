@@ -23,7 +23,9 @@ public class Main {
                 k--;
                 r--;
             }
-            else{
+            else{  // --> Thid condition will run for l==r so l*l == r*r
+                   // --> so we can assign l*l or r*r anything in ans
+                   // --> and move any pointer to end the loop.
                 ans[k] = leftSqr;
                 k--;
                 l++;
