@@ -87,7 +87,8 @@ public class _2_Optimal__O_2n_________HeavyWhile_Shrink_ToFind_valid_Window_ {
                 }
             }
 
-            /* Window is valid because it contains at most 2 types. */
+            /* Window is valid because it contains at most 2 types.
+            *  Below will execute for both m.size() < 2 and m.size() == 2*/
 
             ans = Math.max(ans, r - l + 1);
 
