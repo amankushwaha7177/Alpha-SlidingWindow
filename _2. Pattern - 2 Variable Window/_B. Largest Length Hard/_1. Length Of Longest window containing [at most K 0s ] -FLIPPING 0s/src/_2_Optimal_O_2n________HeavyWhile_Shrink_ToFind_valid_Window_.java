@@ -47,7 +47,9 @@ public class _2_Optimal_O_2n________HeavyWhile_Shrink_ToFind_valid_Window_ {
                     l++;
                 }
             }
-
+            /*
+            If code coming here, It means Zeros either 0, 1 that we are allowing.
+             */
             ans = Math.max(ans, r-l+1);
 
             r++;
