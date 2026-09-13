@@ -156,6 +156,7 @@ f. r = 5 → "ADOBEC"   => Map: { A → 1, D → 1, O → 1, B → 1, E → 1, C
              ans = "ADOBEC"
 
              Remove s[l] = A
+                    "DOBEC"
              Map: { A → 0, D → 1, O → 1, B → 1, E → 1, C → 1 }
              formedCount = 2
              l = 1
@@ -195,30 +196,35 @@ k. r = 10 → "DOBECODEBA" => Map: { D → 2, O → 2, B → 2, E → 2, C → 1
 
 
     while : Remove s[l] = D
+                   "OBECODEBA"
              Map: { D → 1, O → 2, B → 2, E → 2, C → 1, A → 1 }
              l = 2
              Window remains valid
 
 
     while : Remove s[l] = O
+                   "BECODEBA"
              Map: { D → 1, O → 1, B → 2, E → 2, C → 1, A → 1 }
              l = 3
              Window remains valid
 
 
     while : Remove s[l] = B
+                  "ECODEBA"
              Map: { D → 1, O → 1, B → 1, E → 2, C → 1, A → 1 }
              l = 4
              Window remains valid
 
 
     while : Remove s[l] = E
+                    "CODEBA"
              Map: { D → 1, O → 1, B → 1, E → 1, C → 1, A → 1 }
              l = 5
              Window remains valid
 
 
     while : Remove s[l] = C
+                   "ODEBA"
              Map: { D → 1, O → 1, B → 1, E → 1, C → 0, A → 1 }
              formedCount = 2
              l = 6
