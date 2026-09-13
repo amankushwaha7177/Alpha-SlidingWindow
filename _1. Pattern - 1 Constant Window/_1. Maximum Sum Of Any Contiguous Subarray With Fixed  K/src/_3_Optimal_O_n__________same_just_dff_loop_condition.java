@@ -15,7 +15,8 @@ public class _3_Optimal_O_n__________same_just_dff_loop_condition {
         System.out.println(windowSum);
 
         int finalAns = windowSum;
-        while( right <= arr.length -1 ){
+        while( right <= arr.length ){
+            windowSum-= arr[left];
             left++;
 
             right++;
