@@ -68,62 +68,9 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 }
 
                 char left = s.charAt(l); // Get the character leaving the window.
-
                 ourMap.put(left, ourMap.get(left) - 1); // Decrease frequency of the left character.
 
-                /*
-                formedCount means: How many requirements are satisfied.
 
-                Example: t = "AABC"
-                Required frequencies: { A → 2, B → 1, C → 1 }
-                requiredCount         = 3 ( because there are 3 different required characters: A, B, and C. )
-
-                Suppose our current window is "AABBC":
-                A → 2  ✓ required frequency reached
-                B → 2  ✓ required frequency reached  ( B can go beyond its target frequency. That is completely allowed.
-                                                       The important thing is that formedCount does not count the number of occurrences. It counts how many requirements are satisfied.
-                                                       It only increases when first time Requirement matches for any char.
-                                                       This condition helps -
-                                                       Using - if( ourMap.get(current).intValue() == required.get(current).intValue()) {
-                                                                        formedCount++; -> If
-                                                                  }
-                C → 1  ✓ required frequency reached
-
-                Therefore:
-                formedCount = 3   | requiredCount = 3 |  The window is VALID.
-                                                         Update ansL, ansR.
-
-                Now suppose L is pointing to the first A on "AABBC", and we remove that A.
-
-                Before removal:
-                ourMap A = 2
-                required A = 2
-
-                After removal:
-                ourMap A = 1
-                required A = 2
-
-                Now:
-                1 < 2
-
-                This means A no longer has its required frequency.
-                Therefore, one required character is no longer satisfied.
-
-                So we decrease:
-                formedCount--
-
-                formedCount changes from 3 to 2.    || we already stored ansL, andR so no need to care formedCount after finding ans.
-                                                    ||
-
-                Now:
-                formedCount = 2
-                requiredCount = 3
-
-                Because 2 != 3, the window is no longer valid.
-
-                The condition below checks exactly this:
-                "After removing left, did a required character fall below its required frequency?"
-                */
                 if(required.containsKey(left) &&
                         ourMap.get(left) < required.get(left)) {
                     formedCount--;
