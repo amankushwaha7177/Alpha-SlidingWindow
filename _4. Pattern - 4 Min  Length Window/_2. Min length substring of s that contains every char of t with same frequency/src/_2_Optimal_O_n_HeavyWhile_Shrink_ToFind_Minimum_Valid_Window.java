@@ -71,6 +71,10 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 ourMap.put(left, ourMap.get(left) - 1); // Decrease frequency of the left character.
 
 
+                /* if removed element is not in t. --> No worry we dont care
+                   But if rmeoved element is in t + its frequency is becoming less as compare to required
+                   Than we need to down formedCount. Simple !
+                 */
                 if(required.containsKey(left) &&
                         ourMap.get(left) < required.get(left)) {
                     formedCount--;
