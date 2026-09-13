@@ -15,7 +15,7 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
     */
 
     public static void main(String[] args) {
-        String s = "ADOBECODEBANC";
+        String s = "AAOBBC";
         String t = "ABC";
 
         HashMap<Character, Integer> required = new HashMap<>();
@@ -74,8 +74,10 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
 
 
                 /* if removed element is not in t. --> No worry we dont care
-                   But if rmeoved element is in t + its frequency is becoming less as compare to required
-                   Than we need to down formedCount. Simple !
+                   But if rmeoved element is in t + its frequency is becoming 2 from 3 -> we dont care
+                                                                              1 from 1 -> we dont care
+                   But if its frequency becoming 0 from 1
+                   Than we need to down formedCount. becasue we need atleast 1 char. Simple !
                  */
                 if(required.containsKey(left) &&
                         ourMap.get(left) < required.get(left)) {
@@ -104,10 +106,8 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
 
 /*
 Dry Run Example :
-
-s = "ADOBECODEBANC"
+s = "AAOBBC"
 t = "ABC"
-===================
 
 Required Map:
 { A → 1, B → 1, C → 1 }
@@ -116,155 +116,106 @@ requiredCount = 3
 formedCount = 0
 l = 0
 
-a. r = 0 → "A"       => Map: { A → 1 }
+a. r = 0 → "A"
+
+    Add A
+    ourMap = { A → 1 }
 
     A requirement satisfied
     formedCount = 1
-    formedCount != requiredCount
+
+    formedCount != 3
     Invalid → Continue R
 
 
-b. r = 1 → "AD"      => Map: { A → 1, D → 1 }
+b. r = 1 → "AA"
 
+    Add A
+    ourMap = { A → 2 }
+
+    A was already satisfied
     formedCount = 1
+
+    formedCount != 3
     Invalid → Continue R
 
 
-c. r = 2 → "ADO"     => Map: { A → 1, D → 1, O → 1 }
+c. r = 2 → "AAO"
 
+    Add O
+    ourMap = { A → 2, O → 1 }
+
+    O is not required
     formedCount = 1
+
+    formedCount != 3
     Invalid → Continue R
 
 
-d. r = 3 → "ADOB"    => Map: { A → 1, D → 1, O → 1, B → 1 }
+d. r = 3 → "AAOB"
+
+    Add B
+    ourMap = { A → 2, O → 1, B → 1 }
 
     B requirement satisfied
     formedCount = 2
+
+    formedCount != 3
     Invalid → Continue R
 
 
-e. r = 4 → "ADOBE"   => Map: { A → 1, D → 1, O → 1, B → 1, E → 1 }
+e. r = 4 → "AAOBB"
 
+    Add B
+    ourMap = { A → 2, O → 1, B → 2 }
+
+    B was already satisfied
     formedCount = 2
+
+    formedCount != 3
     Invalid → Continue R
 
 
-f. r = 5 → "ADOBEC"   => Map: { A → 1, D → 1, O → 1, B → 1, E → 1, C → 1 }
+f. r = 5 → "AAOBBC"
+
+    Add C
+    ourMap = { A → 2, O → 1, B → 2, C → 1 }
 
     C requirement satisfied
     formedCount = 3
+
     formedCount == requiredCount
     Valid → Enter while
 
 
-    while : Window = "ADOBEC"
-             windowLength = 6
-             ans = "ADOBEC"
+    while #1: cause formedCount == requiredCount
+    --------
 
-             Remove s[l] = A
-                    "DOBEC"
-             Map: { A → 0, D → 1, O → 1, B → 1, E → 1, C → 1 }
-             formedCount = 2
-             l = 1
+    Window = "AAOBBC"  -->  Length = 6   |  Update answer:   ans = "AAOBBC"
 
-             Window became invalid → Exit while
+    Remove A from left: "AOBBC"
+    ourMap = { A → 1, O → 1, B → 2, C → 1 }
 
-
-g. r = 6 → "DOBECO"    => Map: { D → 1, O → 2, B → 1, E → 1, C → 1 }
-
-    formedCount = 2
-    Invalid → Continue R
-
-
-h. r = 7 → "DOBECOD"   => Map: { D → 2, O → 2, B → 1, E → 1, C → 1 }
-
-    formedCount = 2
-    Invalid → Continue R
-
-
-i. r = 8 → "DOBECODE"  => Map: { D → 2, O → 2, B → 1, E → 2, C → 1 }
-
-    formedCount = 2
-    Invalid → Continue R
-
-
-j. r = 9 → "DOBECODEB" => Map: { D → 2, O → 2, B → 2, E → 2, C → 1 }
-
-    formedCount = 2
-    Invalid → Continue R
-
-
-k. r = 10 → "DOBECODEBA" => Map: { D → 2, O → 2, B → 2, E → 2, C → 1, A → 1 }
-
-    A requirement satisfied
     formedCount = 3
-    Valid → Enter while
+    A is still present, so window remains valid.
 
 
-    while : Remove s[l] = D
-                   "OBECODEBA"
-             Map: { D → 1, O → 2, B → 2, E → 2, C → 1, A → 1 }
-             l = 2
-             Window remains valid
+    while #2: cause formedCount == requiredCount
+    =========
+
+    Window = "AOBBC"   --> Length = 5   |  Update answer:   ans = "AOBBC"
+
+    Remove A from left: "OBBC"
+    ourMap = { A → 0, O → 1, B → 2, C → 1 }
+
+    A is now completely absent. A was required and:
+    ourMap[A] < required[A]
+
+    Therefore: formedCount = 2
+
+    Window became invalid → Exit while.
 
 
-    while : Remove s[l] = O
-                   "BECODEBA"
-             Map: { D → 1, O → 1, B → 2, E → 2, C → 1, A → 1 }
-             l = 3
-             Window remains valid
-
-
-    while : Remove s[l] = B
-                  "ECODEBA"
-             Map: { D → 1, O → 1, B → 1, E → 2, C → 1, A → 1 }
-             l = 4
-             Window remains valid
-
-
-    while : Remove s[l] = E
-                    "CODEBA"
-             Map: { D → 1, O → 1, B → 1, E → 1, C → 1, A → 1 }
-             l = 5
-             Window remains valid
-
-
-    while : Remove s[l] = C
-                   "ODEBA"
-             Map: { D → 1, O → 1, B → 1, E → 1, C → 0, A → 1 }
-             formedCount = 2
-             l = 6
-             Window became invalid → Exit while
-
-
-l. r = 11 → "ODEBANC" => Map contains A, B, C with required frequencies
-
-    A requirement satisfied
-    formedCount = 3
-    Valid → Enter while
-
-    Shrink L until minimum valid window becomes:
-
-    "BANC"
-
-    Map for "BANC":
-    B → 1
-    A → 1
-    N → 1
-    C → 1
-
-    windowLength = 4
-    ans = "BANC"
-
-
-Final Answer = "BANC"
-Final Length = 4
-
-Important Pattern :
-
-R expands → until all required characters are satisfied.
-formedCount == requiredCount → Valid Window.
-Valid → update minimum answer → move L inside while.
-L keeps moving → until removing a character makes the window invalid.
-Then R continues expanding again.
+    Final Answer = "AOBBC"
+    Final Length = 5
 */
