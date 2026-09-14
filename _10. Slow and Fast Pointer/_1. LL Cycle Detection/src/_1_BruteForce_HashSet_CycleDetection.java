@@ -61,52 +61,42 @@ public class _1_BruteForce_HashSet_CycleDetection {
                 ↓           │
         1 → 2 → 3 → 4 → 5 ──┘
 
-       current = 1
-       set = {}
-
+        current = 1
+        set = {}
         1 not present
-        → add 1
-        → current = 2
-
+            → add 1
+            → current = 2
 
         current = 2
         set = {1}
-
         2 not present
-        → add 2
-        → current = 3
-
+            → add 2
+            → current = 3
 
         current = 3
         set = {1,2}
-
         3 not present
-        → add 3
-        → current = 4
-
+            → add 3
+            → current = 4
 
         current = 4
         set = {1,2,3}
-
         4 not present
-        → add 4
-        → current = 5
-
+            → add 4
+            → current = 5
 
         current = 5
         set = {1,2,3,4}
-
         5 not present
-        → add 5
-        → current = 3
+            → add 5
+            → current = 3
 
 
         current = 3
         set = {1,2,3,4,5}
-
         3 IS already present
-        → Cycle found
-        → return true
+            → Cycle found
+            → return true
 
-
+Ans : true
  */
