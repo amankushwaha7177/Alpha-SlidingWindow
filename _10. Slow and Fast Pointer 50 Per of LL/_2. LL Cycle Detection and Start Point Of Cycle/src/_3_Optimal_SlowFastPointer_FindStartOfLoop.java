@@ -9,6 +9,9 @@ public class _3_Optimal_SlowFastPointer_FindStartOfLoop {
         }
     }
 
+    /*First meeting tells us a cycle exists.
+      Reset one pointer to head, then move both one step; their second meeting gives the loop start.
+     */
     public static Node findLoopStart(Node head) {
         Node slow = head;
         Node fast = head;
@@ -65,3 +68,34 @@ public class _3_Optimal_SlowFastPointer_FindStartOfLoop {
         */
     }
 }
+
+/*
+For our example:
+    1 → 2 → 3 →  4  → 5
+            ↑         ↓
+            └─────────┘
+                s|f
+The first meeting happens at:
+slow = 4
+fast = 4
+
+
+Then:
+slow = head = 1
+fast = 4
+    1 → 2 → 3 →  4  → 5
+    s       ↑    f    ↓
+            └─────────┘
+
+Move both one step:
+slow = 2     fast = 5
+slow = 3     fast = 3
+    1 → 2 → 3 →  4  → 5
+            ↑         ↓
+            └─────────┘
+           s|f
+
+They meet at 3.
+
+3 = Loop Start
+ */
