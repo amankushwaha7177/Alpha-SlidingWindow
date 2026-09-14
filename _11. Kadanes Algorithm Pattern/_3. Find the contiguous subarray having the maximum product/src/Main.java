@@ -26,11 +26,9 @@ public class Main {
             int withPrevMin = currentMin * arr[i];
             int withOutPrev = arr[i];
 
-            currentMax = Math.max(withOutPrev,
-                    Math.max(withPrevMax, withPrevMin));
+            currentMax = Math.max(withOutPrev, Math.max(withPrevMax, withPrevMin));
 
-            currentMin = Math.min(withOutPrev,
-                    Math.min(withPrevMax, withPrevMin));
+            currentMin = Math.min(withOutPrev, Math.min(withPrevMax, withPrevMin));
 
             maxProduct = Math.max(maxProduct, currentMax);
         }
@@ -103,4 +101,59 @@ For Product:
 Reason:
 A negative number can convert a previous minimum product
 into the new maximum product after multiplication.
+*/
+
+
+/*
+Dry Run : arr = {-2, 3, -4}
+
+Initial:
+currentMax = -2
+currentMin = -2
+maxProduct = -2
+
+Step 1: arr[i] = 3
+
+    withPrevMax = -2 × 3 = -6
+    withPrevMin = -2 × 3 = -6
+    withOutPrev = 3
+
+    currentMax = max( 3, -6, -6)  =  3
+    currentMin = min( 3, -6, -6,) = -6
+    maxProduct = max( 3, -2)      =  3
+
+Now:
+currentMax = 3
+currentMin = -6
+maxProduct = 3
+
+
+Step 2: arr[i] = -4
+
+    withPrevMax =  3 × -4 = -12
+    withPrevMin = -6 × -4 =  24
+    withOutPrev = -4
+
+    currentMax = max(-4, -12, 24) = 24
+    currentMin = min(-4, -12, 24) = -12
+    maxProduct = max(3, 24) = 24
+
+Now:
+currentMax = 24
+currentMin = -12
+maxProduct = 24
+
+Maximum Product Subarray:
+[-2, 3, -4]
+
+Product:
+-2 × 3 × -4 = 24
+
+Answer = 24
+
+Important:
+-6 × -4 = 24
+
+Previous minimum became the new maximum because
+multiplying a negative number by another negative number produces a positive number.
 */
