@@ -26,7 +26,7 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
 
             required.put(current, required.getOrDefault(current, 0) + 1); // Store required frequency.
         }
-        // required = { A → 1, B → 1, C → 1 }
+        // required = { A → 1, B → 1, C → 2}
 
         int requiredChars = required.size(); // Store number of distinct characters required.
         int formedChars = 0; // Track how many required characters currently satisfy their frequency.
