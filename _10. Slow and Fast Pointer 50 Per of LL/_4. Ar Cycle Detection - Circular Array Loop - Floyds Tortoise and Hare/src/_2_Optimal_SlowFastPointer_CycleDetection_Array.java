@@ -3,7 +3,10 @@ public class _2_Optimal_SlowFastPointer_CycleDetection_Array {
         int slow = 0;
         int fast = 0;
 
-        while(true) {
+        while(true) {  // while(fast < a.length ) -> Also fine ! It will always give true
+                       // cause fast will never cross 0 to n-1 range
+                       // same like LL it never reaches null so (fast != null && fast.next != null) always gives true.
+                       // cause fast will never reaches null.
             slow = a[slow];
 
             fast = a[fast];

@@ -1,5 +1,4 @@
-public class Main {
-}
+class Main {}
 /*
 Q. Why do we use while(true) for Array Cycle Detection
    but while(fast != null && fast.next != null) for Linked List?
@@ -34,40 +33,65 @@ B. Array:
     0 → 1 → 3 → 2 → 4 → 2 → 4 → 2 → ...
 
     An array does not have null after the last index.
-    Once we enter a cycle, the pointers can keep moving forever.
 
-    Therefore, when a cycle is guaranteed, we can use:
+    Therefore, if a cycle is guaranteed by the problem,
+    we can use:
+
     while(true)
 
-    It means:  Keep moving the pointers until the condition we care about happens.
+    It means:
+    Keep moving the pointers until slow and fast meet.
 
-    The condition we care about is:
-    if(slow == fast)
+    if(slow == fast) {
+        break;
+    }
+
+    slow == fast
+    → Cycle found
+
+
+C. BUT WHAT IF THE ARRAY DOES NOT HAVE A CYCLE?
+
+    This is the important point.
+
+    If a cycle is NOT guaranteed, then:
+
+    while(true)
+
+    is dangerous because there is no natural stopping condition.
+
+    The loop could continue forever.
+
+    Example:
+
+    0 → 1 → 2 → 3 → ...
+
+    If there is no cycle and no boundary check,
+    there is nothing that tells while(true) to stop.
 
     Therefore:
 
-    slow == fast
-    → Cycle Found
-    → break the infinite loop
+    Cycle guaranteed:
+    → while(true) is acceptable.
+
+    Cycle NOT guaranteed:
+    → We need an additional stopping condition.
 
 
 Simple Mental Rule:
 
 Linked List:
 Has null
-→ Use null as stopping condition.
+→ null can tell us that no cycle exists.
 
 Array:
-No null
-→ If cycle is guaranteed, keep moving until slow == fast.
+Has no null
+→ If cycle is guaranteed, use while(true) and stop when slow == fast.
 
-
-Important:
-----------
-while(true) does NOT mean the algorithm should always run forever.
-
-It means we intentionally create an infinite loop and use break
-when the required stopping condition is reached.
+Array:
+Cycle is NOT guaranteed
+→ while(true) alone is NOT safe.
+→ We need boundary/validity checks.
 
 
 Linked List:
@@ -82,7 +106,7 @@ while(fast != null && fast.next != null) {
 }
 
 
-Array:
+Array when cycle is guaranteed:
 
 while(true) {
     slow = a[slow];
@@ -98,6 +122,14 @@ while(true) {
 
 Main Difference:
 
-Linked List → fast can reach null.
-Array → there is no null, so we stop when slow and fast meet.
+Linked List → fast can reach null, so null gives us a stopping condition.
+
+Array → there is no null, so while(true) is safe only when a cycle is guaranteed.
+
+IMPORTANT:
+while(true) does NOT itself detect a cycle.
+
+It only keeps the pointers moving.
+
+slow == fast is what tells us that the cycle has been found.
 */
