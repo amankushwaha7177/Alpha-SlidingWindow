@@ -103,7 +103,6 @@ Step 3:
     slow = 2
     fast = 4
 
-
 Step 4:
     slow: 2 → 4
     fast: 4 → 2 → 4
@@ -121,38 +120,36 @@ First Meeting Point = 4
 Now find the Cycle Start:
 
 Reset only slow:
-
 slow = 0
 fast = 4
+
+value:  1   3   4   2   2
+index:  0   1   2   3   4
 
 Now both move one step at a time.
 
 
 Step 1:
+    slow: 0 → 1
+    fast: 4 → 2
 
-slow: 0 → 1
-fast: 4 → 2
-
-slow = 1
-fast = 2
-
+    slow = 1
+    fast = 2
 
 Step 2:
+    slow: 1 → 3
+    fast: 2 → 4
 
-slow: 1 → 3
-fast: 2 → 4
-
-slow = 3
-fast = 4
+    slow = 3
+    fast = 4
 
 
 Step 3:
+    slow: 3 → 2
+    fast: 4 → 2
 
-slow: 3 → 2
-fast: 4 → 2
-
-slow = 2
-fast = 2
+    slow = 2
+    fast = 2
 
 They meet again at 2.
 
