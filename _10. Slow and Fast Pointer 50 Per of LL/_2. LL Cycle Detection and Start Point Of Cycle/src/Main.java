@@ -41,7 +41,8 @@ HEAD ───────→ LOOP START ───────→ MEETING
 
 
 Because Fast moves twice as fast:
-a + b + L = 2(a + b)
+a + b + L = 2(a + b)    |  If Slow walks 10 meters | and Fast is moving 2× faster, then: Fast walks 20 meters
+                        |  So Fast Distance = 2 × Slow Distance
 a + b + L = 2a + 2b
 
 Therefore:
