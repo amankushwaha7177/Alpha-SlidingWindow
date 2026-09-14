@@ -49,6 +49,9 @@ public class _1_Optimal_SlowFastPointer_MiddleOfLinkedList {
 }
 
 /*
+Reason: LFast moves twice as fast as Slow, so when Fast reaches the end,
+        Slow has travelled only half the distance.
+
 Example: 1 → 2 → 3 → 4 → 5 → null
 Answer: 3
 
