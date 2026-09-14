@@ -15,8 +15,8 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
     */
 
     public static void main(String[] args) {
-        String s = "ADOBCA";
-        String t = "ABC";
+        String s = "AAOBCC";
+        String t = "ABCC";
 
         HashMap<Character, Integer> required = new HashMap<>();
         HashMap<Character, Integer> ourMap = new HashMap<>();
