@@ -56,13 +56,15 @@ But bestStart and bestEnd must remember the previous
 best subarray even after the current subarray changes.
  */
 
-/*
-arr = {-2, 3, -1, 2, -10, 5}
-start =0
-bestStart = 0
-bestEnd = 0
 
-Step 1 : i = 1
+/*
+Example:
+
+arr = {-2, 3, -1, 2, 1, -10, 5}
+
+
+Step 1:
+i = 1
 
                 3
                 |
@@ -74,18 +76,19 @@ Step 1 : i = 1
         └────────┬──────────┘
                  ▼
         Choose Maximum → 3 ✓
+                       → New Subarray starts at [ 3
+                       → start = 1
+                       → currentSum = 3
 
-currentSum = 3
-start = 1
-
-3 > ans
-→ New Best
+Since 3 is the maximum sum:
+update ans and main poiters
 
 bestStart = 1
 bestEnd = 1
 
 
-Step 2 : i = 2
+Step 2:
+i = 2
 
                -1
                 |
@@ -97,18 +100,17 @@ Step 2 : i = 2
         └────────┬──────────┘
                  ▼
         Choose Maximum → 2 ✓
+                       → Continue Previous Subarray [ 3, -1
+                       → currentSum = 2
 
-currentSum = 2
-start = 1
-
-2 < ans
-→ No New Best
+No new maximum:
 
 bestStart = 1
 bestEnd = 1
 
 
-Step 3 : i = 3
+Step 3:
+i = 3
 
                 2
                 |
@@ -120,59 +122,108 @@ Step 3 : i = 3
         └────────┬──────────┘
                  ▼
         Choose Maximum → 4 ✓
+                       → Continue Previous Subarray [ 3, -1, 2
+                       → currentSum = 4
 
-currentSum = 4
-start = 1
-
-4 > ans
-→ New Best
+Since 4 is the maximum sum:
 
 bestStart = start = 1
 bestEnd = i = 3
 
-Best Subarray:
-[3, -1, 2]
- ↑         ↑
-bestStart bestEnd
+
+Step 4:
+i = 4
+
+                1
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue           Start Fresh
+    4 + 1 = 5              1
+        |                   |
+        └────────┬──────────┘
+                 ▼
+        Choose Maximum → 5 ✓
+                       → Continue Previous Subarray [ 3, -1, 2, 1
+                       → currentSum = 5
+
+Since 5 is the maximum sum:
+
+bestStart = start = 1
+bestEnd = i = 4
 
 
-Step 4 : i = 4
+Step 5:
+i = 5
 
-               -10
+              -10
                 |
         ┌───────┴────────┐
         ▼                ▼
     Continue           Start Fresh
-    4 + (-10) = -6        -10
+    5 + (-10) = -5        -10
         |                  |
         └────────┬─────────┘
                  ▼
-        Choose Maximum → -6 ✓
+        Choose Maximum → -5 ✓
+                       → Continue Previous Subarray
+                       → currentSum = -5
 
-currentSum = -6
-start = 1
-
--6 < ans
-→ No New Best
-
-Best Subarray is still:
-[3, -1, 2]
+No new maximum:
 
 bestStart = 1
-bestEnd = 3
+bestEnd = 4
+
+
+Step 6:
+i = 6
+
+                5
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue           Start Fresh
+    -5 + 5 = 0             5
+        |                   |
+        └────────┬──────────┘
+                 ▼
+        Choose Maximum → 5 ✓
+                       → Start Fresh
+                       → start = 6
+                       → currentSum = 5
+
+5 is equal to the previous maximum 5:
+
+bestStart = 1
+bestEnd = 4
+
+
+Therefore:
+
+Maximum Subarray = [3, -1, 2, 1]
+Maximum Sum = 5
 
 
 Important:
 
-start
-→ Current Subarray Start
+At Step 6:
 
-bestStart
-→ Best Subarray Start
+Continue → -5 + 5 = 0
+Start Fresh → 5
 
-bestEnd
-→ Best Subarray End
+So we choose Start Fresh.
 
-start can change when we choose Start Fresh,
-but bestStart and bestEnd only change when we find a New Best.
+However, the new sum 5 is equal to the previous best 5,
+so the best subarray is not replaced because the condition is >.
+
+Therefore:
+
+Current Subarray:
+[5]
+start = 6
+
+Best Subarray:
+[3, -1, 2, 1]
+bestStart = 1
+bestEnd = 4
 */
