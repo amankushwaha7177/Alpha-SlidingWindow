@@ -22,14 +22,15 @@ public class Position {
 
             if(withOutPrev > withPrev) {
                 currentSum = withOutPrev;
-                start = i;
+                start = i; // new start only when you start a new subarray after
+                           // discarding previous subarray
             } else {
                 currentSum = withPrev;
             }
 
             if(currentSum > ans) {
                 ans = currentSum;
-                bestStart = start;
+                bestStart = start;  // update both real ends when you get best answer.
                 bestEnd = i;
             }
         }

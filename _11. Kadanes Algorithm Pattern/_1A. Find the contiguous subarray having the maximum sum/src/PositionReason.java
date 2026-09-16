@@ -58,7 +58,9 @@ best subarray even after the current subarray changes.
 
 /*
 arr = {-2, 3, -1, 2, -10, 5}
-
+start =0
+bestStart = 0
+bestEnd = 0
 
 Step 1 : i = 1
 
