@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] arr = {-2, 3, -1, 2};
 
         int minSum = findMinimumSubarraySum(arr);
 
@@ -49,15 +49,41 @@ minSum = Math.min(minSum, currentSum);
 
 Example:
 
-arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+arr = {-2, 3, -1, 2}
+
+Step 1:
+    currentSum = -2
+    minSum = -2
+
+Step 2: arr[i] = 3
+    withPrev = -2 + 3 = 1
+    withOutPrev = 3
+
+    currentSum = min(1, 3) = 1
+    minSum = min(-2, 1) = -2
+
+Step 3: arr[i] = -1
+    withPrev = 1 + (-1) = 0
+    withOutPrev = -1
+
+    currentSum = min(0, -1) = -1
+    minSum = min(-2, -1) = -2
+
+Step 4: arr[i] = 2
+    withPrev = -1 + 2 = 1
+    withOutPrev = 2
+
+    currentSum = min(1, 2) = 1
+    minSum = min(-2, 1) = -2
 
 Minimum Subarray:
 
-[-2, 1, -3]
+[-2]
 
 Sum:
 
--2 + 1 + (-3) = -4
+-2
 
-Answer = -4
+Answer = -2
+
 */

@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] arr = {-2, 3, -1, 2};
 
         int maxSum = findMaximumSubarraySum(arr);
 
@@ -49,15 +49,39 @@ maxSum = Math.max(maxSum, currentSum);
 
 Example:
 
-arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4}
+arr = {-2, 3, -1, 2}
+
+Step 1:
+    currentSum = -2
+    maxSum = -2
+
+Step 2: arr[i] = 3
+    withPrev = -2 + 3 = 1
+    withOutPrev = 3
+
+    currentSum = max(1, 3) = 3
+    maxSum = max(-2, 3) = 3
+
+Step 3: arr[i] = -1
+    withPrev = 3 + (-1) = 2
+    withOutPrev = -1
+
+    currentSum = max(2, -1) = 2
+    maxSum = max(3, 2) = 3
+
+Step 4: arr[i] = 2
+    withPrev = 2 + 2 = 4
+    withOutPrev = 2
+
+    currentSum = max(4, 2) = 4
+    maxSum = max(3, 4) = 4
 
 Maximum Subarray:
 
-[4, -1, 2, 1]
+[3, -1, 2]
 
 Sum:
 
-4 + (-1) + 2 + 1 = 6
+3 + (-1) + 2 = 4
 
-Answer = 6
-*/
+Answer = 4*/
