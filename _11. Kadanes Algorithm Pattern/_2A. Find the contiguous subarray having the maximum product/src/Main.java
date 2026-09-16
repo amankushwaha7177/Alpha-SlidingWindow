@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {2, 3, -2, 4};
+        int[] arr = {2, -3, 2, -4};
 
         int maxProduct = findMaximumProductSubarray(arr);
 
@@ -103,57 +103,95 @@ A negative number can convert a previous minimum product
 into the new maximum product after multiplication.
 */
 
-
 /*
-Dry Run : arr = {-2, 3, -4}
+Intuition : Every element gives us THREE arrows for Product.
 
-Initial:
-currentMax = -2
-currentMin = -2
-maxProduct = -2
+Example:
+arr = {2, -3, 2, -4}
 
-Step 1: arr[i] = 3
+For every arr[i], we ask:
 
-    withPrevMax = -2 × 3 = -6
-    withPrevMin = -2 × 3 = -6
-    withOutPrev = 3
+                         arr[i]
+                            |
+             ┌──────────────┼──────────────┐
+             │              │              │
+             ▼              ▼              ▼
 
-    currentMax = max( 3, -6, -6)  =  3
-    currentMin = min( 3, -6, -6,) = -6
-    maxProduct = max( 3, -2)      =  3
+       Continue Max    Continue Min    Start Fresh
 
-Now:
-currentMax = 3
-currentMin = -6
-maxProduct = 3
+        withPrevMax     withPrevMin     withOutPrev
+
+       currentMax×arr[i] currentMin×arr[i]    arr[i]
+
+We choose the maximum arrow for currentMax
+and the minimum arrow for currentMin.
+
+Step 1 : i = 1
+                  -3
+                   |
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+      Prev Max  Prev Min  Start
+       2×-3       2×-3      -3
+        -6         -6       -3
+
+Choose Maximum → -3 ✓  -> currentMax = -3
+Choose Minimum → -6 ✓  -> currentMin = -6
+ans = max(2, -3) = 2
 
 
-Step 2: arr[i] = -4
+Step 2 : i = 2
+                   2
+                   |
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+      Prev Max  Prev Min  Start
+      -3×2       -6×2       2
+       -6        -12        2
 
-    withPrevMax =  3 × -4 = -12
-    withPrevMin = -6 × -4 =  24
-    withOutPrev = -4
+Choose Maximum → 2 ✓  -> currentMax = 2
+Choose Minimum → -12 ✓ -> currentMin = -12
+ans = max(2, 2) = 2
 
-    currentMax = max(-4, -12, 24) = 24
-    currentMin = min(-4, -12, 24) = -12
-    maxProduct = max(3, 24) = 24
 
-Now:
-currentMax = 24
-currentMin = -12
-maxProduct = 24
+Step 3 : i = 3
+                  -4
+                   |
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+      Prev Max  Prev Min  Start
+       2×-4      -12×-4      -4
+        -8          48       -4
+
+Choose Maximum → 48 ✓  -> currentMax = 48
+Choose Minimum → -8 ✓  -> currentMin = -8
+ans = max(2, 48) = 48
+
 
 Maximum Product Subarray:
-[-2, 3, -4]
+
+[2, -3, 2, -4]
 
 Product:
--2 × 3 × -4 = 24
 
-Answer = 24
+2 × -3 × 2 × -4 = 48
+
+Answer = 48
+
 
 Important:
--6 × -4 = 24
 
-Previous minimum became the new maximum because
-multiplying a negative number by another negative number produces a positive number.
+For Sum:
+→ TWO arrows
+→ Continue Previous OR Start Fresh
+
+For Product:
+→ THREE arrows
+→ Continue Previous Maximum
+→ Continue Previous Minimum
+→ Start Fresh
+
+Reason:
+A negative number can convert the previous minimum
+into the new maximum after multiplication.
 */

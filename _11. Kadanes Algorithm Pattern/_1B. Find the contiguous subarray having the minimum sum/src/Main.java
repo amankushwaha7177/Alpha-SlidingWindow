@@ -46,35 +46,64 @@ Then keep the smallest sum found so far:
 
 minSum = Math.min(minSum, currentSum);
 
+*/
+
+
+/*
+Intuition : Every element gives us TWO arrows.
 
 Example:
-
 arr = {-2, 3, -1, 2}
 
-Step 1:
-    currentSum = -2
-    minSum = -2
+For every arr[i], we ask:
 
-Step 2: arr[i] = 3
-    withPrev = -2 + 3 = 1
-    withOutPrev = 3
+                    arr[i]
+                       |
+          ┌────────────┴────────────┐
+          │                         │
+          ▼                         ▼
+  Continue Previous subarray     Start Fresh subarray
 
-    currentSum = min(1, 3) = 1
-    minSum = min(-2, 1) = -2
+   withPrev                        withOutPrev
+   currentSum + arr[i]               arr[i]
 
-Step 3: arr[i] = -1
-    withPrev = 1 + (-1) = 0
-    withOutPrev = -1
+We simply choose the smaller arrow.
 
-    currentSum = min(0, -1) = -1
-    minSum = min(-2, -1) = -2
+Step 1 : i = 1
+                3
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue          Start
+    -2 + 3 = 1        3
 
-Step 4: arr[i] = 2
-    withPrev = -1 + 2 = 1
-    withOutPrev = 2
+    Choose Minimum → 1 ✓  -> currentSum = 1
+                             ans = no update -2
 
-    currentSum = min(1, 2) = 1
-    minSum = min(-2, 1) = -2
+
+Step 2 : i = 2
+               -1
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue          Start
+    1 + (-1) = 0      -1
+
+    Choose Minimum → -1 ✓  -> currentSum = -1
+                               ans = -2
+
+
+Step 3 : i = 3
+                2
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue          Start
+    -1 + 2 = 1         2
+
+    Choose Minimum → 1 ✓  -> currentSum = 1
+                              ans = -2
+
 
 Minimum Subarray:
 
@@ -85,5 +114,4 @@ Sum:
 -2
 
 Answer = -2
-
 */

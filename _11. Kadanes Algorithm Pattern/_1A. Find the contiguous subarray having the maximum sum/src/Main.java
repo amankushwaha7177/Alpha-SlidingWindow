@@ -3,32 +3,32 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = {-2, 3, -1, 2};
 
-        int maxSum = findMaximumSubarraySum(arr);
+        int ans = findMaximumSubarraySum(arr);
 
-        System.out.println("Maximum Subarray Sum = " + maxSum);
+        System.out.println("Maximum Subarray Sum = " + ans);
 
         /*
         Time = O(n)
         Reason : We traverse the array only once while maintaining the current and maximum sums.
 
         Space = O(1)
-        Reason : Only currentSum and maxSum variables are used without storing the subarray.
+        Reason : Only currentSum and ans variables are used without storing the subarray.
         */
     }
 
     static int findMaximumSubarraySum(int[] arr) {
         int currentSum = arr[0];
-        int maxSum = arr[0];
+        int ans = arr[0];
 
         for(int i = 1; i < arr.length; i++) {
             int withPrev = currentSum + arr[i];
             int withOutPrev = arr[i];
 
             currentSum = Math.max(withPrev, withOutPrev);
-            maxSum = Math.max(maxSum, currentSum);
+            ans = Math.max(ans, currentSum);
         }
 
-        return maxSum;
+        return ans;
     }
 }
 
@@ -44,44 +44,71 @@ currentSum = Math.max(withPrev, withOutPrev);
 
 Then keep the best sum found so far:
 
-maxSum = Math.max(maxSum, currentSum);
+ans = Math.max(ans, currentSum);
 
+*/
 
+/*
+Intuition : Every element gives us TWO arrows.
 Example:
-
 arr = {-2, 3, -1, 2}
 
-Step 1:
-    currentSum = -2
-    maxSum = -2
+For every arr[i], we ask:
 
-Step 2: arr[i] = 3
-    withPrev = -2 + 3 = 1
-    withOutPrev = 3
+                    arr[i]
+                       |
+          ┌────────────┴────────────┐
+          │                         │
+          ▼                         ▼
+  Continue Previous subarray     Start Fresh subarray
 
-    currentSum = max(1, 3) = 3
-    maxSum = max(-2, 3) = 3
+   withPrev                        withOutPrev
+   currentSum + arr[i]               arr[i]
 
-Step 3: arr[i] = -1
-    withPrev = 3 + (-1) = 2
-    withOutPrev = -1
+We simply choose the better arrow.
 
-    currentSum = max(2, -1) = 2
-    maxSum = max(3, 2) = 3
+Step 1 : i = 1
+                3
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue               Start
+    -2 + 3 = 1             3                  Choose Maximum → 3 ✓  -> currentSum = 3
+                                              ans = 3
 
-Step 4: arr[i] = 2
-    withPrev = 2 + 2 = 4
-    withOutPrev = 2
+Step 2 : i = 2
+               -1
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue               Start
+    3 + (-1) = 2           -1                Choose Maximum → 2 ✓  -> currentSum = 2
+                                             ans = no update 3
 
-    currentSum = max(4, 2) = 4
-    maxSum = max(3, 4) = 4
+Step 3 : i = 3
+                2
+                |
+        ┌───────┴───────┐
+        ▼               ▼
+    Continue               Start
+    2 + 2 = 4              2                Choose Maximum → 4 ✓  -> currentSum = 4
+                                            ans = 4
 
-Maximum Subarray:
 
-[3, -1, 2]
+*/
 
-Sum:
+/*
+Mental Rule:
 
-3 + (-1) + 2 = 4
+Every element has TWO choices:
 
-Answer = 4*/
+        Continue Previous sunarray
+                OR
+          Start Fresh subarray
+
+
+For Maximum Sum:   currentSum = Math.max(withPrev, withOutPrev)
+For Minimum Sum:   currentSum = Math.min(withPrev, withOutPrev)
+
+Kadane = At every element, choose the better arrow.
+*/
