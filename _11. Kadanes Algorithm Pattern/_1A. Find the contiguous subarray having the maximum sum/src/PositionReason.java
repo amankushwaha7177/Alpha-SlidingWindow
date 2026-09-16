@@ -54,27 +54,6 @@ start can change later when Kadane starts a new subarray.
 
 But bestStart and bestEnd must remember the previous
 best subarray even after the current subarray changes.
-
-
-Therefore:
-
-start
-→ What am I currently building?
-
-bestStart + bestEnd
-→ What was the best subarray I found so far?
-
-
-It is NOT two-pointer logic.
-
-It is simply:
-
-One current start
-+
-One saved best start
-+
-One saved best end
-
  */
 
 /*
