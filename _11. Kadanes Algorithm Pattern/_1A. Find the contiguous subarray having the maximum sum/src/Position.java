@@ -20,17 +20,20 @@ public class Position {
             int withPrev = currentSum + arr[i];
             int withOutPrev = arr[i];
 
-            if(withOutPrev > withPrev) {
+            if(withPrev < withOutPrev) {
                 currentSum = withOutPrev;
-                start = i; // new start only when you start a new subarray after
+                start = i; // if previous subarray is making smaller sum
                            // discarding previous subarray
-            } else {
+                           // start new subarray.
+            }
+            else {         // if previous subarray is making bigger sum
+                           // continue with it
                 currentSum = withPrev;
             }
 
             if(currentSum > ans) {
                 ans = currentSum;
-                bestStart = start;  // update both real ends when you get best answer.
+                bestStart = start;  // update both real ends only when you get best answer.
                 bestEnd = i;
             }
         }
