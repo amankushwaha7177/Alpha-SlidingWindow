@@ -34,20 +34,14 @@ public class Main {
 
 /*
 Q. Given an integer array, find the contiguous subarray having the minimum sum.
+A. At every element, decide whether
+   a. to continue the previous subarray
+   b. or throw away the previous sum and subarray and start a new subarray from current element.
 
-Brain:
+    currentSum = Math.min(withPrev, withOutPrev);
 
-At every element, decide whether to continue the previous subarray
-or throw away the previous sum and start a new subarray from current element.
-
-currentSum = Math.min(withPrev, withOutPrev);
-
-Then keep the smallest sum found so far:
-
-minSum = Math.min(minSum, currentSum);
-
+    Then keep the best sum found so far: minSum = Math.min(minSum, currentSum);
 */
-
 
 /*
 Intuition : Every element gives us TWO arrows.
@@ -69,40 +63,56 @@ For every arr[i], we ask:
 
 We simply choose the smaller arrow.
 
+
 Step 1 : i = 1
+
                 3
                 |
         ┌───────┴───────┐
         ▼               ▼
-    Continue          Start
-    -2 + 3 = 1        3
-
-    Choose Minimum → 1 ✓  -> currentSum = 1
-                             ans = no update -2
+    Continue           Start
+    -2 + 3 = 1             3
+        |                   |
+        └────────┬──────────┘
+                 ▼
+        Choose Minimum → 1 ✓
+                       → Continue [-2, 3]
+                       → currentSum = 1
+                       → minSum = -2
 
 
 Step 2 : i = 2
+
                -1
                 |
         ┌───────┴───────┐
         ▼               ▼
-    Continue          Start
-    1 + (-1) = 0      -1
-
-    Choose Minimum → -1 ✓  -> currentSum = -1
-                               ans = -2
+    Continue           Start
+    1 + (-1) = 0          -1
+        |                   |
+        └────────┬──────────┘
+                 ▼
+        Choose Minimum → -1 ✓
+                       → Start Fresh [-1]
+                       → currentSum = -1
+                       → minSum = -2
 
 
 Step 3 : i = 3
+
                 2
                 |
         ┌───────┴───────┐
         ▼               ▼
-    Continue          Start
-    -1 + 2 = 1         2
-
-    Choose Minimum → 1 ✓  -> currentSum = 1
-                              ans = -2
+    Continue           Start
+    -1 + 2 = 1             2
+        |                   |
+        └────────┬──────────┘
+                 ▼
+        Choose Minimum → 1 ✓
+                       → Continue [-1, 2]
+                       → currentSum = 1
+                       → minSum = -2
 
 
 Minimum Subarray:
@@ -114,4 +124,28 @@ Sum:
 -2
 
 Answer = -2
+*/
+
+
+/*
+Mental Rule:
+
+Every element has TWO choices:
+
+        Continue Previous subarray
+                OR
+          Start Fresh subarray
+
+
+For Maximum Sum:
+
+currentSum = Math.max(withPrev, withOutPrev)
+
+
+For Minimum Sum:
+
+currentSum = Math.min(withPrev, withOutPrev)
+
+
+Kadane = At every element, choose the better arrow.
 */
