@@ -1,4 +1,6 @@
 public class Main {
+    /* In all our questions we will consider prefix[i] as  prefix[0 to i-1] + ar[i]
+       some people dont include ar[i] in prefix of i*/
     public static void main(String[] args) {
         int[] arr = {1, 7, 3, 6, 5, 6};
 
