@@ -1,4 +1,4 @@
-public class Optimal_EasyCondition {
+public class _2_Optimal_EasyCondition {
     public static void main(String[] args) {
         int[] arr = {1, 7, 3, 6, 5, 6};
 
