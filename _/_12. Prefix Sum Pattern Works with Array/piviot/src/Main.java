@@ -16,19 +16,16 @@ public class Main {
         }
 
         /*
-        Start from index 0 because index 0 can also be the pivot.
-        Before checking index i, left contains everything before index i.
+        Start from index 1 because index 0 has no elements on its left.
         */
         int left = 0;
 
         for(int i = 0; i < arr.length; i++) {
-
-            /*
-                 --------------   i   --------------
-                     left        arr[i]       right
-
-                 <--------------- Sum -------------->
-            */
+            if( i == 0){      // 0th element will never have anything on left so consider left sum =0
+                left = 0;     // Exception is to make 0 as sum of 0th element left.
+            }else {
+                left += arr[i - 1];
+            }
 
             /*
             Remove the current element and the complete left sum from total sum
@@ -36,24 +33,18 @@ public class Main {
             */
             int right = sum - arr[i] - left;
 
+            /* Total sum = [<------left sum---->  arr[i]  <-------right sum-------->] */
+
             /* If both sides have equal sums, the current index is the pivot. */
             if(left == right) {
                 return i;
             }
-
-            /*
-            Current element becomes part of the left side
-            when we move to the next index.
-            */
-            left += arr[i];
         }
 
         /* Return -1 when no index has equal left and right sums. */
         return -1;
     }
 }
-
-
 /*
 Dry Run:
 
@@ -67,21 +58,19 @@ Step 1 : i = 0
 
         left = 0
 
-        right = 28 - arr[0] - left
+        right = 28 - arr[0] - 0
               = 28 - 1 - 0
               = 27
 
         0 != 27
                 ↓
-        left += arr[0]
-        left = 1
-                ↓
-        Move ahead
+        Move to index 1
 
 
 Step 2 : i = 1
 
-        left = 1
+        left = 0 + arr[0]
+             = 1
 
         right = 28 - arr[1] - left
               = 28 - 7 - 1
@@ -89,15 +78,14 @@ Step 2 : i = 1
 
         1 != 20
                 ↓
-        left += arr[1]
-        left = 8
-                ↓
         Move ahead
 
 
 Step 3 : i = 2
 
-        left = 8
+        left = 1 + arr[1]
+             = 1 + 7
+             = 8
 
         right = 28 - arr[2] - left
               = 28 - 3 - 8
@@ -105,15 +93,14 @@ Step 3 : i = 2
 
         8 != 17
                 ↓
-        left += arr[2]
-        left = 11
-                ↓
         Move ahead
 
 
 Step 4 : i = 3
 
-        left = 11
+        left = 8 + arr[2]
+             = 8 + 3
+             = 11
 
         right = 28 - arr[3] - left
               = 28 - 6 - 11
@@ -131,13 +118,14 @@ Edge Case:
 arr = [2, 1, -1]
 
 total sum = 2
+left = 0
 
 
 Step 1 : i = 0
 
         left = 0
 
-        right = 2 - arr[0] - left
+        right = 2 - arr[0] - 0
               = 2 - 2 - 0
               = 0
 
