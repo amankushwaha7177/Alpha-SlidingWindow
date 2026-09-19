@@ -106,6 +106,8 @@ circularMax = totalSum - minSum
 
 
 But 0 means choosing an empty subarray, which is not allowed.
+ans = max(cicularMax , maxSUm)
+    = (0, -2) -----------------> Incorrect
 
 So we return maxSum directly.
 
@@ -147,22 +149,7 @@ A. Exactly — mathematically, 0 > -2, but 0 is not a valid subarray sum here
 
         If every element is negative, the best valid subarray is simply
         the largest single negative element.
-
-
-        Mental Rule:
-
-        All Negative
-             ↓
-        Circular formula gives 0
-             ↓
-        0 = Empty Subarray ❌
-             ↓
-        Return normal Kadane maximum
-
-        So for {-3,-2,-5}:
-
-        normalMax = -2
-        circularMax = 0 ❌
-
-        Answer = -2
 */
+
+
+
