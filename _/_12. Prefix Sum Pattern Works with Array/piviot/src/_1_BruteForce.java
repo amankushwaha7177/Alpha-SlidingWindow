@@ -14,6 +14,7 @@ public class _1_BruteForce {
 
         /* Store cumulative sum from index 0 up to every index. */
         prefix[0] = arr[0]; // prefix = [ 1, ...... ]
+        /* Prefix at index 1 is far easy to calculate as compare to 0. */
 
         for(int i = 1; i < n; i++) {
             prefix[i] = prefix[i - 1] + arr[i];
