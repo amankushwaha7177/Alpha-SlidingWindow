@@ -32,7 +32,8 @@ public class Main {
 
         /*
         If all elements are negative, totalSum - minSum becomes zero,
-        which represents an empty subarray and is not allowed.
+        because totalSum and minSum will be same.
+        0 - which represents an empty subarray and is not allowed.
         */
         if(maxSum < 0) {
             return maxSum;
@@ -107,7 +108,7 @@ circularMax = totalSum - minSum
 
 But 0 means choosing an empty subarray, which is not allowed.
 ans = max(cicularMax , maxSUm)
-    = (0, -2) -----------------> Incorrect
+    = (0, -2) = 0 -----------------> Incorrect
 
 So we return maxSum directly.
 
