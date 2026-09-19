@@ -60,125 +60,104 @@ count = 0
 map = {0=1}
 
 
-Step 1: Take 1
+Step 1: Take 1   |   arr = [1, 2, 1, 2]
 
-prefix = 1
+        prefix = 1
+        requiredPrefix = prefix - K
+                       = 1 - 3
+                       = -2
 
-requiredPrefix = prefix - K
-               = 1 - 3
-               = -2
+        -2 is not in map.
+        => so No valid subarray till [ 1    that can form sum = 3
 
--2 is not in map.
-
-No valid subarray ends here.
-
-Store prefix 1.
-
-map = {0=1, 1=1}
-count = 0
+        Store prefix 1.
+        map = {0=1, 1=1}
+        count = 0
 
 
 Step 2: Take 2
 
-prefix = 3
+        prefix = 3
+        requiredPrefix = prefix - K
+                       = 3 - 3
+                       = 0
 
-requiredPrefix = 3 - 3
-               = 0
+        0 exists in map (Previous prefix = 0, Current prefix = 3 )
+        means currentPrefix - prevPrefix = k
+                          3 - 0 = 3
 
-0 exists in map.
+        So:
+        [1,2] = 3 ✓
 
-Previous prefix = 0
-Current prefix = 3
+        count = 1
 
-3 - 0 = 3
-
-So:
-
-[1,2] = 3 ✓
-
-count = 1
-
-Store prefix 3.
-
-map = {0=1, 1=1, 3=1}
+        Store prefix 3.
+        map = {0=1, 1=1, 3=1}
 
 
 Step 3: Take 1
 
-prefix = 4
+        prefix = 4
+        requiredPrefix = 4 - 3
+                       = 1
 
-requiredPrefix = 4 - 3
-               = 1
+        1 exists in map. ( Previous prefix = 1, Current prefix = 4 )
+        means currentPrefix - prevPrefix = k
+                          4 - 1 = 3
 
-1 exists in map.
+        Previous prefix 1 represents [1].
+        Current  prefix 4 represents [1,2,1].
 
-Previous prefix = 1
-Current prefix = 4
+        Remove the previous [1]:
 
-4 - 1 = 3
+        [1,2,1]
+         ↓
+        remove [1]
+         ↓
+        [2,1]
 
-Previous prefix 1 represents [1].
+        So:
 
-Current prefix 4 represents [1,2,1].
+        [2,1] = 3 ✓
 
-Remove the previous [1]:
+        count = 2
 
-[1,2,1]
- ↓
-remove [1]
- ↓
-[2,1]
-
-So:
-
-[2,1] = 3 ✓
-
-count = 2
-
-Store prefix 4.
-
-map = {0=1, 1=1, 3=1, 4=1}
+        Store prefix 4.
+        map = {0=1, 1=1, 3=1, 4=1}
 
 
 Step 4: Take 2
 
-prefix = 6
+        prefix = 6
+        requiredPrefix = 6 - 3
+                       = 3
 
-requiredPrefix = 6 - 3
-               = 3
+        3 exists in map.( Previous prefix = 3, Current prefix = 6 )
+        means currentPrefix - prevPrefix = k
+                          6 - 3 = 3
 
-3 exists in map.
+        Previous prefix 3 represents [1,2]
+        Current prefix 6 represents [1,2,1,2]
 
-Previous prefix = 3
-Current prefix = 6
+        Remove the previous [1,2]:
 
-6 - 3 = 3
+        [1,2,1,2]
+           ↓
+        remove [1,2]
+           ↓
+        [1,2]
 
-Previous prefix 3 represents [1,2].
+        So:
 
-Current prefix 6 represents [1,2,1,2].
+        [1,2] = 3 ✓
 
-Remove the previous [1,2]:
+        count = 3
 
-[1,2,1,2]
-   ↓
-remove [1,2]
-   ↓
-[1,2]
-
-So:
-
-[1,2] = 3 ✓
-
-count = 3
-
-Store prefix 6.
-
-map = {0=1, 1=1, 3=1, 4=1, 6=1}
+        Store prefix 6.
+        map = {0=1, 1=1, 3=1, 4=1, 6=1}
 
 
 Final Answer:
-
 count = 3
 
 
@@ -192,7 +171,7 @@ Current Prefix - K
       ↓
 Search this value in HashMap
       ↓
-Found?
+Found? Okay Cool this found value we have to remove
       ↓
 Yes → A subarray with sum K exists.
 
@@ -200,146 +179,4 @@ Yes → A subarray with sum K exists.
 The easiest sentence to remember:
 
 "Find the old prefix that, when removed from my current prefix, leaves K."
-*/
-
-/*
-Logic:
-
-arr = [1, 2, 1, 2]
-k = 3
-
-Start:
-prefix = 0
-map = {0=1}
-
-The map stores previous prefix sums and their frequencies.
-
-
-Step 1: Take 1
-        prefix = 1
-
-        requiredPrefix = prefix - k
-                       = 1 - 3
-                       = -2
-
-        -2 is not present in map.
-
-        count = 0
-
-        Store prefix 1.
-
-        map = {0=1, 1=1}
-
-
-Step 2: Take 2
-        prefix = 3
-
-        requiredPrefix = prefix - k
-                       = 3 - 3
-                       = 0
-
-        0 exists in the map.
-
-        Why does this mean a subarray exists?
-
-        Current Prefix - Previous Prefix = Subarray Sum
-
-        3 - 0 = 3
-
-        The previous prefix 0 was before [1,2].
-        Removing that previous part leaves [1,2].
-
-        Therefore [1,2] is a valid subarray.
-
-        count = 1
-
-        Store prefix 3.
-
-        map = {0=1, 1=1, 3=1}
-
-
-Step 3: Take 1
-        prefix = 4
-
-        requiredPrefix = prefix - k
-                       = 4 - 3
-                       = 1
-
-        1 exists in the map.
-
-        Why does this mean a subarray exists?
-
-        Current Prefix - Previous Prefix = Subarray Sum
-
-        4 - 1 = 3
-
-        The previous prefix 1 represents the sum of [1].
-        The current prefix 4 represents the sum of [1,2,1].
-
-        Remove the previous part [1].
-
-        Remaining part = [2,1]
-
-        Sum of [2,1] = 3
-
-        Therefore [2,1] is a valid subarray.
-
-        count = 2
-
-        Store prefix 4.
-
-        map = {0=1, 1=1, 3=1, 4=1}
-
-
-Step 4: Take 2
-        prefix = 6
-
-        requiredPrefix = prefix - k
-                       = 6 - 3
-                       = 3
-
-        3 exists in the map.
-
-        Why does this mean a subarray exists?
-
-        Current Prefix - Previous Prefix = Subarray Sum
-
-        6 - 3 = 3
-
-        The previous prefix 3 represents the sum of [1,2].
-        The current prefix 6 represents the sum of [1,2,1,2].
-
-        Remove the previous part [1,2].
-
-        Remaining part = [1,2]
-
-        Sum of [1,2] = 3
-
-        Therefore [1,2] is a valid subarray.
-
-        count = 3
-
-        Store prefix 6.
-
-        map = {0=1, 1=1, 3=1, 4=1, 6=1}
-
-
-Final Answer = 3
-
-
-Mental Rule:
-
-Current Prefix
-      ↓
-Current Prefix - K
-      ↓
-Search this value in the map
-      ↓
-Found
-      ↓
-Current Prefix - Previous Prefix = K
-      ↓
-A valid subarray exists
-
-The HashMap simply remembers all previous prefix sums.
 */
