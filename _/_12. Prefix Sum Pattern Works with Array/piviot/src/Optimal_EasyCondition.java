@@ -22,7 +22,8 @@ public class Optimal_EasyCondition {
         int left = 0;
 
         /*
-        But What if the pivot is 0th index? Check that edge case separately. */
+        But What if the pivot is 0th index? Check that edge case separately.
+        0----arr[0]----0   */
         int right = sum - arr[0] - 0;
         if(0 == right) {
             return 0;
