@@ -1,133 +1,104 @@
 public class Logic {
 }
+
 /*
 Logic:
 
-We need to count how many subarrays have sum exactly equal to K.
-
-The main idea is:
-Current Prefix - Previous Prefix = Subarray Sum
-
-So if we need Subarray Sum = K:
-
-Previous Prefix = Current Prefix - K
+We need to count subarrays whose sum is exactly K.
 
 Example:
-
 arr = [1, 2, 1, 2]
 K = 3
 
-Start with prefix = 0.
 
-We store previous prefix sums inside a HashMap.
+Step 1: Understand Prefix Sum
 
-map = {0=1}
+        Prefix Sum means the total sum from index 0 up to the current index.
 
-Why store 0 first?
+        arr = [1, 2, 1, 2]
 
-Because before the array starts, the prefix sum is 0.
-This allows us to find subarrays that start from index 0.
+        prefix values:
+
+        After 1       → 1
+        After 1,2     → 3
+        After 1,2,1   → 4
+        After 1,2,1,2 → 6
 
 
-Step 1: Take 1.
+Step 2: Understand the Main Trick
 
-        prefix = 1
+        Suppose current prefix = 4.
+
+        We need a subarray whose sum is K = 3.
+
+        Ask:
+
+        "What previous sum should I remove from 4 so that 3 remains?"
+
+        4 - ? = 3
+
+        So:
+
+        ? = 1
+
+        Therefore, we search the HashMap for prefix = 1.
+
+
+Step 3: Why Does This Work?
+
+        The array is:
+
+        [1, 2, 1]
+
+        Current prefix = 4
+
+        The previous prefix = 1 means:
+
+        [1]
+
+        So if we remove the first [1]:
+
+        [1, 2, 1]
+           ↓
+        remove [1]
+           ↓
+        [2, 1]
+
+        And:
+
+        4 - 1 = 3
+
+        Therefore [2,1] is a valid subarray.
+
+
+Step 4: General Formula
+
+        Current Prefix - Previous Prefix = Subarray Sum
 
         We need:
 
-        requiredPrefix = prefix - K
-                       = 1 - 3
-                       = -2
+        Subarray Sum = K
 
-        -2 does not exist in the map.
+        Therefore:
 
-        So no valid subarray ends here.
+        Current Prefix - Previous Prefix = K
 
-        Store prefix 1.
+        So:
 
-
-Step 2:
-
-Take 2.
-
-prefix = 3
-
-We need:
-
-requiredPrefix = 3 - 3
-               = 0
-
-0 already exists in the map.
-
-That means:
-
-Current Prefix - Previous Prefix
-3 - 0 = 3
-
-So [1,2] has sum 3.
-
-count = 1
+        Previous Prefix = Current Prefix - K
 
 
-Step 3:
+Step 5: Why Do We Need HashMap?
 
-Take 1.
+        The HashMap simply remembers every prefix sum that we have already seen.
 
-prefix = 4
+        We start with:
 
-We need:
+        map = {0=1}
 
-requiredPrefix = 4 - 3
-               = 1
+        The 0 is important because before the array starts,
+        the prefix sum is 0.
 
-1 already exists in the map.
+        The value 1 means that prefix sum 0 has appeared once.
 
-That means:
-
-Current Prefix - Previous Prefix
-4 - 1 = 3
-
-So [2,1] has sum 3.
-
-count = 2
-
-
-Step 4:
-
-Take 2.
-
-prefix = 6
-
-We need:
-
-requiredPrefix = 6 - 3
-               = 3
-
-3 already exists in the map.
-
-That means:
-
-Current Prefix - Previous Prefix
-6 - 3 = 3
-
-So [1,2] has sum 3.
-
-count = 3
-
-
-Final Answer = 3
-
-
-Mental Rule:
-
-Current Prefix
-      ↓
-Current Prefix - K
-      ↓
-Search this value in HashMap
-      ↓
-Found → A subarray with sum K exists
-
-
-The HashMap simply remembers previous prefix sums.
 */
