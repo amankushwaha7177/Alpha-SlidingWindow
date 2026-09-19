@@ -61,11 +61,108 @@ answer = max(maxSum, circularMax)
 
 totalSum = 14
 minSum   = -1
-
-circularMax = 14 - (-1)
+circularMax = totalSum - minSum
+            =     14   - (-1)        [ 8, 3, 4 ]
             = 15
+
 
 maxSum = 14
 
 answer = 15
  */
+
+
+
+/*
+If all elements are negative: arr = {-3, -2, -5}
+-----------------------------
+        All elements are negative
+                ↓
+         definetly maxSum < 0
+                ↓
+        Circular calculation would select empty array in future in anyway
+                ↓
+        so Return normal Kadane maximum
+
+
+totalSum = -10
+minSum   = -10
+
+circularMax = totalSum - minSum
+            =    -10   - (-10)
+            = 0
+
+        We are effectively doing:
+
+        [-3, -2, -5]
+               ↓
+        remove the entire array
+               ↓
+        nothing remains
+               ↓
+        sum = 0
+
+        But an empty subarray is not allowed.
+
+
+But 0 means choosing an empty subarray, which is not allowed.
+
+So we return maxSum directly.
+
+maxSum = -2
+
+answer = -2
+*/
+
+
+/*
+Q. But 0 is bigger than -2 ? why not choosing 0 ?
+A. Exactly — mathematically, 0 > -2, but 0 is not a valid subarray sum here
+   because no sunbarray will give 0 if all elements are negative, sum will alsways -ve
+
+   So if maxSum < 0
+   return this maxSum
+
+   Because Anyway further calcuation of curcular maxSum on all negative number will give 0.
+
+    For: arr = {-3, -2, -5}
+    The valid subarrays are:
+
+    [-3]       = -3
+    [-2]       = -2  ← maximum
+    [-5]       = -5
+    [-3,-2]    = -5
+    [-2,-5]    = -7
+    [-3,-2,-5] = -10
+
+    So the correct answer is: maxSum = -2
+
+        Therefore:
+
+        if(maxSum < 0) {
+            return maxSum;
+        }
+
+        means:
+
+        If every element is negative, the best valid subarray is simply
+        the largest single negative element.
+
+
+        Mental Rule:
+
+        All Negative
+             ↓
+        Circular formula gives 0
+             ↓
+        0 = Empty Subarray ❌
+             ↓
+        Return normal Kadane maximum
+
+        So for {-3,-2,-5}:
+
+        normalMax = -2
+        circularMax = 0 ❌
+
+        Answer = -2
+*/
