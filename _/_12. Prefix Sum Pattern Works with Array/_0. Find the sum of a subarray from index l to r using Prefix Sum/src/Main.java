@@ -6,10 +6,14 @@ public class Main {
         int r = 3;
 
         int[] prefix = new int[arr.length];
-        prefix[0] = arr[0];
+        // prefix[0] = arr[0];
 
-        for(int i = 1; i < arr.length; i++) {
-            prefix[i] = prefix[i - 1] + arr[i];
+        for(int i = 0; i < arr.length; i++) {
+            if( i== 0 ){
+                prefix[i] = 0 + arr[i];
+            }else {
+                prefix[i] = prefix[i - 1] + arr[i];
+            }
         }
 
         int sum = prefix[r] - prefix[l - 1];
