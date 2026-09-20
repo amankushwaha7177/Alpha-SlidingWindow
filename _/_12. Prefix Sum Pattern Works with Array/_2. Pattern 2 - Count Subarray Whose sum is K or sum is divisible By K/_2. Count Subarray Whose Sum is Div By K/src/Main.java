@@ -91,46 +91,42 @@ map = {0=1}
 
 Step 1: Take 4
 
-prefix = 4
+        prefix = 4
+        remainder = 4 % 5
+                 = 4
 
-remainder = 4 % 5
-         = 4
+        4 is not in map.
+        No valid subarray yet.
 
-4 is not in map.
-
-No valid subarray yet.
-
-Store remainder 4.
-
-map = {0=1, 4=1}
-count = 0
+        Store remainder 4.
+        map = {0=1, 4=1}
+        count = 0
 
 
 Step 2: Take 5
 
-prefix = 9
+        prefix = 9
+        remainder = 9 % 5
+                 = 4
 
-remainder = 9 % 5
-         = 4
+        4 already exists.
 
-4 already exists.
+        Previous remainder = 4
+        Current remainder = 4
 
-Previous remainder = 4
-Current remainder = 4
+        Same remainder means their difference is divisible by 5.
 
-Same remainder means their difference is divisible by 5.
+        9 - 4 = 5
 
-9 - 4 = 5
+        So:
 
-So:
+        [5] = 5 ✓
 
-[5] = 5 ✓
+        count = 1
 
-count = 1
+        Store remainder 4 again.
 
-Store remainder 4 again.
-
-map = {0=1, 4=2}
+        map = {0=1, 4=2}
 
 
 Step 3: Take 0
