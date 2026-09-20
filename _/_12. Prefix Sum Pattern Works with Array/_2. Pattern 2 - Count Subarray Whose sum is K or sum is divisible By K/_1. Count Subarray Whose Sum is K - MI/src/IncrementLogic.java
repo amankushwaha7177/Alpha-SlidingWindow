@@ -16,12 +16,10 @@ Start:
 
 prefix = 0
 count = 0
-map = {0=1}
-
-Here {0=1} means: "Before the array starts, prefix sum is 0." t does NOT mean an empty subarray is counted.
+map = {0=1} -> {0=1} means: "Before the array starts, prefix sum is 0." t does NOT mean an empty subarray is counted.
 
 
-Step 1: Take 2
+Step 1: Take 2                                           | [2, -2, 2, -2]      {0=1}
 
         prefix = 2
         requiredPrefix = prefix - k
@@ -36,7 +34,7 @@ Step 1: Take 2
         map = {0=1, 2=1}
 
 
-Step 2: Take -2
+Step 2: Take -2                                            | [2, -2, 2, -2]   {0=1, 2=1}
 
         prefix = 0
         requiredPrefix = prefix - k
@@ -44,59 +42,43 @@ Step 2: Take -2
                        = 0
 
         0 exists once.
-
-
-        count = 0+ map.get(0)
-        count = 0+ 1
+        count = count + map.get(0)
+        count =    0  + 1
               = 1
-
-        The valid subarray is:
-
-        [2,-2] = 0 ✓
+        The valid subarray is: [2,-2] = 0 ✓
 
         Store prefix 0.
-
         map = {0=2, 2=1}
 
 
-Step 3: Take 2
+Step 3: Take 2                                            | [2, -2, 2, -2]    {0=2, 2=1}
 
         prefix = 2
-
         requiredPrefix = prefix - k
                        = 2 - 0
                        = 2
 
         2 exists once.
-
-        map.get(2) = 1
-
-        count += 1
-        count = 2
-
-        The valid subarray is:
-
-        [2,-2] = 0 ✓
+        count  = count + map.get(2)
+               = 1 + 1
+               = 2
+        The valid subarray is: [-2, 2 ] = 0 ✓
 
         Store prefix 2.
-
         map = {0=2, 2=2}
 
 
-Step 4: Take -2
+Step 4: Take -2                                            | [2, -2, 2, -2]    {0=2, 2=2}
 
         prefix = 0
-
         requiredPrefix = prefix - k
                        = 0 - 0
                        = 0
 
         0 exists twice.
-
-        map.get(0) = 2
-
-        count += 2
-        count = 4
+        count  = count + map.get(0)
+               = 2 + 2
+               = 4
 
         Why 2 new subarrays?
 
@@ -108,9 +90,7 @@ Step 4: Take -2
         map = {0=3, 2=2}
 
 
-Final Answer:
-
-count = 4
+Final Answer: count = 4
 
 
 Now the important point:
