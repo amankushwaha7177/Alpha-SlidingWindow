@@ -64,10 +64,9 @@ maxLength = 0
 map = {0=-1}
 
 
-Step 1: Take 10
+Step 1: Take 10                               | [10, 5, 2, 7, 1, 9]   {0=-1, 10=0}
 
         prefix = 10
-
         requiredPrefix = 10 - 15
                        = -5
 
