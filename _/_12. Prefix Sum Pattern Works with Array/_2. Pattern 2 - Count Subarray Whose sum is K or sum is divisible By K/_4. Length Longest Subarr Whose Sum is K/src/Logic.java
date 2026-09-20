@@ -27,30 +27,20 @@ B. For Longest Subarray Sum = K:
 
         map = {0=-1}
 
-Here:
-
-        key   = prefix sum
+Here:   key   = prefix sum
         value = first index
 
-So:
-
-        0 → -1
-
-means:
-
-        Prefix sum 0 first exists at index -1.
+So:     0 → -1
+means:  Prefix sum 0 first exists at index -1.
 
 Why index -1?
-
 Because index -1 represents the position immediately
 before the array starts.
 
 Example:
-
-        arr = [10, 5, 2, 7, 1, 9]
+         arr = [10, 5, 2, 7, 1, 9]
 
 Index:
-
         -1    0    1    2    3    4    5
               ↓
              10   5    2    7    1    9
@@ -60,9 +50,7 @@ Before taking any element:
         prefix = 0
         index = -1
 
-Therefore:
-
-        map.put(0, -1);
+Therefore: map.put(0, -1);
 
 
 Why is -1 important?
@@ -107,8 +95,13 @@ That would be wrong.
 
 Because in the Longest Subarray problem,
 the value must represent an index, not a frequency.
+*/
 
 
+
+
+
+/*
 Easy Difference:
 
         COUNT SUM = K
@@ -132,9 +125,7 @@ Easy Difference:
 
 
 Mental Rule:
-
         Count      → frequency  → {0=1}
-
         Longest    → first index → {0=-1}
 
 
