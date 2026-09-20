@@ -28,6 +28,13 @@ public class Main {
             /*
             Current Prefix - Previous Prefix = Subarray Sum.
             We want the subarray sum to equal K, so Previous Prefix = Current Prefix - K.
+
+            Ex : [--------------------------- Subarray whose sum is 5------------------------------] = k(3)
+                 [--- Subarray whose sum is 2---]          [-------- Subarray whose sum is 3-------]
+                  If it exist It Exists                     Then It will definetly Exist.
+
+
+
             */
             int requiredPrefix = prefix - k;
 
