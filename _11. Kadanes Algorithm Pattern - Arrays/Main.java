@@ -1,6 +1,6 @@
 public class Main {
 }
-/*
+
 /*
 PROBLEM TYPE                    +VE ONLY       +VE + -VE
 ----------------------------------------------------------------
@@ -18,4 +18,25 @@ Maximum subarray sum             Kadane         Kadane
 Minimum subarray sum             Kadane         Kadane
 Minimum product  sum             Kadane         Kadane
  */
+
+
+/*
+ The biggest shortcut
+ --------------------
+
+If SUM is involved:
+
++VE ONLY
+    ↓
+Ask:
+"Can I use Sliding Window?"
+
++VE + -VE
+    ↓
+Ask:
+"Can I use Prefix Sum?"
+
+MAXIMUM/MINIMUM SUBARRAY SUM
+    ↓
+Think Kadane regardless of +VE/-VE.
 */
