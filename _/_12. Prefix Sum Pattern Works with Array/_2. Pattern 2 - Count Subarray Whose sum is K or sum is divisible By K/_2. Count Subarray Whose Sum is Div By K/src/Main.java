@@ -76,7 +76,6 @@ public class Main {
     }
 }
 
-
 /*
 Complete Dry Run
 
@@ -87,7 +86,6 @@ Start:
 prefix = 0
 count = 0
 map = {0=1}
-
 
 Step 1: Take 4
 
@@ -102,7 +100,6 @@ Step 1: Take 4
         map = {0=1, 4=1}
         count = 0
 
-
 Step 2: Take 5
 
         prefix = 9
@@ -110,109 +107,94 @@ Step 2: Take 5
                  = 4
 
         4 already exists.
-
         Previous remainder = 4
         Current remainder = 4
 
-        Same remainder means their difference is divisible by 5.
-
+        Same remainder means their difference is divisible by K.
         9 - 4 = 5
 
         So:
-
         [5] = 5 ✓
 
         count = 1
 
         Store remainder 4 again.
-
         map = {0=1, 4=2}
-
 
 Step 3: Take 0
 
-prefix = 9
+        prefix = 9
+        remainder = 9 % 5
+                 = 4
 
-remainder = 9 % 5
-         = 4
+        4 already exists twice.
 
-4 already exists twice.
+        So we get 2 new valid subarrays.
 
-So we get 2 new valid subarrays.
+        They are:
+        [5,0] = 5 ✓
+        [0]   = 0 ✓
 
-They are:
+        count = 3
 
-[5,0] = 5 ✓
-[0]   = 0 ✓
-
-count = 3
-
-Store remainder 4 again.
-
-map = {0=1, 4=3}
-
+        Store remainder 4 again.
+        map = {0=1, 4=3}
 
 Step 4: Take -2
 
-prefix = 7
+        prefix = 7
+        remainder = 7 % 5
+                 = 2
 
-remainder = 7 % 5
-         = 2
+        2 is not in map.
+        No new subarray.
 
-2 is not in map.
-
-No new subarray.
-
-Store remainder 2.
-
-map = {0=1, 4=3, 2=1}
-count = 3
-
+        Store remainder 2.
+        map = {0=1, 4=3, 2=1}
+        count = 3
 
 Step 5: Take -3
 
-prefix = 4
+        prefix = 4
+        remainder = 4 % 5
+                 = 4
 
-remainder = 4 % 5
-         = 4
+        4 already exists three times.
 
-4 already exists three times.
+        So we get 3 new valid subarrays.
 
-So 3 new valid subarrays are found.
+        They are:
+        [5,0,-2,-3] = 0  ✓
+        [0,-2,-3]   = -5 ✓
+        [-2,-3]     = -5 ✓
 
-count = 6
+        count = 6
 
-Store remainder 4.
-
-map = {0=1, 4=4, 2=1}
-
+        Store remainder 4.
+        map = {0=1, 4=4, 2=1}
 
 Step 6: Take 1
 
-prefix = 5
+        prefix = 5
+        remainder = 5 % 5
+                 = 0
 
-remainder = 5 % 5
-         = 0
+        0 already exists once.
 
-0 already exists.
+        Previous remainder = 0
+        Current remainder = 0
 
-So:
+        5 - 0 = 5
 
-5 - 0 = 5
+        So:
+        [4,5,0,-2,-3,1] = 5 ✓
 
-The complete subarray:
+        count = 7
 
-[4,5,0,-2,-3,1] = 5 ✓
-
-count = 7
-
-Store remainder 0.
-
-map = {0=2, 4=4, 2=1}
-
+        Store remainder 0.
+        map = {0=2, 4=4, 2=1}
 
 Final Answer:
-
 count = 7
 
 
@@ -230,12 +212,10 @@ Their difference is divisible by K
       ↓
 A valid subarray exists.
 
-
 The easiest sentence to remember:
 
 "Same prefix remainder means the difference between them is divisible by K."
 */
-
 
 /*
 Time = O(n)
