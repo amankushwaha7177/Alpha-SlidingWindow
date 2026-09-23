@@ -71,6 +71,7 @@ public class Main {
                     closestSum = sum;   /* Store the actual triplet sum, not its difference from k. */
                 }
                 if (sum == k) {
+                    // Here closest = k-sum = 0
                     break; // the difference is zero, which is the closest possible
 
                 } else if (sum > k) {
