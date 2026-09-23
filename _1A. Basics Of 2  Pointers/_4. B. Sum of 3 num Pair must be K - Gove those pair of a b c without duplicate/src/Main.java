@@ -27,6 +27,27 @@ public class Main {
             if(i >0 && arr[i] == arr[i-1]){
                 continue;
             }
+            /*
+            Example: arr = [-1, -1, 0, 1, 2]
+
+                i = 0 → arr[i] = -1
+                    ↓
+            Find: [-1, 0, 1]
+
+                   i = 1 → arr[i] = -1 again
+                       ↓
+            Find: [-1, 0, 1] again ❌
+
+            So:
+
+            if(i > 0 && arr[i] == arr[i - 1])
+                continue;
+
+            i = 1 is skipped.
+
+            Result:
+            [-1, 0, 1] ✓
+            */
 
             int l =i+1;
             int r=arr.length-1;
