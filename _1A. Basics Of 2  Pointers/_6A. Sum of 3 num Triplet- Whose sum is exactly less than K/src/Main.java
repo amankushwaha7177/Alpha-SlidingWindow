@@ -138,8 +138,10 @@ class Main {
                         Because we already counted every valid triplet
                         using the current l, so we need a new l.
 
+                        ***
                         We do NOT move r because doing r-- would skip
                         possible valid triplets that we have not counted yet.
+                        ***
 
 
                         When sum > k:
