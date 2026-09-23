@@ -23,7 +23,7 @@ public class Main {
         Arrays.sort(arr);
 
         for( int i = 0; i< arr.length-2 ; i++) {
-            // Elemenate duplacates in i also.
+            // Elemenate duplacates in i also. ----------------> Usefull in 3Sum to skip i duplicate
             if(i >0 && arr[i] == arr[i-1]){
                 continue;
             }
@@ -40,7 +40,7 @@ public class Main {
                     l++;
                     r--;
 
-                    // Elemenate duplacates in l,r also.
+                    // Elemenate duplacates in l,r also. --------------> Usefull in 2Sum to skip l,r duplicates
                     while (arr[l] == arr[l - 1]) l++;
                     while (arr[r] == arr[r + 1]) r--;
                 } else if (sum > k) {
