@@ -47,7 +47,7 @@ class Solution {
 
                          -2 + 0 + 4 = 2 < 5
 
-                     Then every value between l and r also works:
+                     Then every value between l and r also works: because they will give less sum definetly
 
                          -2 + 0 + 1 = -1  < 5 ✓
                          -2 + 0 + 3 =  1  < 5 ✓
