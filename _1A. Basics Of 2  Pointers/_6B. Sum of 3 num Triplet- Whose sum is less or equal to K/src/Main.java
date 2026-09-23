@@ -34,10 +34,11 @@ public class Main {
                 int sum = arr[i] + a + b;
                 if (sum == k) {
                     cnt = cnt + r-l;
-                    l++; // Yes if sum is valid at l,r directly move l.
-                    // System.out.println(arr[i] + " " + a + " " + b);
-
-                    // r--;
+                    /*
+                    All elements between left and right can form valid triplets.
+                    Add right - left to the count.
+                    Move left++.  */
+                    l++;
 
                 } else if (sum > k) {
                     r--;
