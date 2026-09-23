@@ -32,7 +32,7 @@ public class Main {
                 int a = arr[l];
                 int b = arr[r];
                 int sum = arr[i] + a + b;
-                if (sum == k) {
+                if (sum <= k) {
                     cnt = cnt + r-l;
                     /*
                     All elements between left and right can form valid triplets.
@@ -40,11 +40,8 @@ public class Main {
                     Move left++.  */
                     l++;
 
-                } else if (sum > k) {
+                } else {  // else if (sum > k)
                     r--;
-                } else { // if sum < k
-                    cnt = cnt + r-l;
-                    l++;
                 }
             }
         /*
