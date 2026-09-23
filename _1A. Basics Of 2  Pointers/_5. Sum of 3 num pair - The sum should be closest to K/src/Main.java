@@ -54,11 +54,18 @@ public class Main {
                 int currentSumClosest = Math.abs(sum - k);
                 int previousSumClosest = Math.abs(closestSum - k);
                 /*
-                k = 4 | sum = 5
-                difference = |5 - 4| = 1
+                Q. why we can't put this inside if( sum < k){
+                A. You can put the closest-sum update inside if(sum < k), but then you will miss candidates where sum > k.
+                   The closest answer can be on either side of k.
+                    k = 10
 
-                currentSumClosest = 1
-                closestSum = 5
+                    sum = 8
+                    difference = |10 - 8|
+                               = 2
+
+                    sum = 12
+                    difference = |10 - 12|
+                               = 2
                  */
                 if (currentSumClosest < previousSumClosest) {
                     closestSum = sum;   /* Store the actual triplet sum, not its difference from k. */
