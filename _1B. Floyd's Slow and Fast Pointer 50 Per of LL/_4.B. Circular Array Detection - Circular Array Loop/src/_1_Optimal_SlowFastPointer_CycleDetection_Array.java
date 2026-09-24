@@ -1,7 +1,21 @@
-public class _2_Optimal_SlowFastPointer_CycleDetection_Array {
+public class _1_Optimal_SlowFastPointer_CycleDetection_Array {
     static int findCycleStart(int[] a) {
         int slow = 0;
         int fast = 0;
+        /*
+        nums = [1, 3, 4, 2, 2]
+                0  1  2  3  4
+
+        1. slow = 0, fast = 0 :
+           slow: 0 → 1
+           fast: 0 → 1 → 3
+
+        2. slow = nums[0], fast = nums[0]
+           slow: 1 → 3
+           fast: 1 → 3 → 2
+
+        Mental rule: slow = 0 means start at index 0; slow = nums[0] means already take the first jump.
+         */
 
         while(true) {  // while(fast < a.length ) -> Also fine ! It will always give true
                        // cause fast will never cross 0 to n-1 range
