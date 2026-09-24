@@ -1,4 +1,4 @@
-public class _2_Optimal_SlowFastPointer_CycleDetection_Array {
+public class _2_Optimal_SlowFastPointer_Same_with_other_code {
     static int findCycleStart(int[] a) {
         int slow = 0;
         int fast = 0;
