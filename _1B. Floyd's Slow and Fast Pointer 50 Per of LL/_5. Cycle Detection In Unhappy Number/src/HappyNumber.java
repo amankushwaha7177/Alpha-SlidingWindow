@@ -41,7 +41,18 @@ public class HappyNumber {
             int digit = n % 10;
             sum += digit * digit;
             n = n / 10;
+
+            /*
+            n =19
+            digit = 19%10 = 9
+            n =     19/10 = 1   --> not 1.9, because n is an int. So Java performs integer division and removes the decimal part.
+
+            digit = 1 %10 = 1
+            n =     1/10  = 0
+             */
         }
+
+
 
         return sum;
     }
