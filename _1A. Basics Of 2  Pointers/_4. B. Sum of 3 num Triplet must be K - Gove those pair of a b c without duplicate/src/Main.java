@@ -80,7 +80,7 @@ public class Main {
 
                     // Elemenate duplacates in l,r also. --------------> Usefull in 2Sum to skip l,r duplicates
                     while (l < r && arr[l] == arr[l - 1]) l++;
-                    while (l < 5 && arr[r] == arr[r + 1]) r--;
+                    while (l < r && arr[r] == arr[r + 1]) r--;
                     /*
                             0   1   2   3   4   5   6
                     arr = [-1,  0,  0,  1,  1,  2,  2]
