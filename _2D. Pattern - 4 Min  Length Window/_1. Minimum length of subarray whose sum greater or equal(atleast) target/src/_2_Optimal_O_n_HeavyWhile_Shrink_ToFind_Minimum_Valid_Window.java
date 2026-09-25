@@ -46,7 +46,7 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
     public static void main(String[] args) {
 
         int target = 4;
-        int[] arr = {1, 2, 4, 4};
+        int[] nums = {1, 2, 4, 4};
 
         /*
         Step 0 : Variables analogy for window :
@@ -58,7 +58,7 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
         int l = 0;
         int r = 0;
 
-        int windowSum = 0;
+        int ws = 0;
         int ans = Integer.MAX_VALUE;
 
         /*
@@ -67,19 +67,32 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 repeatedly shrink from LEFT to find the minimum valid length.
         */
 
-        while(r < arr.length) {
+        while( r < nums.length){
 
-            windowSum += arr[r];
+            ws+= nums[r];
 
-            while(windowSum >= target) {
-
-                ans = Math.min(ans, r - l + 1);
-
-                windowSum -= arr[l];
-                l++;
+            if(ws < target){
+                r++;
             }
+            else { //if( ws >= target)
 
-            r++;
+                while ( ws >= target){
+                    ans = Math.min(ans, r-l+1); // cool but we need minimum length
+                    // this ans can be imporve by shrinking
+
+                    ws-= nums[l];
+                    l++;
+                }
+
+                // here It will again will be ( ws < target )
+                r++;
+                /*
+                The while loop only moves l to shrink the current window, so r remains at the same index.
+                If we do not increment r, the same nums[r] will processed again and the loop can run forever.
+                Therefore, we increment r to include the next element and continue expanding the window.
+                */
+
+            }
         }
 
         System.out.println(ans == Integer.MAX_VALUE ? 0 : ans);
@@ -125,6 +138,42 @@ Remove 4 → sum=0 <4 → Stop shrinking
 
 Final answer = 1
 */
+
+
+/* Suppose:
+                    target = 7
+                    nums = [2, 3, 1, 2, 4, 3]
+
+                    l = 0
+                    r = 3
+
+                    Current window = [2, 3, 1, 2]
+                    ws = 8
+
+                    Since ws >= target, we enter the while loop.
+
+                    ws = 8
+                    ans = 4
+
+                    Remove nums[l] = 2 ---> l = 1  --> new window = [ 3, 1, 2]
+
+                    ws = 6
+                    Now ws < target, so the while loop stops.
+
+                    Notice that r is still 3 because the while loop only moves l to shrink the window.
+
+                    Therefore, we do r++ to move r from index 3 to index 4 and include the next element.
+
+                    r = 3 → r = 4
+
+                    Then:
+
+                    ws += nums[4]
+                    ws = 6 + 4
+                    ws = 10
+
+                    Now the window becomes [3, 1, 2, 4], which is again valid because ws >= target.
+                    */
 
 
 
