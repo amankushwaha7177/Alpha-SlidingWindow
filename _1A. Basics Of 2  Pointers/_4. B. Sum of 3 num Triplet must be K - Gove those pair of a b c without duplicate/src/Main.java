@@ -20,7 +20,7 @@ public class Main {
 
         Arrays.sort(arr);
 
-        for( int i = 0; i< arr.length-2 ; i++) {
+        for( int i = 0; i<= arr.length-3 ; i++) {
             // Elemenate duplacates in i also. ----------------> Usefull in 3Sum to skip i duplicate
             if(i >0 && arr[i] == arr[i-1]){
                 continue;
