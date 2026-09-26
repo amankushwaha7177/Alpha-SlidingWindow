@@ -37,7 +37,7 @@ public class Main {
 
         // int closestSum = Integer.MAX_VALUE; // Chooseing infinite as distance bw k and curr sum.
         int closestSum = arr[0] + arr[1] +arr[2];
-        for( int i = 0; i< arr.length-2 ; i++) {
+        for( int i = 0; i< arr.length-3 ; i++) {
             // Elemenate duplacates in i also.
             if(i >0 && arr[i] == arr[i-1]){
                 continue;
