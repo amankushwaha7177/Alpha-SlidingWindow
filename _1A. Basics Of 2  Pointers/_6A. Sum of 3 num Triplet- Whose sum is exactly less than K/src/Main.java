@@ -42,6 +42,9 @@ class Main {
                     between l and r is smaller than or equal to arr[r],
                     so every triplet from l through r is also valid.
 
+                    The sum can never become larger when r moves left.With i and l fixed,
+                    moving r left can only decrease the sum because the array is sorted.
+
                     Example:
 
                     arr = [-2, 0, 1, 3, 4]
