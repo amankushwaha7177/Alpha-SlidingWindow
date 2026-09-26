@@ -23,7 +23,7 @@ class Main {
             count multiple valid triplets without checking each
             possible triplet separately.
         */
-        for(int i = 0; i < arr.length - 2; i++) {
+        for(int i = 0; i <= arr.length - 3; i++) {
             int l = i + 1;
             int r = arr.length - 1;
 
