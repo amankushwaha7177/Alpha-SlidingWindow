@@ -9,10 +9,13 @@ public class Main {
         /*
         1. Sort the array so that two-pointer movement becomes possible.
         2. Fix arr[i], then use L and R to find valid pairs after i.
-        3. If sum <= k, every element between L and R can form a valid triplet
-           with arr[i] and arr[l], so count all of them using r - l.
-        4. After counting them, move L++ to find the next possible triplets.
-        5. If sum > k, the sum is too large, so move R-- to decrease the sum.
+        3. If sum <= k, the current largest value arr[r] already forms a valid triplet.
+           Because the array is sorted, every value between l and r is smaller than
+           or equal to arr[r], so all those triplets will also have sum <= k.
+        4. Therefore, count all valid triplets using r - l instead of checking each one.
+        5. After counting them, move l++ to find the next possible set of triplets.
+        6. If sum > k, the current sum is too large, so move r-- to reduce the sum.
+        7. Skip duplicate values of i because they would generate the same triplets again.
         */
 
         Arrays.sort(arr);
@@ -32,15 +35,21 @@ public class Main {
                 int a = arr[l];
                 int b = arr[r];
                 int sum = arr[i] + a + b;
-                if (sum <= k) {
-                    cnt = cnt + r-l;
-                    /*
-                    All elements between left and right can form valid triplets.
-                    Add right - left to the count.
-                    Move left++.  */
-                    l++;
+                if(sum <= k) {
+                    cnt += r - l;
 
-                } else {  // else if (sum > k)
+                /*
+                Since the current l has already imagined every position of r
+                from r to l+1, move l forward to search for new combinations.
+                */
+                    l++;
+                }
+                else {
+                /*
+                The current sum is greater than k, so the triplet is invalid.
+                Since the array is sorted, moving r left gives a smaller value
+                and therefore decreases the current sum.
+                */
                     r--;
                 }
             }
