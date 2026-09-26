@@ -18,18 +18,19 @@ public class CountDuplicates {
         int l =0;
         int r=1;
 
-        int cnt =0 ;
+        int cnt =1 ;
 
         while( r < arr.length){
 
             if(arr[l] == arr[r]){
                 r++;
-                cnt++;
                 continue;
             }
             if(arr[l] != arr[r]){
                 arr[l+1] = arr[r];
                 l++;
+
+                cnt++;
             }
         }
 
