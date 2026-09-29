@@ -40,7 +40,7 @@ public class _2_Optimal_O_2n________HeavyWhile_Shrink_ToFind_valid_Window_ {
             }
 
             if(zeroCount > k){
-                while(zeroCount > k){
+                while(zeroCount > k){ // if zeros > k keep shrinking
                     if(arr[l] == 0){
                         zeroCount--;
                     }
