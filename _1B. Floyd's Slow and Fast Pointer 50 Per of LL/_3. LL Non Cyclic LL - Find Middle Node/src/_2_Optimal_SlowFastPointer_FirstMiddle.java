@@ -1,4 +1,4 @@
-public class _1_Optimal_SlowFastPointer_MiddleOfLinkedList {
+public class _2_Optimal_SlowFastPointer_FirstMiddle {
     static class Node {
         int data;
         Node next;
