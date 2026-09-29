@@ -108,10 +108,6 @@ Idea :  Exact sum is difficult to count directly using an at-most sliding window
     }
 
     static int atMost(int[] nums, int goal) {
-        if(goal < 0) {
-            return 0;
-        }
-
         int l = 0;
         int sum = 0;
         int count = 0;
