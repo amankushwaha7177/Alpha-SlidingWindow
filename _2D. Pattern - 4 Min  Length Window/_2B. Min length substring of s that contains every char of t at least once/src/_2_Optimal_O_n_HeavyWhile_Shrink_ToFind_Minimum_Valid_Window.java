@@ -80,7 +80,7 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                    Than we need to down formedCount. becasue we need atleast 1 char. Simple !
                  */
                 if(required.containsKey(left) &&
-                        ourMap.get(left) < required.get(left)) {
+                        ourMap.get(left) < 1) { // ourMap.get(left) < required.get(left))
                     formedCount--;
                 }
 
