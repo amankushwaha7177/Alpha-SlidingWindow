@@ -46,7 +46,7 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
     public static void main(String[] args) {
 
         int target = 4;
-        int[] nums = {1, 2, 4, 4};
+        int[] arr = {1, 2, 4, 4};
 
         /*
         Step 0 : Variables analogy for window :
@@ -67,29 +67,15 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                 repeatedly shrink from LEFT to find the minimum valid length.
         */
 
-        while( r < nums.length){
+        while(r < arr.length){
+            ws+= arr[r];
 
-            ws+= nums[r];
-
-            if(ws < target){
+            while(ws >= target){
+                ans = Math.min(ans, r-l+1);
+                ws-=arr[l];
+                l++;
             }
-            else { //if( ws >= target)
-
-                while ( ws >= target){
-                    ans = Math.min(ans, r-l+1); // cool but we need minimum length
-                    // this ans can be imporve by shrinking
-
-                    ws-= nums[l];
-                    l++;
-                }
-            }
-            // here It will again will be ( ws < target )
             r++;
-                /*
-                The while loop only moves l to shrink the current window, so r remains at the same index.
-                If we do not increment r, the same nums[r] will processed again and the loop can run forever.
-                Therefore, we increment r to include the next element and continue expanding the window.
-                */
         }
 
         System.out.println(ans == Integer.MAX_VALUE ? 0 : ans);
