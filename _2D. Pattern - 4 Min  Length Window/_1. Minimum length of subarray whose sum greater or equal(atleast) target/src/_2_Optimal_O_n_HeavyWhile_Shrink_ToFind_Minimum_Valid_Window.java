@@ -72,7 +72,6 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
             ws+= nums[r];
 
             if(ws < target){
-                r++;
             }
             else { //if( ws >= target)
 
@@ -83,16 +82,14 @@ class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
                     ws-= nums[l];
                     l++;
                 }
-
-                // here It will again will be ( ws < target )
-                r++;
+            }
+            // here It will again will be ( ws < target )
+            r++;
                 /*
                 The while loop only moves l to shrink the current window, so r remains at the same index.
                 If we do not increment r, the same nums[r] will processed again and the loop can run forever.
                 Therefore, we increment r to include the next element and continue expanding the window.
                 */
-
-            }
         }
 
         System.out.println(ans == Integer.MAX_VALUE ? 0 : ans);
