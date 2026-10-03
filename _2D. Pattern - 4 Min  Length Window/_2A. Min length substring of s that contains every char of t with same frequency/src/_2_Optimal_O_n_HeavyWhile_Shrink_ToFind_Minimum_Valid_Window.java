@@ -291,45 +291,45 @@ r = 7 → "XXCAAAAB"
     → Valid
 
 
-while #1:
-    Window = "XXCAAAAB"
-    Length = 8
-    ans = "XXCAAAAB"
+        while #1:
+            Window = "XXCAAAAB"
+            Length = 8
+            ans = "XXCAAAAB"
 
-    Remove X
-    X frequency = 1
-    X not required
-    formedChars = 3
+            Remove X
+            X frequency = 1
+            X not required
+            formedChars = 3
 
-    Window = "XCAAAAB"
-    Still valid
-
-
-while #2:
-    Window = "XCAAAAB"
-    Length = 7
-
-    Remove X
-    X frequency = 0
-    X not required
-    formedChars = 3
-
-    Window = "CAAAAB"
-    Still valid
+            Window = "XCAAAAB"
+            Still valid
 
 
-while #3:
-    Window = "CAAAAB"
-    Length = 6
-    ans = "CAAAAB"
+        while #2:
+            Window = "XCAAAAB"
+            Length = 7
 
-    Remove C
-    C frequency = 0
-    0 < required C frequency 1
+            Remove X
+            X frequency = 0
+            X not required
+            formedChars = 3
 
-    formedChars = 2
-    Window invalid
-    Exit while
+            Window = "CAAAAB"
+            Still valid
+
+
+        while #3:
+            Window = "CAAAAB"
+            Length = 6
+            ans = "CAAAAB"
+
+            Remove C
+            C frequency = 0
+            0 < required C frequency 1
+
+            formedChars = 2
+            Window invalid
+            Exit while
 
 
 Final Answer = "CAAAAB"
