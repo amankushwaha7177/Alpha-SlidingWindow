@@ -98,154 +98,128 @@ public class _2_Optimal_O_n_HeavyWhile_Shrink_ToFind_Minimum_Valid_Window {
         System.out.println("Time = O(n), Space = O(n)");
     }
 }
+
 /*
-Dry Run Example :
+Dry Run Example:
 
-s = "AAOBCC"
-t = "ABCC"
-===================
+s = "AAOBCAABC"
+t = "AABC"
 
-Required Map:
-{ A → 1, B → 1, C → 2 }
+Required = { A → 2, B → 1, C → 1 }
 
-requiredChars = 3
-formedChars = 0
 l = 0
+formedChars = 0
 
 
-a. r = 0 → "A"
+r = 0 → "A"
+    Map = { A → 1 }
+    A current = 1, required = 2
+    formedChars = 0
+    Invalid → move R
 
-    Add A
-    ourMap = { A → 1 }
 
-    A required frequency = 1
-    A current frequency = 1
-    A requirement satisfied
+r = 1 → "AA"
+    Map = { A → 2 }
+    A reaches required frequency.
     formedChars = 1
-
-    formedChars != requiredChars
-    Invalid → Continue R
+    Invalid → move R
 
 
-b. r = 1 → "AA"
-
-    Add A
-    ourMap = { A → 2 }
-
-    A required frequency = 1
-    A current frequency = 2
-
-    A requirement was already satisfied
+r = 2 → "AAO"
+    O not required.
     formedChars = 1
-
-    formedChars != requiredChars
-    Invalid → Continue R
+    Invalid → move R
 
 
-c. r = 2 → "AAO"
-
-    Add O
-    ourMap = { A → 2, O → 1 }
-
-    O is not required
-    formedChars = 1
-
-    formedChars != requiredChars
-    Invalid → Continue R
-
-
-d. r = 3 → "AAOB"
-
-    Add B
-    ourMap = { A → 2, O → 1, B → 1 }
-
-    B required frequency = 1
-    B current frequency = 1
-    B requirement satisfied
+r = 3 → "AAOB"
+    Map = { A → 2, B → 1, O → 1 }
+    B reaches required frequency.
     formedChars = 2
-
-    formedChars != requiredChars
-    Invalid → Continue R
+    Invalid → move R
 
 
-e. r = 4 → "AAOBC"
-
-    Add C
-    ourMap = { A → 2, O → 1, B → 1, C → 1 }
-
-    C required frequency = 2
-    C current frequency = 1
-
-    C requirement is not fully satisfied yet
-    formedChars = 2
-
-    formedChars != requiredChars
-    Invalid → Continue R
-
-
-f. r = 5 → "AAOBCC"
-
-    Add C
-    ourMap = { A → 2, O → 1, B → 1, C → 2 }
-
-    C required frequency = 2
-    C current frequency = 2
-    C requirement satisfied
+r = 4 → "AAOBC"
+    Map = { A → 2, B → 1, C → 1, O → 1 }
+    C reaches required frequency.
     formedChars = 3
 
     formedChars == requiredChars
-    Valid → Enter while
+    → Valid
 
 
     while #1:
+        Window = "AAOBC"
+        Length = 5
+        ans = "AAOBC"
 
-    Window = "AAOBCC"
-    windowLength = 6
+        Remove A
+        A frequency = 1
+        1 < required A frequency 2
 
-    ans = "AAOBCC"
+        formedChars = 2
+        Window invalid
+        Exit while
 
-    Remove s[l] = A
 
-    Window becomes "AOBCC"
-    ourMap = { A → 1, O → 1, B → 1, C → 2 }
-
-    A is still present.
-    A required frequency = 1
-    A current frequency = 1
-
+r = 5 → "AOBC A"
+    A frequency = 2
+    A reaches required frequency.
     formedChars = 3
-    Window remains valid.
 
-    l = 1
+    formedChars == requiredChars
+    → Valid
 
 
     while #2:
+        Window = "AOBCA"
+        Length = 5
 
-    Window = "AOBCC"
-    windowLength = 5
+        Remove A
+        A frequency = 1
+        1 < required A frequency 2
 
-    ans = "AOBCC"
+        formedChars = 2
+        Window invalid
+        Exit while
 
-    Remove s[l] = A
 
-    Window becomes "OBCC"
-    ourMap = { A → 0, O → 1, B → 1, C → 2 }
-
-    A is required but A is now completely removed.
-
-    A current frequency = 0
-    A required frequency = 1
-
-    0 < 1
+r = 6 → "OBCAA"
+    A frequency = 1
     formedChars = 2
-
-    l = 2
-
-    Window became invalid → Exit while.
+    Invalid → move R
 
 
-g. r = 5 ends because R has reached the last character.
+r = 7 → "OBCAA"
+    A frequency = 2
+    A reaches required frequency.
+    formedChars = 3
 
-Final Answer = "AOBCC"
-Final Length = 5
+    formedChars == requiredChars
+    → Valid
+
+
+    while #3:
+        Window = "OBCAA"
+        Length = 5
+
+        Remove O
+        O not required.
+        formedChars = 3
+
+
+        Window = "BCAA"
+        Length = 4
+        ans = "BCAA"
+
+        Remove B
+        B frequency = 0
+        0 < required B frequency 1
+
+        formedChars = 2
+        Window invalid
+        Exit while
+
+
+Final Answer = "BCAA"
+Final Length = 4
 */
