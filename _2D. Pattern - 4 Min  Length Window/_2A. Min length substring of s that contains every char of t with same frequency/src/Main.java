@@ -4,59 +4,54 @@ public class Main {
     }
 }
 /*
-Interview : Given two strings s and t, find the minimum length substring of s
-            that contains every character of t with the required frequency.
+a.  == → compares references when both sides are Integer
+        Integer a = 1000;
+        Integer b = 1000;
 
-Given : We need to find the smallest substring's length possible where the
-        substring contains all characters of t with their required frequency.
+        System.out.println(a == b); // false
 
-        Contiguous + Size is not Fixed Size For Window + SubString = Variable Window
-        subString = window
+        Here both are Integer objects, so == checks whether they are the same object, not whether their values are equal.
+        That's why:
+        our.get(c) == required.get(c)
 
-Brain : The simplest mental translation is to expand the window using R until
-        the current window contains all required characters from t, then shrink
-        the window using L as much as possible while keeping it valid.
+        can be problematic.
+        Use:
+        our.get(c).intValue() == required.get(c).intValue()
 
-        Example :
-        s = "ADOBECODEBANC"
-        t = "ABC"
+        or:
+        our.get(c).equals(required.get(c))
 
-        Consider the window = "ADOBEC"
+b. < → Java automatically unboxes to int
+        Integer a = 5;
+        Integer b = 10;
 
-        Map of window:
-        A → 1
-        D → 1
-        O → 1
-        B → 1
-        E → 1
-        C → 1
+        System.out.println(a < b); // true
 
-        Required characters:
-        A → 1
-        B → 1
-        C → 1
+        Java sees < and automatically converts:
+        Integer → int
 
-        All required characters are present, so the window is VALID.
+        So this:
+        our.get(cc) < required.get(cc)
 
-        Now move L forward and try to make the window smaller while
-        still containing A, B, and C.
+        effectively becomes:
+        our.get(cc).intValue() < required.get(cc).intValue()
 
-        Eventually:
+        Simple rule to remember
+        Integer == Integer  → reference comparison ❌
+        Integer < Integer   → automatic unboxing ✅
+        Integer > Integer   → automatic unboxing ✅
+        Integer + Integer   → automatic unboxing ✅
+        Integer == int      → automatic unboxing ✅
 
-        "BANC"
+        So in your code:
+        our.get(c) == required.get(c)
 
-        contains:
-        A → 1
-        B → 1
-        C → 1
+        ➡️ use .intValue() / .equals().
+        But:
+        our.get(cc) < required.get(cc)
 
-        Therefore, "BANC" is the minimum valid window.
+        ➡️ no .intValue() is required because < automatically unboxes them.
 
 
-Main Logic :
 
-R → expand window until all required characters are present.
-L → shrink window while the current window remains valid.
-When valid → update the minimum answer.
-When invalid → stop shrinking and continue moving R.
-*/
+ */
