@@ -223,3 +223,115 @@ r = 7 → "OBCAA"
 Final Answer = "BCAA"
 Final Length = 4
 */
+
+
+/*
+Dry Run Example:
+
+s = "XXCAAAAB"
+t = "AABC"
+
+Required = { A → 2, B → 1, C → 1 }
+
+l = 0
+formedChars = 0
+
+
+r = 0 → "X"
+    X not required
+    formedChars = 0
+    Invalid → move R
+
+
+r = 1 → "XX"
+    X not required
+    formedChars = 0
+    Invalid → move R
+
+
+r = 2 → "XXC"
+    Map = { X → 2, C → 1 }
+    C reaches required frequency.
+    formedChars = 1
+    Invalid → move R
+
+
+r = 3 → "XXCA"
+    Map = { X → 2, C → 1, A → 1 }
+    A current = 1, required = 2
+    formedChars = 1
+    Invalid → move R
+
+
+r = 4 → "XXCAA"
+    Map = { X → 2, C → 1, A → 2 }
+    A reaches required frequency.
+    formedChars = 2
+    Invalid → move R
+
+
+r = 5 → "XXCAAA"
+    A current = 3, required = 2
+    formedChars = 2
+    Invalid → move R
+
+
+r = 6 → "XXCAAAA"
+    A current = 4, required = 2
+    formedChars = 2
+    Invalid → move R
+
+
+r = 7 → "XXCAAAAB"
+    Map = { X → 2, C → 1, A → 4, B → 1 }
+    B reaches required frequency.
+    formedChars = 3
+
+    formedChars == requiredChars
+    → Valid
+
+
+while #1:
+    Window = "XXCAAAAB"
+    Length = 8
+    ans = "XXCAAAAB"
+
+    Remove X
+    X frequency = 1
+    X not required
+    formedChars = 3
+
+    Window = "XCAAAAB"
+    Still valid
+
+
+while #2:
+    Window = "XCAAAAB"
+    Length = 7
+
+    Remove X
+    X frequency = 0
+    X not required
+    formedChars = 3
+
+    Window = "CAAAAB"
+    Still valid
+
+
+while #3:
+    Window = "CAAAAB"
+    Length = 6
+    ans = "CAAAAB"
+
+    Remove C
+    C frequency = 0
+    0 < required C frequency 1
+
+    formedChars = 2
+    Window invalid
+    Exit while
+
+
+Final Answer = "CAAAAB"
+Final Length = 6
+*/
