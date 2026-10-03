@@ -26,7 +26,7 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
             Minimum latest index = 0
 
             Therefore starting positions 0 through 0 are valid.
-            Number of valid substrings = 0 + 1 = 1.
+            Number of valid substrings = 0 + 1 = 1. ( |a, b, c| )
 
 
             Ex : "aabbca"
@@ -42,7 +42,10 @@ public class _2_Optimal_O_n_________LastIndex_Approach {
             Minimum latest index = 3
 
             Therefore starting positions 3 to 0 are valid.
-            Number of valid substrings = 3 + 1 = 4.
+            Number of valid substrings = 3 + 1 = 4. (    |b, c, a|
+                                                        b|b, c, a|
+                                                       ab|b, c, a|
+                                                      aab|b, c, a| )
 
 
             Ex: "aabbccca"
